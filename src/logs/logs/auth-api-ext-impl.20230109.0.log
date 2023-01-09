@@ -1,3 +1,0 @@
-2023-01-09 18:14:41.938 [Thread-16] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9020get
-2023-01-09 18:14:44.204 [Thread-16] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9020get
-2023-01-09 18:14:49.461 [SpringApplicationShutdownHook] WARN  com.uestc.thresholddkg.Server.IdpServer - webSocketSinglePool destroyed.

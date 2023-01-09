@@ -101,11 +101,6 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         System.out.println("startSe");
     }
 
-    public static void main(String[] args){
-        //InitIdp();
-        System.out.println("s");
-    }
-
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 

@@ -120,12 +120,7 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
             executor.execute(worker);
         }
         latch.await();
-        executor.shutdown();//executor.awaitTermination(2,);
-        /*log.warn("webSocketSinglePool destroyed begin.");
-        int serverNum=addrS.length;
-        for(int i=0;i<serverNum;i++){
-            servers[i].stop(3);
-        }*/
+        executor.shutdown();
         log.warn("webSocketSinglePool destroyed.");
     }
 

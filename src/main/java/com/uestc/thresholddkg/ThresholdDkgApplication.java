@@ -17,8 +17,19 @@ public class ThresholdDkgApplication {
     public static void main(String[] args) {
         SpringApplication.run(ThresholdDkgApplication.class, args);
         CountDownLatch a=new CountDownLatch(2);a.countDown();a.countDown();
-        IdpServer.InitIdp();
-        System.out.println("xxxxx");
+        String[] serverAddr=IdpServer.addrS;
+        String[] addrSplit=new String[2];
+        String ip;Integer port;
+        IdpServer[] idpServers=new IdpServer[serverAddr.length];
+        int i=0;
+        for (String addr:serverAddr
+             ) {
+                addrSplit=addr.split(":");
+                ip=addrSplit[0];port=Integer.valueOf(addrSplit[1]);
+                idpServers[i]=IdpServer.getIdpServer(i+1,ip,port);
+                i++;
+        }
+        System.out.println("cc");
     }
 
 }

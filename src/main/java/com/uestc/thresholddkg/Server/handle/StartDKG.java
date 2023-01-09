@@ -2,24 +2,18 @@ package com.uestc.thresholddkg.Server.handle;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import com.uestc.thresholddkg.Server.Config.IpAndPort;
+import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.communicate.SendUri;
-import com.uestc.thresholddkg.Server.util.TestConv;
+import com.uestc.thresholddkg.Server.pojo.TestConv;
 import com.uestc.thresholddkg.Server.util.test2;
 import lombok.Setter;
 import lombok.var;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.math.BigInteger;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -30,14 +24,11 @@ import java.util.concurrent.Executors;
 @Component
 @Setter
 public class StartDKG implements HttpHandler {
-    @Value("#{'${idpservers.ipandport.ServersIp}'.split(' ')}")
-    private String[] temp;
     private static String[] ipAndPort;
     private String addr;
-    //public StartDKG(String _addr){addr=_addr;}
     @PostConstruct
     public void getAddr(){
-        ipAndPort=temp;
+        ipAndPort=IdpServer.addrS;
     }
     @Override
     public void handle(HttpExchange httpExchange){

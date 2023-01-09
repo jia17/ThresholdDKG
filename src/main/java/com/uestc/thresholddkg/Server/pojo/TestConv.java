@@ -1,4 +1,4 @@
-package com.uestc.thresholddkg.Server.util;
+package com.uestc.thresholddkg.Server.pojo;
 
 import lombok.*;
 

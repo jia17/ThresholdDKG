@@ -2,7 +2,7 @@ package com.uestc.thresholddkg.Server.handle;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import com.uestc.thresholddkg.Server.util.TestConv;
+import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.util.test2;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
@@ -10,7 +10,6 @@ import lombok.var;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
 import java.util.Random;
 
 /**
@@ -21,7 +20,8 @@ import java.util.Random;
 public class TestHandle implements HttpHandler {
 
     private String addr;
-    public TestHandle(String _addr){addr=_addr;}
+    private IdpServer idpServer;
+    public TestHandle(String _addr, IdpServer _idpServer){addr=_addr;idpServer=_idpServer;}
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
         String testRes=addr+ new Random().toString()+"ccc";

@@ -18,7 +18,7 @@ public class TestDKG {
         BigInteger h=null;
         do{
             h=getPedersen(p,q);
-           }while (h.equals(g));
+        }while (h.equals(g));
         int serversNum=9,threshold=5;
         BigInteger[] F=RandomGenerator.genaratePrimes(threshold,p);
         BigInteger[] G=RandomGenerator.genaratePrimes(threshold,p);

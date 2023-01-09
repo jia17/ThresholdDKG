@@ -46,8 +46,6 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     private static String[] addrS;
     @Value("#{'${idpservers.ipandport.ServersIp}'.split(' ')}")
     private String[] configAddr;
-    private static String[] IPs;
-    private static Integer[] Ports;
 
     private static HttpsServer[] servers;
 
@@ -64,6 +62,8 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
 //        var s2=  JSONObject.toBean(jsonobject,TestConv.class);
 //        TestConv res=(TestConv) convert.Json2obj(ss);
 //        System.out.println(res.getText()[0]);
+        String[] IPs;
+        Integer[] Ports;
         IPs=new String[serverNum];
         Ports=new Integer[serverNum];
         String[] addrSplit;int i=0;

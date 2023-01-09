@@ -1,0 +1,110 @@
+2023-01-04 15:44:39.831 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
+2023-01-04 15:44:39.869 [restartedMain] ERROR com.uestc.thresholddkg.Server.IdpServer - ssssssss
+2023-01-04 15:45:16.391 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
+2023-01-04 15:45:16.412 [restartedMain] ERROR com.uestc.thresholddkg.Server.IdpServer - ssssssss
+2023-01-04 15:47:26.460 [restartedMain] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'spring.devtools-org.springframework.boot.devtools.autoconfigure.DevToolsProperties': Could not bind properties to 'DevToolsProperties' : prefix=spring.devtools, ignoreInvalidFields=false, ignoreUnknownFields=true; nested exception is org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'spring.devtools.livereload' to org.springframework.boot.devtools.autoconfigure.DevToolsProperties$Livereload
+2023-01-04 15:47:26.483 [restartedMain] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'spring.devtools.livereload' to org.springframework.boot.devtools.autoconfigure.DevToolsProperties$Livereload:
+
+    Reason: org.springframework.core.convert.ConverterNotFoundException: No converter found capable of converting from type [java.lang.String] to type [org.springframework.boot.devtools.autoconfigure.DevToolsProperties$Livereload]
+
+Action:
+
+Update your application's configuration
+
+2023-01-04 15:48:22.695 [restartedMain] ERROR com.uestc.thresholddkg.Server.IdpServer - ssssssss
+2023-01-04 16:07:39.296 [Thread-14] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@16430a7a
+2023-01-04 16:07:39.308 [Thread-28] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9090get9
+2023-01-04 16:07:39.308 [Thread-24] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9070get7
+2023-01-04 16:07:39.308 [Thread-20] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9050get5
+2023-01-04 16:07:39.308 [Thread-26] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9080get8
+2023-01-04 16:07:39.308 [Thread-16] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9030get3
+2023-01-04 16:07:39.309 [Thread-12] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9010get1
+2023-01-04 16:07:39.309 [Thread-18] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9040get4
+2023-01-04 16:07:39.308 [Thread-22] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9060get6
+2023-01-04 16:07:39.316 [pool-2-thread-3] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9040/test
+2023-01-04 16:07:39.316 [pool-2-thread-1] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9010/test
+2023-01-04 16:07:39.316 [pool-2-thread-2] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9030/test
+2023-01-04 16:07:39.316 [pool-2-thread-4] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9050/test
+2023-01-04 16:07:39.316 [pool-2-thread-6] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9070/test
+2023-01-04 16:07:39.316 [pool-2-thread-8] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9090/test
+2023-01-04 16:07:39.316 [pool-2-thread-7] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9080/test
+2023-01-04 16:07:39.316 [pool-2-thread-5] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9060/test
+2023-01-04 16:07:47.987 [Thread-14] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@16430a7a
+2023-01-04 16:07:47.989 [Thread-22] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9060get6
+2023-01-04 16:07:47.989 [Thread-18] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9040get4
+2023-01-04 16:07:47.990 [Thread-16] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9030get3
+2023-01-04 16:07:47.990 [Thread-20] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9050get5
+2023-01-04 16:07:47.990 [Thread-12] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9010get1
+2023-01-04 16:07:47.990 [pool-3-thread-4] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9050/test
+2023-01-04 16:07:47.990 [pool-3-thread-3] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9040/test
+2023-01-04 16:07:47.990 [pool-3-thread-5] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9060/test
+2023-01-04 16:07:47.990 [Thread-24] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9070get7
+2023-01-04 16:07:47.990 [pool-3-thread-2] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9030/test
+2023-01-04 16:07:47.990 [pool-3-thread-1] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9010/test
+2023-01-04 16:07:47.991 [pool-3-thread-6] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9070/test
+2023-01-04 16:07:47.993 [Thread-26] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9080get8
+2023-01-04 16:07:47.993 [Thread-28] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9090get9
+2023-01-04 16:07:47.993 [pool-3-thread-7] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9080/test
+2023-01-04 16:07:47.993 [pool-3-thread-8] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9090/test
+2023-01-04 16:08:25.608 [Thread-14] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@16430a7a
+2023-01-04 16:08:25.610 [Thread-12] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9010get1
+2023-01-04 16:08:25.610 [Thread-20] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9050get5
+2023-01-04 16:08:25.611 [Thread-16] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9030get3
+2023-01-04 16:08:25.610 [Thread-22] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9060get6
+2023-01-04 16:08:25.611 [pool-4-thread-1] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9010/test
+2023-01-04 16:08:25.611 [Thread-18] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9040get4
+2023-01-04 16:08:25.611 [pool-4-thread-4] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9050/test
+2023-01-04 16:08:25.611 [Thread-28] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9090get9
+2023-01-04 16:08:25.611 [pool-4-thread-5] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9060/test
+2023-01-04 16:08:25.611 [Thread-24] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9070get7
+2023-01-04 16:08:25.611 [pool-4-thread-3] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9040/test
+2023-01-04 16:08:25.612 [pool-4-thread-6] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9070/test
+2023-01-04 16:08:25.612 [pool-4-thread-8] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9090/test
+2023-01-04 16:08:25.613 [pool-4-thread-2] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9030/test
+2023-01-04 16:08:25.613 [Thread-26] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9080get8
+2023-01-04 16:08:25.614 [pool-4-thread-7] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:http://127.0.0.10:9080/test
+2023-01-04 17:21:53.026 [Thread-14] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@103f7157
+2023-01-04 17:21:54.149 [Thread-14] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@103f7157
+2023-01-04 17:21:55.461 [Thread-14] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@103f7157
+2023-01-04 17:22:00.601 [Thread-14] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@103f7157
+2023-01-04 17:23:21.204 [Thread-13] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@63f87832
+2023-01-04 17:23:22.368 [Thread-13] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@63f87832
+2023-01-04 17:23:23.329 [Thread-13] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@63f87832
+2023-01-04 17:23:25.261 [Thread-13] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@63f87832
+2023-01-04 17:23:30.404 [Thread-13] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@63f87832
+2023-01-04 23:19:41.310 [Thread-28] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9090get{"flag":false,"id":1,"pri":1313,"pub":999999999,"text":["cccc","xxxx"]}
+2023-01-04 23:19:41.310 [Thread-18] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9040get{"flag":false,"id":1,"pri":1313,"pub":999999999,"text":["cccc","xxxx"]}
+2023-01-04 23:19:41.312 [Thread-24] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9070get{"flag":false,"id":1,"pri":1313,"pub":999999999,"text":["cccc","xxxx"]}
+2023-01-04 23:19:41.314 [Thread-22] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9060get{"flag":false,"id":1,"pri":1313,"pub":999999999,"text":["cccc","xxxx"]}
+2023-01-04 23:19:41.310 [Thread-20] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9050get{"flag":false,"id":1,"pri":1313,"pub":999999999,"text":["cccc","xxxx"]}
+2023-01-04 23:19:41.310 [Thread-16] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9030get{"flag":false,"id":1,"pri":1313,"pub":999999999,"text":["cccc","xxxx"]}
+2023-01-04 23:19:41.314 [Thread-12] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9010get{"flag":false,"id":1,"pri":1313,"pub":999999999,"text":["cccc","xxxx"]}
+2023-01-04 23:19:41.310 [Thread-26] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9080get{"flag":false,"id":1,"pri":1313,"pub":999999999,"text":["cccc","xxxx"]}
+2023-01-04 23:21:12.351 [Thread-13] WARN  com.uestc.thresholddkg.Server.handle.ReStoreTest - [Ljava.lang.String;@1cf97281
+2023-01-04 23:21:12.427 [Thread-17] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9040get4
+2023-01-04 23:21:12.427 [Thread-26] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9080get8
+2023-01-04 23:21:12.428 [Thread-22] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9060get6
+2023-01-04 23:21:12.428 [Thread-19] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9050get5
+2023-01-04 23:21:12.428 [Thread-24] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9070get7
+2023-01-04 23:21:12.427 [Thread-28] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9090get9
+2023-01-04 23:21:12.429 [Thread-11] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9010get1
+2023-01-04 23:21:12.437 [pool-2-thread-1] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:https://127.0.0.10:9010/test
+2023-01-04 23:21:12.437 [Thread-15] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9030get3
+2023-01-04 23:21:12.437 [pool-2-thread-7] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:https://127.0.0.10:9080/test
+2023-01-04 23:21:12.437 [pool-2-thread-6] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:https://127.0.0.10:9070/test
+2023-01-04 23:21:12.437 [pool-2-thread-4] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:https://127.0.0.10:9050/test
+2023-01-04 23:21:12.437 [pool-2-thread-5] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:https://127.0.0.10:9060/test
+2023-01-04 23:21:12.437 [pool-2-thread-3] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:https://127.0.0.10:9040/test
+2023-01-04 23:21:12.437 [pool-2-thread-8] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:https://127.0.0.10:9090/test
+2023-01-04 23:21:12.438 [pool-2-thread-2] WARN  c.uestc.thresholddkg.Server.communicate.BoradTest - send:https://127.0.0.10:9030/test
+2023-01-04 23:45:55.447 [Thread-14] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9020get
+2023-01-04 23:46:59.299 [Thread-14] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9020get
+2023-01-04 23:47:07.883 [Thread-14] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9020get

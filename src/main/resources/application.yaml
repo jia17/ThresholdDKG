@@ -1,0 +1,20 @@
+spring:
+ devtools:
+  livereload:
+   port: 35731
+  restart:
+   additional-paths: src/main/java
+   enabled: true
+idpservers:
+  ipandport:
+    ServersIp:
+     127.0.0.10:9010
+     127.0.0.10:9020
+     127.0.0.10:9030
+     127.0.0.10:9040
+     127.0.0.10:9050
+     127.0.0.10:9060
+     127.0.0.10:9070
+     127.0.0.10:9080
+     127.0.0.10:9090
+

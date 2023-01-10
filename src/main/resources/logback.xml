@@ -41,8 +41,8 @@
         <includeCallerData>false</includeCallerData>
         <appender-ref ref="fileAppender"/>
     </appender>
-    <include resource="org/springframework/boot/logging/logback/base.xml" />
-    <logger name="*" level="WARN"/>
+<!--    <include resource="org/springframework/boot/logging/logback/base.xml" />-->
+<!--    <logger name="*" level="WARN"/>-->
 
     <!--这里可以不写-->
     <!-- 日志输出级别 -->

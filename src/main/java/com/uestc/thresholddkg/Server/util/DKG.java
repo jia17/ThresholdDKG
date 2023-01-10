@@ -3,6 +3,7 @@ package com.uestc.thresholddkg.Server.util;
 import com.uestc.thresholddkg.Server.Config.IpAndPort;
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.imageio.IIOParam;
@@ -16,6 +17,7 @@ import static com.uestc.thresholddkg.Server.util.TestDKG.getPedersen;
  * @date 2023-01-09 20:24
  * DKG utils
  */
+@Component
 public class DKG {
 
     public static String[] ipAndPort;
@@ -29,7 +31,7 @@ public class DKG {
      * @return DKG system param p,q,g,h
      */
     public static DKG_System init(){
-        BigInteger q=Prime.generateSophiePrime(1024);
+        BigInteger q=Prime.generateSophiePrime(512);//1024
         BigInteger p=Prime.getSafePrime(q);
         BigInteger g=getPedersen(p,q);
         BigInteger h=null;

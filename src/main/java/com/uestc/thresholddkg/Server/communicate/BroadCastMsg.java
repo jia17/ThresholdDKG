@@ -1,8 +1,6 @@
 package com.uestc.thresholddkg.Server.communicate;
 
 import lombok.Builder;
-import lombok.Setter;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.net.ssl.*;
@@ -12,33 +10,37 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author zhangjia
- * @date 2023-01-02 20:37
+ * @date 2023-01-10 20:49
  */
 @Builder
 @Slf4j
-public class SendUri {
+public class BroadCastMsg implements Runnable{
+
     private String IpAndPort;
     private String message;
     private String mapper;
-    public String SendMsg(){
-        boolean success=false;
-        String tline="";
+
+    private ConcurrentHashMap<String,String> failsMap;
+    private CountDownLatch latch;
+    @Override
+    public void run() {
         String http="https://"+IpAndPort+"/"+mapper;
         try {
             TrustManager[] managers={new MyX509TrustManger()};
             SSLContext sslContext=SSLContext.getInstance("SSL");
             sslContext.init(null,managers,new java.security.SecureRandom());
             SSLSocketFactory sslSocketFactory=sslContext.getSocketFactory();
-
             URL url = new URL(http);
             HttpsURLConnection httpurlconnection = (HttpsURLConnection) url.openConnection();
             httpurlconnection.setDoOutput(true);
             httpurlconnection.setRequestMethod("POST");
             httpurlconnection.setConnectTimeout(30000);
-
             httpurlconnection.setSSLSocketFactory(sslSocketFactory);
             httpurlconnection.setHostnameVerifier(new HostnameVerifier() {
                 @Override
@@ -46,27 +48,19 @@ public class SendUri {
                     return true;
                 }
             });
-            //设置输出流。
             OutputStreamWriter writer = new OutputStreamWriter(httpurlconnection.getOutputStream(), "utf-8");
-            //传递的参数，中间使用&符号分割。
             writer.write(message);
             writer.flush();
             writer.close();
             int responseCode = httpurlconnection.getResponseCode();
-        //表示请求成功
-        if(responseCode==HttpURLConnection.HTTP_OK){
-            InputStream urlstream=httpurlconnection.getInputStream();
-            BufferedReader reader=new BufferedReader(new InputStreamReader(urlstream));
-            String line;
-            while((line=reader.readLine())!=null){
-                tline+=line;
-            }
-            //没有返回的数据
-            success=true; }
+            //表示请求成功
+            if(responseCode== HttpURLConnection.HTTP_OK){
+                latch.countDown(); }
         }catch (Exception e){
-            log.error(" Connect to FAIL" +http);
-            e.printStackTrace();
+                latch.countDown();
+                failsMap.put(IpAndPort,"FAIL");
+                e.printStackTrace();
         }
-        return tline;
+        return ;
     }
 }

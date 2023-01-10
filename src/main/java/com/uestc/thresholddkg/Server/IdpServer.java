@@ -2,9 +2,10 @@ package com.uestc.thresholddkg.Server;
 
 import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsServer;
-import com.uestc.thresholddkg.Server.handle.ReStoreTest;
-import com.uestc.thresholddkg.Server.handle.StartDKG;
-import com.uestc.thresholddkg.Server.handle.TestHandle;
+import com.uestc.thresholddkg.Server.handle.*;
+import com.uestc.thresholddkg.Server.pojo.DKG_System;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,8 +18,11 @@ import javax.annotation.PreDestroy;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import java.io.FileInputStream;
+import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.security.KeyStore;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -29,6 +33,8 @@ import java.util.concurrent.Executors;
  */
 @Component
 @Slf4j
+@Setter
+@Getter
 public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     public static String[] addrS;
     public static Integer threshold;
@@ -37,12 +43,19 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     @Value("#{'${idpservers.threshold}'}")
     public Integer configThreshold;
     private  HttpsServer server=null;
-
     private Integer serverId;
+    public Integer item;
 
+    //DkgParam
+    private Map<String,BigInteger[]> secretAndT;
+    private Map<String,BigInteger[]> fValue;
+    private Map<String,BigInteger[]> gValue;
+    private Map<String,BigInteger[]>fParam;
+    private Map<String,BigInteger[]> mulsGH;
+    private Map<String, DKG_System> DkgParam;
     @PostConstruct
     public void getAddr(){
-        addrS=configAddr;threshold=configThreshold;
+        addrS=configAddr;threshold=configThreshold;item=1;
     }
     public static IdpServer getIdpServer(int serverId,String ip,int port){
         int serverNum=addrS.length;
@@ -69,14 +82,21 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
            } catch (Exception e) {
             e.printStackTrace();
         }
-        StartDKG startDKG=new StartDKG();startDKG.setAddr(idpServers.server.getAddress().toString());
-        idpServers.server.createContext("/startDkg",startDKG);
-        ReStoreTest resto=new ReStoreTest();resto.setAddrSelf(idpServers.server.getAddress().toString());
-        idpServers.server.createContext("/restoreTest",resto);
-        idpServers.server.createContext("/test",new TestHandle(idpServers.server.getAddress().toString(),idpServers));
-        idpServers.server.setExecutor(null);
-        idpServers.server.start();
 
+        idpServers.DkgParam=new HashMap<>();
+        idpServers.fParam=new HashMap<>();
+        idpServers.mulsGH=new HashMap<>();
+        idpServers.gValue=new HashMap<>();
+        idpServers.secretAndT=new HashMap<>();
+        idpServers.fValue=new HashMap<>();
+        idpServers.server.createContext("/startDkg",new StartDKG(idpServers.server.getAddress().toString(),idpServers));
+        idpServers.server.createContext("/initDkg",new InitDKG(idpServers.server.getAddress().toString(),idpServers));
+        idpServers.server.createContext("/restoreTest",new ReStoreTest(idpServers.server.getAddress().toString()));
+        idpServers.server.createContext("/test",new TestHandle(idpServers.server.getAddress().toString(),idpServers));
+        idpServers.server.createContext("/verifyGH",new VerifyGH(idpServers));
+        ExecutorService executor = Executors.newFixedThreadPool(addrS.length - 1);
+        idpServers.server.setExecutor(executor);
+        idpServers.server.start();
         System.out.println("startSe"+Integer.toString(serverId));
         return idpServers;
     }

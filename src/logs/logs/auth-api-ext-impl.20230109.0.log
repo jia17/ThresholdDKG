@@ -2698,3 +2698,4 @@ Caused by: javax.management.InstanceAlreadyExistsException: org.springframework.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
 	... 20 common frames omitted
+2023-01-09 23:21:47.461 [Thread-18] ERROR com.uestc.thresholddkg.Server.handle.TestHandle - /127.0.0.10:9040get

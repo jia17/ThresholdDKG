@@ -3,6 +3,7 @@ package com.uestc.thresholddkg.Server.handle;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.uestc.thresholddkg.Server.Config.IpAndPort;
+import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.communicate.BoradTest;
 import com.uestc.thresholddkg.Server.communicate.SendUri;
 import lombok.Setter;
@@ -28,36 +29,28 @@ import static java.util.Map.*;
  * @author zhangjia
  * @date 2023-01-03 13:25
  */
-@Component
 @Setter
 @Slf4j
 public class ReStoreTest implements HttpHandler {
-   /* @Value("#{'${idpservers.ipandport.ServersIp}'.split(' ')}")
-    private String[] ipAndPort;*/
-    @Value("#{'${idpservers.ipandport.ServersIp}'.split(' ')}")
-    private String[] temp;
-    private static String[] ipAndPort;
+    private  String[] ipAndPort;
     @PostConstruct
     public void getAddr(){
-        ipAndPort=temp;
-    }
-   /* @Resource
-    private IpAndPort ipAndPort;*/
-    private String AddrSelf;
 
+    }
+    private String AddrSelf;
+    public ReStoreTest(String addr){AddrSelf=addr;ipAndPort= IdpServer.addrS;}
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
-        //System.out.println(ipAndPort);
         log.warn(ipAndPort.toString());
-        String[] ippstr=ipAndPort;
-        int serversNum=ippstr.length;
+        String[] ippStr=ipAndPort;
+        int serversNum=ippStr.length;
         final ExecutorService executor = Executors.newFixedThreadPool(serversNum - 1);
         final CountDownLatch    latch  = new CountDownLatch(serversNum>>1+1);
         final AtomicInteger failureCounter = new AtomicInteger(0);
         final int maximumFailures = serversNum-(serversNum>>1+1);
         ConcurrentHashMap<String,String> resMap=new ConcurrentHashMap<>();
         int serverId=0;
-        for(String addr:ippstr){
+        for(String addr:ippStr){
             serverId++;
             if(("/"+addr).equals(AddrSelf))continue;
             SendUri send = SendUri.builder().message(Integer.toString(serverId)).mapper("test").IpAndPort(addr).build();
@@ -86,6 +79,5 @@ public class ReStoreTest implements HttpHandler {
         }catch (InterruptedException e){
             throw new RuntimeException();
         }
-
     }
 }

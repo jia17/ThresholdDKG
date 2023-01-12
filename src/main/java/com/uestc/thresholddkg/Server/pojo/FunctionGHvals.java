@@ -17,9 +17,9 @@ import java.math.BigInteger;
 @AllArgsConstructor
 public class FunctionGHvals {
     private String sendAddr;// "/172.168.."
-    private BigInteger Fi;
-    private BigInteger Gi;
-    private BigInteger[] gMulsH;
+    private String Fi;
+    private String Gi;
+    private String[] gMulsH;
     private String userId;
     private Integer serverId;//[1-n]
     private Integer item;

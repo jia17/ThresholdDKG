@@ -10,7 +10,10 @@ import lombok.var;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * @author zhangjia
@@ -21,10 +24,13 @@ public class TestHandle implements HttpHandler {
 
     private String addr;
     private IdpServer idpServer;
-    public TestHandle(String _addr, IdpServer _idpServer){addr=_addr;idpServer=_idpServer;}
+    private static Set<String> TestSSet;
+    public TestHandle(String _addr, IdpServer _idpServer){addr=_addr;idpServer=_idpServer;TestSSet=new HashSet<>();}
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
         String testRes=addr+ new Random().toString()+"ccc";
+        TestSSet.add(testRes);
+        testRes=TestSSet.toString();
         byte[] respContents = testRes.getBytes("UTF-8");
         var Sender=httpExchange.getRequestBody();
         BufferedReader reader=new BufferedReader(new InputStreamReader(Sender));
@@ -34,7 +40,7 @@ public class TestHandle implements HttpHandler {
             tline+=line;
         }
         //System.out.println(addr+"get"+tline);
-        log.error(addr+"get"+tline);
+        log.error(httpExchange.getRemoteAddress().toString()+"get"+tline);
         var convert=new test2();
         //test Json2obj
         /*TestConv res=(TestConv) convert.Json2obj(tline);

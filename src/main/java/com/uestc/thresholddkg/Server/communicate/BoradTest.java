@@ -1,5 +1,6 @@
 package com.uestc.thresholddkg.Server.communicate;
 
+import com.uestc.thresholddkg.Server.Config.MyX509TrustManger;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 
@@ -64,7 +65,7 @@ public class BoradTest implements Runnable{
                 log.warn("send:"+http);
                 InputStream urlstream=httpurlconnection.getInputStream();
                 BufferedReader reader=new BufferedReader(new InputStreamReader(urlstream));
-                String line;
+                String line;tline="";
                 while((line=reader.readLine())!=null){
                     tline+=line;
                 }

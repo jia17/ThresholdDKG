@@ -1,22 +1,20 @@
 package com.uestc.thresholddkg.Server.communicate;
 
+import com.uestc.thresholddkg.Server.Config.MyX509TrustManger;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.net.ssl.*;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author zhangjia
  * @date 2023-01-10 20:49
+ * broadcast message without reply,hope n success,latch=n
  */
 @Builder
 @Slf4j
@@ -58,7 +56,7 @@ public class BroadCastMsg implements Runnable{
                 latch.countDown(); }
         }catch (Exception e){
                 latch.countDown();
-                failsMap.put(IpAndPort,"FAIL");
+                failsMap.put(IpAndPort,"FAIL BroadCast");
                 e.printStackTrace();
         }
         return ;

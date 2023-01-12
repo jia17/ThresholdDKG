@@ -1,4 +1,4 @@
-package com.uestc.thresholddkg.Server.communicate;
+package com.uestc.thresholddkg.Server.Config;
 
 import javax.net.ssl.X509TrustManager;
 import java.security.cert.CertificateException;

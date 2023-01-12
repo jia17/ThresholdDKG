@@ -2,7 +2,11 @@ package com.uestc.thresholddkg.Server.handle;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import com.uestc.thresholddkg.Server.DkgCommunicate.InvalidServBroad;
+import com.uestc.thresholddkg.Server.DkgCommunicate.RegetFGval;
+import com.uestc.thresholddkg.Server.DkgCommunicate.SendDKGComplain;
 import com.uestc.thresholddkg.Server.IdpServer;
+import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import com.uestc.thresholddkg.Server.util.FuncGH2Obj;
 import com.uestc.thresholddkg.Server.pojo.FunctionGHvals;
 import com.uestc.thresholddkg.Server.util.*;
@@ -13,6 +17,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * @author zhangjia
@@ -21,7 +27,13 @@ import java.math.BigInteger;
 @Slf4j
 public class VerifyGH implements HttpHandler {
     private IdpServer idpServer;
-    public VerifyGH(IdpServer _idp){idpServer=_idp;}
+    private String[] ipPorts;
+    private Map<String, ConcurrentSkipListSet<String>> recvInvalid;
+
+    public VerifyGH(IdpServer _idp,Map<String, ConcurrentSkipListSet<String>> recvInvalid){
+        idpServer=_idp;this.ipPorts=IdpServer.addrS;
+        this.recvInvalid=recvInvalid;
+    }
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
@@ -33,22 +45,62 @@ public class VerifyGH implements HttpHandler {
         while((line=reader.readLine())!=null){
             tline+=line;
         }
-        log.error(tline);
-        FuncGH2Obj convert=new FuncGH2Obj();
-        FunctionGHvals ghVals=(FunctionGHvals) convert.Json2obj(tline);
-  //      String userId=ghVals.getUserId();
- //       DKG_System dkgSys=idpServer.getDkgParam().get(userId);
-//        BigInteger p=dkgSys.getP();
-//        BigInteger verify1=((Calculate.modPow(dkgSys.getG(),ghVals.getFi(),p)).multiply(Calculate.modPow(dkgSys.getH(),ghVals.getGi(),p))).mod(p);
-//        boolean satisfy=DKG.VerifyGH(verify1,ghVals.getGMulsH(),ghVals.getServerId(),p);
-//        if(satisfy){
-//            //写入server
-//            log.error("Server"+ghVals.getServerId()+"verify true "+httpExchange.getLocalAddress().toString());
-//        }else{
-//            log.error("Server"+ghVals.getServerId()+"verify false "+httpExchange.getLocalAddress().toString());
-//        }
-                    log.error("Server"+idpServer.getServer().getAddress().toString()+"verify true "+httpExchange.getLocalAddress().toString());
-
+        //log.error(tline);
+        var convert=new Convert2Str();
+        FunctionGHvals ghVals=(FunctionGHvals) convert.Json2obj(tline, FunctionGHvals.class);
+        String userId=ghVals.getUserId();
+        String remoteAddr=ghVals.getSendAddr();
+        DKG_System dkgSys=idpServer.getDkgParam().get(userId);
+        BigInteger p=dkgSys.getP();
+        BigInteger verify1=((Calculate.modPow(dkgSys.getG(),new BigInteger(ghVals.getFi()),p)).multiply(Calculate.modPow(dkgSys.getH(),new BigInteger(ghVals.getGi()),p))).mod(p);
+        boolean satisfy=DKG.VerifyGH(verify1,DKG.str2BigInt(ghVals.getGMulsH()),ghVals.getServerId(),p);
+        if(satisfy){
+            //写入server
+            if(idpServer.getFlag().get(userId)==0)idpServer.getFgRecv().get(userId).put(remoteAddr,new BigInteger(ghVals.getFi()));
+            idpServer.getFgRecvFalse().get(userId).remove(remoteAddr);
+            log.error("Server"+ghVals.getServerId()+"verify true "+remoteAddr);
+            if(idpServer.getFlag().get(userId)==0&&(idpServer.getFgRecvFalse().get(userId).size()+idpServer.getFgRecv().get(userId).size())== ipPorts.length){
+                idpServer.getFlag().put(userId,1);
+                //broadcast complain And Recall
+                Thread bComp=new Thread(new SendDKGComplain(idpServer,userId));
+                bComp.start();
+                Thread ReCall=new Thread(new RegetFGval(idpServer,userId));
+                ReCall.start();
+            }
+            if(idpServer.getFlag().get(userId)==1&&idpServer.getFgRecvFalse().get(userId).isEmpty()){
+                //CollectCompl.RevCompl.remove(userId);
+                idpServer.getFlag().put(userId,2);
+                log.error(idpServer.getServer().getAddress().toString()+"sQUAL"+idpServer.getFgRecv().get(userId).size());}
+        }else{
+            var falseSet=idpServer.getFgRecvFalse().get(userId);
+            //twice false f,g
+            if(falseSet.contains(remoteAddr)){
+                falseSet.remove(remoteAddr);
+                idpServer.getFgRecv().get(userId).remove(remoteAddr);//remove invalid twice
+                log.error(remoteAddr+"INVALID twice,"+httpExchange.getLocalAddress());
+                //Send Invalid addr
+                Thread InvBroad=new Thread(new InvalidServBroad(idpServer,userId,remoteAddr,recvInvalid));
+                InvBroad.start();
+                if(falseSet.isEmpty()){
+                   // CollectCompl.RevCompl.remove(userId);//remove useless Map
+                    idpServer.getFlag().put(userId,2);
+                    log.error(idpServer.getServer().getAddress().toString()+"QUAL :"+idpServer.getFgRecv().get(userId).size());}
+            }else{//once false f,g
+                falseSet.add(remoteAddr);
+                //recv a complaint about (user,remoteAddr)
+                int times=idpServer.getFgRecvFTimes().get(userId).get(remoteAddr)-1;
+                idpServer.getFgRecvFTimes().get(userId).put(userId,times);
+                if((falseSet.size()+idpServer.getFgRecv().get(userId).size())== ipPorts.length){
+                    idpServer.getFlag().put(userId,1);
+                    //broadcast complain
+                    Thread bComp=new Thread(new SendDKGComplain(idpServer,userId));
+                    bComp.start();
+                    Thread ReCall=new Thread(new RegetFGval(idpServer,userId));
+                    ReCall.start();
+                }
+            }
+            log.error("Server"+ghVals.getServerId()+"verify false "+remoteAddr);
+        }
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
         httpExchange.sendResponseHeaders(200, respContents.length);
         httpExchange.getResponseBody().write(respContents);

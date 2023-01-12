@@ -1,10 +1,13 @@
-package com.uestc.thresholddkg.Server.util;
+package com.uestc.thresholddkg.Server.DkgCommunicate;
 
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.communicate.SendUri;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import com.uestc.thresholddkg.Server.pojo.DkgSysMsg;
 import com.uestc.thresholddkg.Server.pojo.FunctionGHvals;
+import com.uestc.thresholddkg.Server.util.Convert2Str;
+import com.uestc.thresholddkg.Server.util.DKG;
+import com.uestc.thresholddkg.Server.util.FuncGH2Obj;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
 
@@ -33,19 +36,26 @@ public class GenarateFuncBroad implements Runnable{
         BigInteger h=idpServer.getDkgParam().get(userId).getH();
         BigInteger p=idpServer.getDkgParam().get(userId).getP();
         BigInteger q=idpServer.getDkgParam().get(userId).getQ();
-        BigInteger[]F=DKG.generateFuncParam(idpServer.getSecretAndT().get(userId)[0],p);
+        BigInteger[]F= DKG.generateFuncParam(idpServer.getSecretAndT().get(userId)[0],p);
         BigInteger[]G=DKG.generateFuncParam(idpServer.getSecretAndT().get(userId)[1],p);
         idpServer.getFParam().put(userId,F);
         BigInteger[] fVal=DKG.FunctionValue(F,q);
         BigInteger[] gVal=DKG.FunctionValue(G,q);
         BigInteger[] gMulH=DKG.FunctionGH(g,h,F,G,p);
+        //idpServer.getFParam().put(userId,F);
+        idpServer.getFValue().put(userId,fVal);
+        idpServer.getGValue().put(userId,gVal);
+        idpServer.getMulsGH().put(userId,gMulH);
         ExecutorService service= Executors.newFixedThreadPool(ipPorts.length-1);
         for (int i=0;i<ipPorts.length;i++) {
-            FunctionGHvals message=FunctionGHvals.builder().gMulsH(gMulH).sendAddr(selfAddr).userId(userId).item(idpServer.item).build();
+            FunctionGHvals message=FunctionGHvals.builder().gMulsH(DKG.bigInt2Str(gMulH)).sendAddr(selfAddr).userId(userId).item(idpServer.item).build();
             String s=ipPorts[i];
-            message.setFi(fVal[i]);message.setGi(gVal[i]);message.setServerId(i+1);
-            if (("/" + s).equals(selfAddr)) continue;
-            var convert=new FuncGH2Obj();
+            //if(selfAddr.equals("/127.0.0.10:9050"))gVal[i]=gVal[i].add(BigInteger.ONE);//cautious test server Fail
+            message.setFi(fVal[i].toString());message.setGi(gVal[i].toString());message.setServerId(i+1);
+            if (("/" + s).equals(selfAddr)) {
+                idpServer.getFgRecv().get(userId).put(selfAddr,fVal[i]);//add f[self] to FRMap;self=/192.16.
+            }
+            var convert=new Convert2Str();
             SendUri send = SendUri.builder().message(convert.Obj2json(message)).mapper("verifyGH").IpAndPort(s).build();
             //send.SendMsg();
             service.submit(send::SendMsg);

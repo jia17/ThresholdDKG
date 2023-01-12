@@ -5,10 +5,11 @@ import com.sun.net.httpserver.HttpHandler;
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import com.uestc.thresholddkg.Server.pojo.DkgSysMsg;
+import com.uestc.thresholddkg.Server.util.Convert2Str;
+import com.uestc.thresholddkg.Server.util.DKG;
 import com.uestc.thresholddkg.Server.util.DkgSystem2Obj;
-import com.uestc.thresholddkg.Server.util.GenarateFuncBroad;
+import com.uestc.thresholddkg.Server.DkgCommunicate.GenarateFuncBroad;
 import com.uestc.thresholddkg.Server.util.RandomGenerator;
-import com.uestc.thresholddkg.Server.util.test2;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
 
@@ -16,7 +17,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
-import java.util.Random;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author zhangjia
@@ -39,8 +42,8 @@ public class InitDKG implements HttpHandler {
         while((line=reader.readLine())!=null){
             tline+=line;
         }
-        var convert=new DkgSystem2Obj();
-        DkgSysMsg param=(DkgSysMsg) convert.Json2obj(tline);
+        var convert=new Convert2Str();
+        DkgSysMsg param=(DkgSysMsg) convert.Json2obj(tline,DkgSysMsg.class);
         DKG_System dkg_system=new DKG_System(new BigInteger(param.getDkg_sysStr().getP()),
                 new BigInteger(param.getDkg_sysStr().getQ()),
                 new BigInteger(param.getDkg_sysStr().getG()),
@@ -50,6 +53,11 @@ public class InitDKG implements HttpHandler {
         secrets[0]= RandomGenerator.genaratePositiveRandom(dkg_system.getP());
         secrets[1]=RandomGenerator.genaratePositiveRandom(dkg_system.getP());
         idpServer.getSecretAndT().put(param.getId(),secrets);
+        idpServer.getFgRecv().put(param.getId(),new HashMap<>());
+        idpServer.getFgRecvFalse().put(param.getId(),new HashSet<>());
+        idpServer.getFlag().put(param.getId(),0);
+        idpServer.getFgRecvFTimes().put(param.getId(),new ConcurrentHashMap<>());
+        DKG.initMapTimes(idpServer.getFgRecvFTimes().get(param.getId()));
         log.warn(addr+" get "+idpServer.getDkgParam().get(param.getId()));
         Thread generateFG=new Thread(new GenarateFuncBroad(idpServer,param.getId(),IdpServer.addrS,idpServer.getServer().getAddress().toString()));
         generateFG.start();

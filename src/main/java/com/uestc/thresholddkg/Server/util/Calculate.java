@@ -4,6 +4,7 @@ import jdk.nashorn.internal.runtime.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 import com.squareup.jnagmp.Gmp;
 import java.math.BigInteger;
+import java.util.Map;
 
 /**
  * calculate pow(x,m) mod(modus)
@@ -36,5 +37,17 @@ public class Calculate {
     }
     public static BigInteger modInverse(final BigInteger p,final BigInteger n){
         return p.modInverse(n);//Gmp.modInverse(p,n);
+    }
+
+    /**
+     *
+     * @param bigIntegers []
+     * @param mod q
+     * @return bigInt adds
+     */
+    public static BigInteger addsPow(final Map<String,BigInteger> map, BigInteger mod){
+        final BigInteger[] res = {BigInteger.ZERO};
+        map.forEach((k,v)-> res[0] = res[0].add(v).mod(mod));
+        return res[0];
     }
 }

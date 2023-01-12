@@ -23,9 +23,8 @@ import java.net.InetSocketAddress;
 import java.security.KeyStore;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.Set;
+import java.util.concurrent.*;
 
 /**
  * @author zhangjia
@@ -53,6 +52,11 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     private Map<String,BigInteger[]>fParam;
     private Map<String,BigInteger[]> mulsGH;
     private Map<String, DKG_System> DkgParam;
+    private Map<String,Map<String,BigInteger>> fgRecv;//QUAL fvalue
+    private Map<String, Set<String>>fgRecvFalse;
+    private Map<String, ConcurrentMap<String,Integer>> fgRecvFTimes;
+    private Map<String,Integer> flag;//0 wait fg;1 complain;2 success QUAL
+
     @PostConstruct
     public void getAddr(){
         addrS=configAddr;threshold=configThreshold;item=1;
@@ -89,11 +93,20 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.gValue=new HashMap<>();
         idpServers.secretAndT=new HashMap<>();
         idpServers.fValue=new HashMap<>();
+        idpServers.fgRecvFalse=new HashMap<>();
+        idpServers.fgRecv=new HashMap<>();
+        idpServers.flag=new HashMap<>();
+        idpServers.fgRecvFTimes=new HashMap<>();
         idpServers.server.createContext("/startDkg",new StartDKG(idpServers.server.getAddress().toString(),idpServers));
         idpServers.server.createContext("/initDkg",new InitDKG(idpServers.server.getAddress().toString(),idpServers));
-        idpServers.server.createContext("/restoreTest",new ReStoreTest(idpServers.server.getAddress().toString()));
+        idpServers.server.createContext("/restoreTest",new ReStoreTest(idpServers,idpServers.server.getAddress().toString()));
         idpServers.server.createContext("/test",new TestHandle(idpServers.server.getAddress().toString(),idpServers));
-        idpServers.server.createContext("/verifyGH",new VerifyGH(idpServers));
+        Map<String, ConcurrentSkipListSet<String>> RecvdInvMap=new HashMap<>();
+        idpServers.server.createContext("/verifyGH",new VerifyGH(idpServers,RecvdInvMap));
+        idpServers.server.createContext("/collComplain",new CollectCompl(idpServers));
+        idpServers.server.createContext("/pushFval2",new ReSendF(idpServers));
+        idpServers.server.createContext("/invalidAddr",new GetInvalid(idpServers,RecvdInvMap));
+        idpServers.server.createContext("/applyTestRestore",new ApplyFiTest(idpServers));
         ExecutorService executor = Executors.newFixedThreadPool(addrS.length - 1);
         idpServers.server.setExecutor(executor);
         idpServers.server.start();

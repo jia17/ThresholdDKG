@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.imageio.IIOParam;
 import java.math.BigInteger;
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.uestc.thresholddkg.Server.util.TestDKG.getPedersen;
@@ -155,4 +156,27 @@ public class DKG {
         return res.mod(modus);
     }
 
+    public static String[] bigInt2Str(BigInteger[] integers){
+        String[] str=new String[integers.length];
+        for(int i=0;i<integers.length;i++){
+            str[i]=integers[i].toString();
+        }
+        return str;
+    }
+    public static BigInteger[] str2BigInt(String[] str){
+        BigInteger[] integers=new BigInteger[str.length];
+        for(int i=0;i<str.length;i++){
+            integers[i]=new BigInteger(str[i]);
+        }
+        return integers;
+    }
+    /**
+     * init map<addr,times>
+     */
+    public static void initMapTimes(Map<String,Integer> map){
+        for (String s:ipAndPort
+             ) {
+            map.put("/"+s,threshold);
+        }
+    }
 }

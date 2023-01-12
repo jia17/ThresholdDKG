@@ -1,8 +1,7 @@
 package com.uestc.thresholddkg.Server.communicate;
 
+import com.uestc.thresholddkg.Server.Config.MyX509TrustManger;
 import lombok.Builder;
-import lombok.Setter;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.net.ssl.*;
@@ -16,6 +15,7 @@ import java.net.URL;
 /**
  * @author zhangjia
  * @date 2023-01-02 20:37
+ * send message without reply
  */
 @Builder
 @Slf4j

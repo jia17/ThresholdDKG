@@ -3,23 +3,21 @@ package com.uestc.thresholddkg.Server.handle;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.uestc.thresholddkg.Server.IdpServer;
-import com.uestc.thresholddkg.Server.communicate.BoradTest;
 import com.uestc.thresholddkg.Server.communicate.BroadCastMsg;
-import com.uestc.thresholddkg.Server.communicate.SendUri;
+import com.uestc.thresholddkg.Server.DkgCommunicate.GenarateFuncBroad;
 import com.uestc.thresholddkg.Server.pojo.DKG_SysStr;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import com.uestc.thresholddkg.Server.pojo.DkgSysMsg;
-import com.uestc.thresholddkg.Server.pojo.TestConv;
 import com.uestc.thresholddkg.Server.util.*;
-import lombok.Generated;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -42,7 +40,7 @@ public class StartDKG implements HttpHandler {
     public StartDKG(String addr,IdpServer idpServer){this.addr=addr;ipAndPort=IdpServer.addrS;this.idpServer=idpServer;}
     @Override
     public void handle(HttpExchange httpExchange){
-        String user="alice",passwd="123456";//get from browser
+        String user="alice",passwd="123456";//get from browser ,wait for update
         int serversNum=ipAndPort.length;
         Thread t=new Thread(new Runnable() {
             @Override
@@ -58,7 +56,12 @@ public class StartDKG implements HttpHandler {
                 DKG_SysStr dkg_sysStr=new DKG_SysStr(param.getP().toString(),param.getQ().toString(),param.getG().toString(),param.getH().toString());
                 DkgSysMsg message=new DkgSysMsg(dkg_sysStr,user,passwd,idpServer.item);
                 idpServer.getDkgParam().put(user,param);
-                var convert=new DkgSystem2Obj();
+                idpServer.getFlag().put(user,0);
+                idpServer.getFgRecv().put(user,new HashMap<>());
+                idpServer.getFgRecvFalse().put(user,new HashSet<>());
+                idpServer.getFgRecvFTimes().put(user,new ConcurrentHashMap<>());
+                DKG.initMapTimes(idpServer.getFgRecvFTimes().get(user));
+                var convert=new Convert2Str();
                 for (String s : ipAndPort) {
                     //log.warn("send"+s);
                     if (("/" + s).equals(addr)) continue;

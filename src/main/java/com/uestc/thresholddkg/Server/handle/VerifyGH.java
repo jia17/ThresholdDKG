@@ -54,9 +54,11 @@ public class VerifyGH implements HttpHandler {
         BigInteger p=dkgSys.getP();
         BigInteger verify1=((Calculate.modPow(dkgSys.getG(),new BigInteger(ghVals.getFi()),p)).multiply(Calculate.modPow(dkgSys.getH(),new BigInteger(ghVals.getGi()),p))).mod(p);
         boolean satisfy=DKG.VerifyGH(verify1,DKG.str2BigInt(ghVals.getGMulsH()),ghVals.getServerId(),p);
+        if(!recvInvalid.containsKey(userId))recvInvalid.put(userId,new ConcurrentSkipListSet<>());
         if(satisfy){
             //写入server
-            if(idpServer.getFlag().get(userId)==0)idpServer.getFgRecv().get(userId).put(remoteAddr,new BigInteger(ghVals.getFi()));
+            //if invalid ,don't add
+            if(!recvInvalid.get(userId).contains(remoteAddr))idpServer.getFgRecv().get(userId).put(remoteAddr,new BigInteger(ghVals.getFi()));
             idpServer.getFgRecvFalse().get(userId).remove(remoteAddr);
             log.error("Server"+ghVals.getServerId()+"verify true "+remoteAddr);
             if(idpServer.getFlag().get(userId)==0&&(idpServer.getFgRecvFalse().get(userId).size()+idpServer.getFgRecv().get(userId).size())== ipPorts.length){
@@ -70,7 +72,7 @@ public class VerifyGH implements HttpHandler {
             if(idpServer.getFlag().get(userId)==1&&idpServer.getFgRecvFalse().get(userId).isEmpty()){
                 //CollectCompl.RevCompl.remove(userId);
                 idpServer.getFlag().put(userId,2);
-                log.error(idpServer.getServer().getAddress().toString()+"sQUAL"+idpServer.getFgRecv().get(userId).size());}
+                log.error(idpServer.getServer().getAddress().toString()+"QUALs"+idpServer.getFgRecv().get(userId).size());}
         }else{
             var falseSet=idpServer.getFgRecvFalse().get(userId);
             //twice false f,g
@@ -84,7 +86,7 @@ public class VerifyGH implements HttpHandler {
                 if(falseSet.isEmpty()){
                    // CollectCompl.RevCompl.remove(userId);//remove useless Map
                     idpServer.getFlag().put(userId,2);
-                    log.error(idpServer.getServer().getAddress().toString()+"QUAL :"+idpServer.getFgRecv().get(userId).size());}
+                    log.error(idpServer.getServer().getAddress().toString()+"QUALf :"+idpServer.getFgRecv().get(userId).size());}
             }else{//once false f,g
                 falseSet.add(remoteAddr);
                 //recv a complaint about (user,remoteAddr)

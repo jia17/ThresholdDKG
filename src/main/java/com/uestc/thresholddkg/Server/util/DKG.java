@@ -32,7 +32,7 @@ public class DKG {
      * @return DKG system param p,q,g,h
      */
     public static DKG_System init(){
-        BigInteger q=Prime.generateSophiePrime(512);//1024
+        BigInteger q=Prime.generateSophiePrime(1024);//1024
         BigInteger p=Prime.getSafePrime(q);
         BigInteger g=getPedersen(p,q);
         BigInteger h=null;

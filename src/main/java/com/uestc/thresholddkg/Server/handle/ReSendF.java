@@ -53,7 +53,7 @@ public class ReSendF implements HttpHandler {
             if(addr.equals(ipPorts[i])){fIndex=i+1;break;}
         }
         // if(selfAddr.equals("/127.0.0.10:9050")&&i==6)gVal[i]=gVal[i].add(BigInteger.ONE); cautious testServer Fail,broadFunc
-        //idpServer.getGValue().get(userId)[fIndex-1]=idpServer.getGValue().get(userId)[fIndex-1].subtract(BigInteger.ONE);
+        //if(addr.equals("127.0.0.10:9060"))idpServer.getGValue().get(userId)[fIndex-1]=idpServer.getGValue().get(userId)[fIndex-1].subtract(BigInteger.ONE);
         FunctionGHvals message=FunctionGHvals.builder().gMulsH(DKG.bigInt2Str(idpServer.getMulsGH().get(userId)))
                 .sendAddr(selfAddr).userId(userId).item(idpServer.item).build();
         message.setFi(idpServer.getFValue().get(userId)[fIndex-1].toString());

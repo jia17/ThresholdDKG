@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * @author zhangjia
@@ -28,8 +30,11 @@ public class CollectCompl implements HttpHandler {
 
     private IdpServer idpServer;
     public  Map<String, Set<String>> RevCompl;
-    public CollectCompl(IdpServer idpServer1){
-        idpServer=idpServer1;RevCompl=new HashMap<>();
+    private Map<String, ConcurrentSkipListSet<String>> recvInvalid;
+    private String[] IpPorts;
+
+    public CollectCompl(IdpServer idpServer1,Map<String, ConcurrentSkipListSet<String>> map){
+        idpServer=idpServer1;RevCompl=new HashMap<>();recvInvalid=map;IpPorts=IdpServer.addrS;
     }
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
@@ -59,6 +64,8 @@ public class CollectCompl implements HttpHandler {
                         System.out.println(times);
                     }
                     if(times<0){
+                        ConcurrentSkipListSet<String> recvInvU=recvInvalid.get(userId);//more than t,don't invalid;at least add addrComp for verify success
+                        for (String ipp:IpPorts) {recvInvU.add("/"+ipp);}
                         idpServer.getFgRecv().get(userId).remove(addrComp);
                         log.warn(httpExchange.getLocalAddress().toString()+" INVALID More t compls to"+addrComp);
                     }

@@ -103,7 +103,7 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.server.createContext("/test",new TestHandle(idpServers.server.getAddress().toString(),idpServers));
         Map<String, ConcurrentSkipListSet<String>> RecvdInvMap=new HashMap<>();
         idpServers.server.createContext("/verifyGH",new VerifyGH(idpServers,RecvdInvMap));
-        idpServers.server.createContext("/collComplain",new CollectCompl(idpServers));
+        idpServers.server.createContext("/collComplain",new CollectCompl(idpServers,RecvdInvMap));
         idpServers.server.createContext("/pushFval2",new ReSendF(idpServers));
         idpServers.server.createContext("/invalidAddr",new GetInvalid(idpServers,RecvdInvMap));
         idpServers.server.createContext("/applyTestRestore",new ApplyFiTest(idpServers));

@@ -50,10 +50,10 @@ public class GenarateFuncBroad implements Runnable{
         for (int i=0;i<ipPorts.length;i++) {
             FunctionGHvals message=FunctionGHvals.builder().gMulsH(DKG.bigInt2Str(gMulH)).sendAddr(selfAddr).userId(userId).item(idpServer.item).build();
             String s=ipPorts[i];
-           // if(selfAddr.equals("/127.0.0.10:9050"))gVal[i]=gVal[i].add(BigInteger.ONE);//cautious test server Fail
+            //if(selfAddr.equals("/127.0.0.10:9050"))gVal[i]=gVal[i].add(BigInteger.ONE);//cautious test server Fail
             message.setFi(fVal[i].toString());message.setGi(gVal[i].toString());message.setServerId(i+1);
             if (("/" + s).equals(selfAddr)) {
-                idpServer.getFgRecv().get(userId).put(selfAddr,fVal[i]);//add f[self] to FRMap;self=/192.16.
+                idpServer.getFgRecv().get(userId).put(selfAddr,fVal[i]);continue;//add f[self] to FRMap;self=/192.16.//cautious changed continue
             }
             var convert=new Convert2Str();
             SendUri send = SendUri.builder().message(convert.Obj2json(message)).mapper("verifyGH").IpAndPort(s).build();

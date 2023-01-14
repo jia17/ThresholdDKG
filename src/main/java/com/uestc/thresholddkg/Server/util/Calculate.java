@@ -14,7 +14,7 @@ import java.util.Map;
 @Slf4j
 public class Calculate {
 
-   /* public static final boolean GmpSuccess;
+    public static final boolean GmpSuccess;
     static {
         GmpSuccess=LoadGmp();
     }
@@ -24,19 +24,26 @@ public class Calculate {
             Gmp.checkLoaded();
         }catch (Exception e){log.error("GMP load failed");return false;}
         return true;
-    }*/
+    }
 
-    public static BigInteger modPow(final BigInteger x,final BigInteger m,final BigInteger modus){
+    public static BigInteger modPow(final BigInteger x, final BigInteger m, final BigInteger modus){
         BigInteger res;
-        if(m.signum()<0){
+        if(GmpSuccess){
+            if(m.signum()<0){
+                res=modInverse(Gmp.modPowInsecure(x, m, modus),modus);//modInverse(Gmp.modPowInsecure(x, m.negate(), modus),modus);
+            }else{
+                res=Gmp.modPowInsecure(x, m, modus);//Gmp.modPowInsecure(x, m, modus);
+            }
+        }
+        else {if(m.signum()<0){
             res=(x.modPow(m.negate(),modus)).modInverse(modus);//modInverse(Gmp.modPowInsecure(x, m.negate(), modus),modus);
         }else{
             res=x.modPow(m,modus);//Gmp.modPowInsecure(x, m, modus);
-        }
+        }}
         return res;
     }
     public static BigInteger modInverse(final BigInteger p,final BigInteger n){
-        return p.modInverse(n);//Gmp.modInverse(p,n);
+        return p.modInverse(n);//Gmp.modInverse(p,n);//
     }
 
     /**

@@ -27,6 +27,15 @@ public class Convert2Str {
         }else
         if(obj instanceof Secreti){
             object=JSONObject.fromObject((Secreti)obj);
+        }else
+        if(obj instanceof DKG_SysStr){
+            object=JSONObject.fromObject((DKG_SysStr)obj);
+        }else
+        if(obj instanceof IdHash1){
+            object=JSONObject.fromObject((IdHash1)obj);
+        }else
+        if(obj instanceof PrfValue){
+            object=JSONObject.fromObject((PrfValue)obj);
         }
         return object.toString();
     }
@@ -48,6 +57,15 @@ public class Convert2Str {
         }else
         if(t== Secreti.class){
             return JSONObject.toBean(jsonobject,Secreti.class);
+        }else
+        if(t== DKG_SysStr.class){
+            return JSONObject.toBean(jsonobject,DKG_SysStr.class);
+        }else
+        if(t== IdHash1.class){
+            return JSONObject.toBean(jsonobject,IdHash1.class);
+        }else
+        if(t== PrfValue.class){
+            return JSONObject.toBean(jsonobject,PrfValue.class);
         }
         return  JSONObject.toBean(jsonobject,DkgSysMsg.class);
     }

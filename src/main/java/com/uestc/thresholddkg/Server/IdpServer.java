@@ -57,6 +57,9 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     private Map<String, ConcurrentMap<String,Integer>> fgRecvFTimes;
     private Map<String,Integer> flag;//0 wait fg;1 complain;2 success QUAL
 
+    private Map<String,String> PrfVerify;
+    private Map<String,String> PrfHi;
+
     @PostConstruct
     public void getAddr(){
         addrS=configAddr;threshold=configThreshold;item=1;
@@ -97,6 +100,8 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.fgRecv=new HashMap<>();
         idpServers.flag=new HashMap<>();
         idpServers.fgRecvFTimes=new HashMap<>();
+        idpServers.PrfHi=new HashMap<>();
+        idpServers.PrfVerify=new HashMap<>();
         idpServers.server.createContext("/startDkg",new StartDKG(idpServers.server.getAddress().toString(),idpServers));
         idpServers.server.createContext("/initDkg",new InitDKG(idpServers.server.getAddress().toString(),idpServers));
         idpServers.server.createContext("/restoreTest",new ReStoreTest(idpServers,idpServers.server.getAddress().toString()));
@@ -107,6 +112,9 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.server.createContext("/pushFval2",new ReSendF(idpServers));
         idpServers.server.createContext("/invalidAddr",new GetInvalid(idpServers,RecvdInvMap));
         idpServers.server.createContext("/applyTestRestore",new ApplyFiTest(idpServers));
+        idpServers.server.createContext("/PrfgetHash1",new EncHash1Pwd(idpServers));
+        //idpServers.server.createContext("/startPrf",new StartPRF(idpServers));
+        idpServers.server.createContext("/getPrfs",new GetPrfs(idpServers));
         ExecutorService executor = Executors.newFixedThreadPool(addrS.length - 1);
         idpServers.server.setExecutor(executor);
         idpServers.server.start();

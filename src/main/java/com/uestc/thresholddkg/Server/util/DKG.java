@@ -3,6 +3,11 @@ package com.uestc.thresholddkg.Server.util;
 import com.uestc.thresholddkg.Server.Config.IpAndPort;
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
+import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.crypto.digests.Blake2bDigest;
+import org.bouncycastle.crypto.digests.RIPEMD160Digest;
+import org.bouncycastle.crypto.digests.SHA3Digest;
+import org.bouncycastle.util.encoders.Hex;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -23,6 +28,7 @@ public class DKG {
 
     public static String[] ipAndPort;
     public static Integer threshold;
+    public static Integer KeyLen=512;
     @PostConstruct
     public void getCfg(){
         ipAndPort= IdpServer.addrS;threshold=IdpServer.threshold;
@@ -32,8 +38,10 @@ public class DKG {
      * @return DKG system param p,q,g,h
      */
     public static DKG_System init(){
-        BigInteger q=Prime.generateSophiePrime(1024);//1024//need long time
+        BigInteger q=Prime.generateSophiePrime(KeyLen);//1024//need long time
         BigInteger p=Prime.getSafePrime(q);
+        //BigInteger p=Prime.generateSafePrime(KeyLen);
+       //BigInteger q=Prime.getSophiePrime(p);
         BigInteger g=getPedersen(p,q);
         BigInteger h=null;
         do{
@@ -46,7 +54,29 @@ public class DKG {
         dKG_System.setH(h);
         return dKG_System;
     }
+    public static byte[] HashSha3(String passwd){
+        byte[] bytes = passwd.getBytes();
+        Digest digest = new SHA3Digest(512);
+        digest.update(bytes, 0, bytes.length);
+        byte[] rsData = new byte[digest.getDigestSize()];
+        digest.doFinal(rsData, 0);
+        return rsData;
+    }
+    public static String HashRipe160(String str){
+        byte[] Bytes= str.getBytes();
+        Digest digest=new RIPEMD160Digest();
+        digest.update(Bytes,0,Bytes.length);
+        byte[] rsData=new byte[digest.getDigestSize()];
+        digest.doFinal(rsData,0);
+        return Hex.toHexString(rsData);
+    }
 
+    public static String HashBlake2bSalt(byte[] bytes,byte[] salt){
+        Digest digest=new Blake2bDigest(bytes,64,salt,null);
+        byte[] rsData=new byte[digest.getDigestSize()];
+        digest.doFinal(rsData,0);
+        return Hex.toHexString(rsData);
+    }
     /**
      *
      * @param secret s

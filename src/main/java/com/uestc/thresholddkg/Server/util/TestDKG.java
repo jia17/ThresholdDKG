@@ -1,9 +1,15 @@
 package com.uestc.thresholddkg.Server.util;
 
-import java.math.BigDecimal;
+import com.sun.net.httpserver.HttpServer;
+import com.uestc.thresholddkg.Server.user.StartPRF;
+import lombok.var;
+import org.bouncycastle.crypto.Digest;
+import org.bouncycastle.crypto.digests.SHA3Digest;
+
+import java.io.IOException;
 import java.math.BigInteger;
-import java.math.RoundingMode;
-import java.util.Random;
+import java.net.InetSocketAddress;
+import java.util.Arrays;
 
 /**
  * @author zhangjia
@@ -12,7 +18,7 @@ import java.util.Random;
 public class TestDKG {
 
     public static void main(String[] args){
-        BigInteger q=Prime.generateSophiePrime(1024);
+        BigInteger q=Prime.generateSophiePrime(512);
         BigInteger p=Prime.getSafePrime(q);
         BigInteger g=getPedersen(p,q);
         BigInteger h=null;
@@ -44,12 +50,35 @@ public class TestDKG {
             //System.out.println(gh);
             //System.out.println(cik);
         }
+        byte[] bytes=testSha3("1202hd1nx10w");
+        var b1=new BigInteger(1, Arrays.copyOfRange(bytes,0,32));
+        var b2=new BigInteger(1,Arrays.copyOfRange(bytes,32,64));
+        var testHash=(g.modPow(b1,p).multiply(h.modPow(b2,p))).mod(p);
+        String temps=null;
+        if(testHash.toString().length()<154){//154=512*0.302=*ln(2)/ln(10)
+            StringBuilder blank= new StringBuilder();
+            for(int i=154-testHash.toString().length();i>0;i--){
+                blank.append("0");
+            }
+            temps=blank.toString()+testHash.toString();
+            testHash=new BigInteger(temps);
+            System.out.println(temps+" len"+temps.length());
+        }
+        BigInteger randR=RandomGenerator.genaratePositiveRandom(q);
+        //BigInteger testHash=g.modPow(BigInteger.valueOf(123),p).multiply(h).mod(p);
+        BigInteger[] hashTemp=new BigInteger[threshold];
+        BigInteger HashPowS2=BigInteger.ONE;
         //restore
-        Integer[] listRe=new Integer[]{7,2,1,3,9};
+        Integer[] listRe=new Integer[]{1,2,3,4,5};
         Integer listMuls=1;
         for (Integer val :
                 listRe) {
             listMuls*=val;
+        }
+        BigInteger HashPowS1=testHash.modPow(secret,p);
+        testHash=testHash.modPow(randR,p);
+        for(int i=0;i<threshold;i++){
+            hashTemp[i]=testHash.modPow(Si[listRe[i]-1].mod(q),p);
         }
         BigInteger secret2=BigInteger.ZERO;
         BigInteger tempBigMul;
@@ -64,16 +93,21 @@ public class TestDKG {
                    // tempBigMul=tempBigMul.multiply(Calculate.modInverse(BigInteger.valueOf(Math.abs((listRe[i]-listRe[j]))),p));
                 }
             }
-            BigInteger c=Calculate.modInverse(BigInteger.valueOf(Math.abs(tempMul)),p);
-            BigInteger t=Calculate.modInverse(c,p);
-            BigInteger res=c.multiply(t).mod(p);
-            System.out.println("s  "+tempMul+"  inver"+c+"  self"+t+" res="+res );
-            tempBigMul=Si[listRe[i]-1].multiply(Calculate.modInverse(BigInteger.valueOf(Math.abs(tempMul)),p)).mod(p);
-            if(tempMul<0)secret2=(secret2.add(p.add(tempBigMul.negate()))).mod(p);//secret2.add(tempBigMul.negate()).mod(p);//secret2.subtract(tempBigMul);//
-            else secret2=secret2.add(tempBigMul).mod(p);
+//            BigInteger c=Calculate.modInverse(BigInteger.valueOf(Math.abs(tempMul)),p);
+//            BigInteger t=Calculate.modInverse(c,p);
+//            BigInteger res=c.multiply(t).mod(p);
+//            System.out.println("s  "+tempMul+"  inver"+c+"  self"+t+" res="+res );
+           // var temp=Calculate.modPow(testHash,)
+            HashPowS2=HashPowS2.multiply(Calculate.modPow(hashTemp[i],
+                    Calculate.modInverse(BigInteger.valueOf(tempMul),q).multiply(BigInteger.valueOf(listMuls)).mod(q)
+                    ,p)).mod(p);
+            tempBigMul=Si[listRe[i]-1].multiply(Calculate.modInverse(BigInteger.valueOf(Math.abs(tempMul)),q)).mod(q);
+            if(tempMul<0)secret2=(secret2.add(q.add(tempBigMul.negate()))).mod(q);//secret2.add(tempBigMul.negate()).mod(p);//secret2.subtract(tempBigMul);//
+            else secret2=secret2.add(tempBigMul).mod(q);
         }
         //secret2=secret2.mod(p);
-        secret2=(secret2.multiply(BigInteger.valueOf(listMuls))).mod(p);
+        secret2=(secret2.multiply(BigInteger.valueOf(listMuls))).mod(q);
+        secret=secret.mod(q);
         if(secret2.equals(secret)) System.out.println("restore success");
         System.out.println(secret2);
         System.out.println(secret);
@@ -92,8 +126,35 @@ public class TestDKG {
          }
         if(gs.equals(Ail)) System.out.println("verify2 "+Integer.toString(i));
         }
+
+        HashPowS2=HashPowS2.modPow(Calculate.modInverse(randR,q),p);
+        System.out.println(testHash);
+        System.out.println(HashPowS1);
+        System.out.println(HashPowS2);
+        if(HashPowS1.equals(HashPowS2)) System.out.println("hash sucess");
     }
 
+    public static byte[] testSha3(String passwd){
+        byte[] bytes = passwd.getBytes();
+        Digest digest = new SHA3Digest(512);
+        digest.update(bytes, 0, bytes.length);
+        byte[] rsData = new byte[digest.getDigestSize()];
+        digest.doFinal(rsData, 0);
+        return rsData;//Hex.toHexString(rsData);
+    }
+
+    public static HttpServer getUserServ(){
+        HttpServer httpServer=null;
+        try {
+            httpServer=HttpServer.create(new InetSocketAddress("127.0.0.1",8093),0);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        httpServer.createContext("/startPrfs",new StartPRF(httpServer));
+        httpServer.setExecutor(null);
+        httpServer.start();
+        return httpServer;
+    }
     public static BigInteger getPedersen(BigInteger p,BigInteger q){
         BigInteger res;
         do{

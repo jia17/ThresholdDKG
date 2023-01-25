@@ -55,8 +55,7 @@ public class GenarateFuncBroad implements Runnable{
             if (("/" + s).equals(selfAddr)) {
                 idpServer.getFgRecv().get(userId).put(selfAddr,fVal[i]);continue;//add f[self] to FRMap;self=/192.16.//cautious changed continue
             }
-            var convert=new Convert2Str();
-            SendUri send = SendUri.builder().message(convert.Obj2json(message)).mapper("verifyGH").IpAndPort(s).build();
+            SendUri send = SendUri.builder().message(Convert2Str.Obj2json(message)).mapper("verifyGH").IpAndPort(s).build();
             //send.SendMsg();
             service.submit(send::SendMsg);
         }

@@ -11,20 +11,27 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author zhangjia
- * @date 2023-01-02 20:37
- * send message without reply
+ * @date 2023-01-24 17:07
  */
 @Builder
 @Slf4j
-public class SendUri {
+public class UserBroadHash1 implements Runnable{
     private String IpAndPort;
     private String message;
     private String mapper;
-    public String SendMsg(){
-        boolean success=false;
+
+    private ConcurrentHashMap<String,String> resmap;
+    private AtomicInteger failCount;
+    private Integer maxFail;
+    private CountDownLatch latch;
+    @Override
+    public void run(){
         String tline="";
         String http="https://"+IpAndPort+"/"+mapper;
         try {
@@ -38,7 +45,6 @@ public class SendUri {
             httpurlconnection.setDoOutput(true);
             httpurlconnection.setRequestMethod("POST");
             httpurlconnection.setConnectTimeout(30000);
-
             httpurlconnection.setSSLSocketFactory(sslSocketFactory);
             httpurlconnection.setHostnameVerifier(new HostnameVerifier() {
                 @Override
@@ -46,29 +52,29 @@ public class SendUri {
                     return true;
                 }
             });
-            //设置输出流。
             OutputStreamWriter writer = new OutputStreamWriter(httpurlconnection.getOutputStream(), "utf-8");
-            //传递的参数，中间使用&符号分割。
             writer.write(message);
             writer.flush();
             writer.close();
             int responseCode = httpurlconnection.getResponseCode();
-        //表示请求成功
-        if(responseCode==HttpURLConnection.HTTP_OK){
-            InputStream urlstream=httpurlconnection.getInputStream();
-            BufferedReader reader=new BufferedReader(new InputStreamReader(urlstream));
-            String line;
-            while((line=reader.readLine())!=null){
-                tline+=line;
+            if(responseCode== HttpURLConnection.HTTP_OK){
+                InputStream urlstream=httpurlconnection.getInputStream();
+                BufferedReader reader=new BufferedReader(new InputStreamReader(urlstream));
+                String line;tline="";
+                while((line=reader.readLine())!=null){
+                    tline+=line;
+                }
+                resmap.put(String.valueOf(IpAndPort.charAt(IpAndPort.length()-2)),tline);
+                latch.countDown();}
+            else{
+                final int fail=failCount.incrementAndGet();
+                if(fail==(maxFail+1)){while(latch.getCount()>0)latch.countDown();}
             }
-            //没有返回的数据
-            success=true; }else{
-            log.error("SendUri RespCode error");
-        }
         }catch (Exception e){
-            log.error(" Connect to FAIL" +http);
+            //fail too much
+            final int fail=failCount.incrementAndGet();
+            if(fail==(maxFail+1)){while(latch.getCount()>0)latch.countDown();}
             e.printStackTrace();
         }
-        return tline;
     }
 }

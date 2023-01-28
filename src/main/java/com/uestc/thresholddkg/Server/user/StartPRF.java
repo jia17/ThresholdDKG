@@ -34,7 +34,7 @@ public class StartPRF implements HttpHandler {
     private HttpServer userServer;
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
-        String ID="alice";String Passwd="12345678";
+        String ID="fish";String Passwd="12345678";
 //        var Sender=httpExchange.getRequestBody();
 //        BufferedReader reader=new BufferedReader(new InputStreamReader(Sender));
 //        String userId="";
@@ -52,7 +52,7 @@ public class StartPRF implements HttpHandler {
         DKG_SysStr dkg_sysStr=(DKG_SysStr) Convert2Str.Json2obj(dkg_Sys, DKG_SysStr.class);
         DKG_System dkg_system=new DKG_System(new BigInteger(dkg_sysStr.getP()),new BigInteger(dkg_sysStr.getQ()),
                 new BigInteger(dkg_sysStr.getG()),new BigInteger(dkg_sysStr.getH()));
-        log.error("PRF "+dkg_system);
+        log.error("Uesr get PRF "+dkg_system);
         BigInteger p=dkg_system.getP();
         byte[] bytes= DKG.HashSha3(Passwd);
         var b1=new BigInteger(1, Arrays.copyOfRange(bytes,0,DKG.KeyLen/16));

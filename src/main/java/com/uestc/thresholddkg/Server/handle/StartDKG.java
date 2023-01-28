@@ -1,10 +1,17 @@
 package com.uestc.thresholddkg.Server.handle;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.communicate.BroadCastMsg;
 import com.uestc.thresholddkg.Server.DkgCommunicate.GenarateFuncBroad;
+import com.uestc.thresholddkg.Server.persist.ServPrfs;
+import com.uestc.thresholddkg.Server.persist.ServPrfsPp;
+import com.uestc.thresholddkg.Server.persist.mapper.ServPrfsPPMapper;
+import com.uestc.thresholddkg.Server.persist.mapperWR.ServPrfsPpWR;
+import com.uestc.thresholddkg.Server.persist.mapperWR.ServPrfsWR;
+import com.uestc.thresholddkg.Server.persist.mapper.ServPrfsMapper;
 import com.uestc.thresholddkg.Server.pojo.DKG_SysStr;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import com.uestc.thresholddkg.Server.pojo.DkgSysMsg;
@@ -54,8 +61,20 @@ public class StartDKG implements HttpHandler {
         String user=IdPass[0],passwd="";//IdPass[1];
         //String user="alice",passwd="123456";//get from browser ,wait for update
         int serversNum=ipAndPort.length;
-        DKG_System param= DKG.init();
-        DKG_SysStr dkg_sysStr=new DKG_SysStr(param.getP().toString(),param.getQ().toString(),param.getG().toString(),param.getH().toString());
+        ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
+        DKG_System param0=new DKG_System();DKG_SysStr dkg_sysStr0=new DKG_SysStr();
+        ServPrfsPp servPrfsPp=servPrfsPPMapper.selectById(user);
+        if(servPrfsPp==null){
+            param0= DKG.init();
+            dkg_sysStr0=new DKG_SysStr(param0.getP().toString(),param0.getQ().toString(),param0.getG().toString(),param0.getH().toString());
+            servPrfsPPMapper.insert( ServPrfsPp.builder().userId(user).p(param0.getP().toString())
+                    .q(param0.getQ().toString()).g(param0.getG().toString()).h(param0.getH().toString()).build());
+        }else{
+            param0=new DKG_System(new BigInteger(servPrfsPp.getP()),new BigInteger(servPrfsPp.getQ()),
+                    new BigInteger(servPrfsPp.getG()),new BigInteger(servPrfsPp.getH()));
+            dkg_sysStr0=new DKG_SysStr(servPrfsPp.getP(),servPrfsPp.getQ(),servPrfsPp.getG(),servPrfsPp.getH());
+        }
+        DKG_System param=param0;DKG_SysStr dkg_sysStr=dkg_sysStr0;
         Thread t=new Thread(new Runnable() {
             @Override
             public void run() {
@@ -97,7 +116,13 @@ public class StartDKG implements HttpHandler {
                     throw new RuntimeException(e);
                 }
                 service.shutdown(); }
-                });t.start();
+                });
+           ServPrfsMapper servPrfsMapper= ServPrfsWR.getMapper();
+           QueryWrapper<ServPrfs> queryWrapper=new QueryWrapper<>();
+           queryWrapper.eq("servId",idpServer.getServerId()).eq("userId",user);
+           if(servPrfsPp==null) {
+               t.start();
+           }
 //        ExecutorService service= Executors.newFixedThreadPool(serversNum-1);
 //        CountDownLatch countDownLatch=new CountDownLatch(serversNum-1);
 //        DKG_System param= DKG.init();

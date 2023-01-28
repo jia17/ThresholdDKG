@@ -12,6 +12,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -27,9 +28,11 @@ public class UserBroadHash1 implements Runnable{
     private String mapper;
 
     private ConcurrentHashMap<String,String> resmap;
+    private ConcurrentSkipListSet<String> verySet;
     private AtomicInteger failCount;
     private Integer maxFail;
     private CountDownLatch latch;
+    private AtomicInteger DbCount;
     @Override
     public void run(){
         String tline="";
@@ -64,7 +67,9 @@ public class UserBroadHash1 implements Runnable{
                 while((line=reader.readLine())!=null){
                     tline+=line;
                 }
-                resmap.put(String.valueOf(IpAndPort.charAt(IpAndPort.length()-2)),tline);
+                int len=Integer.parseInt(tline.substring(0,7));
+                resmap.put(String.valueOf(IpAndPort.charAt(IpAndPort.length()-2)),tline.substring(8,len+8));//cautious serv id
+                if("1".equals(String.valueOf(tline.charAt(7)))){verySet.add(tline.substring(len+8,tline.length()));}
                 latch.countDown();}
             else{
                 final int fail=failCount.incrementAndGet();

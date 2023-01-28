@@ -43,13 +43,15 @@ public class Hash1BroadGet implements Callable<Boolean>{
         ExecutorService executor = Executors.newFixedThreadPool(serversNum);
         CountDownLatch latch=new CountDownLatch(threshold);
         ConcurrentHashMap<String,String> resMap=new ConcurrentHashMap<>();
+        ConcurrentSkipListSet<String> verySet=new ConcurrentSkipListSet<>();
         final AtomicInteger failureCounter = new AtomicInteger(0);
+        final AtomicInteger DBCounter = new AtomicInteger(0);
         final int maximumFailures = serversNum-threshold;
         IdHash1 idHash1=new IdHash1(Id,PwdHash1);
         for (String s : ipPorts) {
             executor.submit(
                     UserBroadHash1.builder().latch(latch).message(Convert2Str.Obj2json(idHash1)).mapper("PrfgetHash1").IpAndPort(s)
-                            .resmap(resMap).maxFail(maximumFailures).failCount(failureCounter).build()
+                            .resmap(resMap).maxFail(maximumFailures).failCount(failureCounter).verySet(verySet).build()
             );
         }
         try {
@@ -63,7 +65,7 @@ public class Hash1BroadGet implements Callable<Boolean>{
                 Integer[] PwdIndex=new Integer[threshold];
                 BigInteger[] PwdEnc=new BigInteger[threshold];
                 Integer[] is={0};
-                map.forEach((k,v)->{;PwdIndex[is[0]]=Integer.parseInt(k);PwdEnc[is[0]]=v;is[0]=is[0]+1;});
+                map.forEach((k,v)->{PwdIndex[is[0]]=Integer.parseInt(k);PwdEnc[is[0]]=v;is[0]=is[0]+1;});
                 Integer listMuls=1;
                 for (var val:PwdIndex) { listMuls*=val;}
                 BigInteger PwdHashEncS=BigInteger.ONE;
@@ -79,8 +81,12 @@ public class Hash1BroadGet implements Callable<Boolean>{
                             ,p)).mod(p);
                 }
                 PwdHashEncS=PwdHashEncS.modPow(randRInv,p);
+                if(verySet.size()==0){
                 Thread SendPrf=new Thread(new PrfBroad(Id,pwd,PwdHashEncS.toString()));
-                SendPrf.start();
+                SendPrf.start();}else{
+                Thread GetVery=new Thread(new GetVeriPrf(Id,pwd,PwdHashEncS.toString(),verySet.first()));
+                GetVery.start();
+                }
                 log.error("PwdHash1ENC---"+PwdHashEncS);
                 return true;
             }else{

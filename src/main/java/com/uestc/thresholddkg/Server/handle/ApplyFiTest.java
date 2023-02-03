@@ -40,7 +40,10 @@ public class ApplyFiTest implements HttpHandler {
             userId+=line;
         }
         BigInteger secretI= Calculate.addsPow(idpServer.getFgRecv().get(userId),idpServer.getDkgParam().get(userId).getQ());
-        String str=secretI.toString();
+        BigInteger p=idpServer.getDkgParam().get(userId).getP();
+        BigInteger[] pubKey=new BigInteger[]{BigInteger.ONE};
+        if(idpServer.getFExpRecv().containsKey(userId))idpServer.getFExpRecv().get(userId).forEach((k,v)->{pubKey[0]=pubKey[0].multiply(v).mod(p);});
+        String str=secretI.toString()+"@"+pubKey[0].toString();
         byte[] respContents = str.getBytes("UTF-8");
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
         httpExchange.sendResponseHeaders(200, respContents.length);

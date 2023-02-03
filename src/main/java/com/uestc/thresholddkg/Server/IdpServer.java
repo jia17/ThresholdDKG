@@ -2,12 +2,16 @@ package com.uestc.thresholddkg.Server;
 
 import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsServer;
+import com.uestc.thresholddkg.Server.DkgCommunicate.TokenComm.InvalidFexpBroad;
 import com.uestc.thresholddkg.Server.handle.*;
+import com.uestc.thresholddkg.Server.handle.TokenHandle.GetInvalidFExp;
+import com.uestc.thresholddkg.Server.handle.TokenHandle.ReSendFExp;
+import com.uestc.thresholddkg.Server.handle.TokenHandle.StartDkgToken;
+import com.uestc.thresholddkg.Server.handle.TokenHandle.VerifyFExp;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -22,6 +26,7 @@ import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.security.KeyStore;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.*;
@@ -55,11 +60,14 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     private Map<String,Map<String,BigInteger>> fgRecv;//QUAL fvalue
     private Map<String, Set<String>>fgRecvFalse;
     private Map<String, ConcurrentMap<String,Integer>> fgRecvFTimes;
-    private Map<String,Integer> flag;//0 wait fg;1 complain;2 success QUAL
+    private Map<String,Integer> flag;//0 wait fg;1 complain;2 success QUAL;4 get pubKey
 
     private Map<String,String> PrfVerify;
     private Map<String,String> PrfHi;
-
+    //pubKey
+    private Set<String> pubId;
+    private Map<String,Map<String,BigInteger>> fExpRecv;//g^ai
+    private Map<String,Set<String>> fExpFalse;
     @PostConstruct
     public void getAddr(){
         addrS=configAddr;threshold=configThreshold;item=1;
@@ -102,6 +110,8 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.fgRecvFTimes=new HashMap<>();
         idpServers.PrfHi=new HashMap<>();
         idpServers.PrfVerify=new HashMap<>();
+        idpServers.pubId=new HashSet<>();
+        idpServers.fExpFalse=new HashMap<>();idpServers.fExpRecv=new HashMap<>();
         idpServers.server.createContext("/startDkg",new StartDKG(idpServers.server.getAddress().toString(),idpServers));
         idpServers.server.createContext("/initDkg",new InitDKG(idpServers.server.getAddress().toString(),idpServers));
         idpServers.server.createContext("/restoreTest",new ReStoreTest(idpServers,idpServers.server.getAddress().toString()));
@@ -115,6 +125,10 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.server.createContext("/PrfgetHash1",new EncHash1Pwd(idpServers));
         //idpServers.server.createContext("/startPrf",new StartPRF(idpServers));
         idpServers.server.createContext("/getPrfs",new GetPrfs(idpServers));
+        idpServers.server.createContext("/startDkgT",new StartDkgToken(idpServers.server.getAddress().toString(),idpServers));
+        idpServers.server.createContext("/verifyFExp",new VerifyFExp(idpServers));
+        idpServers.server.createContext("/resendFExp",new ReSendFExp(idpServers));
+        idpServers.server.createContext("/invalidAddrFExp",new GetInvalidFExp(idpServers));
         ExecutorService executor = Executors.newFixedThreadPool(addrS.length - 1);
         idpServers.server.setExecutor(executor);
         idpServers.server.start();

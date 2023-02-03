@@ -65,7 +65,8 @@ public class Hash1BroadGet implements Callable<Boolean>{
                 Integer[] PwdIndex=new Integer[threshold];
                 BigInteger[] PwdEnc=new BigInteger[threshold];
                 Integer[] is={0};
-                map.forEach((k,v)->{PwdIndex[is[0]]=Integer.parseInt(k);PwdEnc[is[0]]=v;is[0]=is[0]+1;});
+                map.forEach((k,v)->{
+                    System.out.println("user"+k);;PwdIndex[is[0]]=Integer.parseInt(k);PwdEnc[is[0]]=v;is[0]=is[0]+1;});
                 Integer listMuls=1;
                 for (var val:PwdIndex) { listMuls*=val;}
                 BigInteger PwdHashEncS=BigInteger.ONE;

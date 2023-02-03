@@ -27,6 +27,7 @@ public class BoradTest implements Runnable{
     private String mapper;
 
     private ConcurrentHashMap<String,String> resmap;
+    private ConcurrentHashMap<String,String> resPubMap;
     private AtomicInteger failCount;
     private Integer maxFail;
     private CountDownLatch latch;
@@ -62,7 +63,7 @@ public class BoradTest implements Runnable{
             int responseCode = httpurlconnection.getResponseCode();
             //表示请求成功
             if(responseCode==HttpURLConnection.HTTP_OK){
-                log.warn("send:"+http);
+                //log.warn("send:"+http);
                 InputStream urlstream=httpurlconnection.getInputStream();
                 BufferedReader reader=new BufferedReader(new InputStreamReader(urlstream));
                 String line;tline="";
@@ -71,7 +72,9 @@ public class BoradTest implements Runnable{
                 }
                 //success
                 latch.countDown();
-                resmap.put(IpAndPort,tline);
+                String[] PriPub=tline.split("@");
+                resmap.put(IpAndPort,PriPub[0]);
+                resPubMap.put(IpAndPort,PriPub[1]);
                 success=true; }
         }catch (Exception e){
             //fail too much

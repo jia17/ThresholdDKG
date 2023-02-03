@@ -54,6 +54,50 @@ public class DKG {
         dKG_System.setH(h);
         return dKG_System;
     }
+    public static DKG_System initDLog(){
+        int len=256;
+        BigInteger p=null,q=null;
+        do{
+            q=Prime.generatePrime(len);
+            p=q.multiply(BigInteger.valueOf(8)).add(BigInteger.ONE);
+        }while (!Prime.isPrime(p));
+        BigInteger rnd=RandomGenerator.genaratePositiveRandom(p);
+        BigInteger g=rnd.modPow(BigInteger.valueOf(8),p);
+        BigInteger h=g.modPow(BigInteger.TEN,p);
+        DKG_System dKG_System = new DKG_System();
+        dKG_System.setP(p);
+        dKG_System.setQ(q);
+        dKG_System.setG(g);
+        dKG_System.setH(h);
+        return dKG_System;
+    }
+    public static DKG_System initRSA(){
+        int len=256;
+        BigInteger q=Prime.generateSafePrime(len);//1024//need long time
+        BigInteger p=Prime.generateSafePrime(len);
+        BigInteger p1=Prime.getSophiePrime(p);
+        BigInteger q1=Prime.getSophiePrime(q);
+        BigInteger n=p.multiply(q);BigInteger m=p1.multiply(q1);
+        BigInteger g=getSquare(n);
+        BigInteger h=null;
+        do{
+            h=getSquare(n);
+        }while (h.equals(g));
+        DKG_System dKG_System = new DKG_System();
+        dKG_System.setP(n);
+        dKG_System.setQ(m);
+        dKG_System.setG(g);
+        dKG_System.setH(h);
+        return dKG_System;
+    }
+    public static BigInteger getSquare(BigInteger p){
+        BigInteger res=null;
+        do{
+        BigInteger m=RandomGenerator.genarateRandom(p);
+        res=m.multiply(m).mod(p);}
+        while (res.equals(BigInteger.ONE)||!p.gcd(res).equals(BigInteger.ONE));
+        return res;
+    }
     public static byte[] HashSha3(String passwd){
         byte[] bytes = passwd.getBytes();
         Digest digest = new SHA3Digest(512);

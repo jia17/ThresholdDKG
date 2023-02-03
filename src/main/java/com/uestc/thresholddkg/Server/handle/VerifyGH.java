@@ -3,6 +3,7 @@ package com.uestc.thresholddkg.Server.handle;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.uestc.thresholddkg.Server.DkgCommunicate.InvalidServBroad;
+import com.uestc.thresholddkg.Server.DkgCommunicate.PubKeyBroad;
 import com.uestc.thresholddkg.Server.DkgCommunicate.RegetFGval;
 import com.uestc.thresholddkg.Server.DkgCommunicate.SendDKGComplain;
 import com.uestc.thresholddkg.Server.IdpServer;
@@ -72,7 +73,10 @@ public class VerifyGH implements HttpHandler {
             if(idpServer.getFlag().get(userId)==1&&idpServer.getFgRecvFalse().get(userId).isEmpty()){
                 //CollectCompl.RevCompl.remove(userId);
                 idpServer.getFlag().put(userId,2);
-                log.error(idpServer.getServer().getAddress().toString()+"QUALs"+idpServer.getFgRecv().get(userId).size());}
+                log.error(idpServer.getServer().getAddress().toString()+"QUALs"+idpServer.getFgRecv().get(userId).size());
+                Thread pub=new Thread(new PubKeyBroad(idpServer,userId));
+                if(idpServer.getPubId().contains(userId))pub.start();
+            }
         }else{
             var falseSet=idpServer.getFgRecvFalse().get(userId);
             //twice false f,g
@@ -86,7 +90,9 @@ public class VerifyGH implements HttpHandler {
                 if(falseSet.isEmpty()){
                    // CollectCompl.RevCompl.remove(userId);//remove useless Map
                     idpServer.getFlag().put(userId,2);
-                    log.error(idpServer.getServer().getAddress().toString()+"QUALf :"+idpServer.getFgRecv().get(userId).size());}
+                    log.error(idpServer.getServer().getAddress().toString()+"QUALf :"+idpServer.getFgRecv().get(userId).size());
+                Thread pub=new Thread(new PubKeyBroad(idpServer,userId));
+                if(idpServer.getPubId().contains(userId))pub.start();}
             }else{//once false f,g
                 falseSet.add(remoteAddr);
                 //recv a complaint about (user,remoteAddr)

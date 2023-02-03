@@ -44,6 +44,7 @@ public class InitDKG implements HttpHandler {
         }
         var convert=new Convert2Str();
         DkgSysMsg param=(DkgSysMsg) convert.Json2obj(tline,DkgSysMsg.class);
+        if(param.getPasswd()!=" ")idpServer.getPubId().add(param.getPasswd());;
         DKG_System dkg_system=new DKG_System(new BigInteger(param.getDkg_sysStr().getP()),
                 new BigInteger(param.getDkg_sysStr().getQ()),
                 new BigInteger(param.getDkg_sysStr().getG()),

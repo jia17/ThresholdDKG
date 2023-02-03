@@ -31,7 +31,6 @@ public class TestHandle implements HttpHandler {
         String testRes=addr+ new Random().toString()+"ccc";
         TestSSet.add(testRes);
         testRes=TestSSet.toString();
-        byte[] respContents = testRes.getBytes("UTF-8");
         var Sender=httpExchange.getRequestBody();
         BufferedReader reader=new BufferedReader(new InputStreamReader(Sender));
         String tline="";
@@ -45,6 +44,7 @@ public class TestHandle implements HttpHandler {
         //test Json2obj
         /*TestConv res=(TestConv) convert.Json2obj(tline);
         System.out.println(res.getText()[0]);*/
+        byte[] respContents = tline.getBytes("UTF-8");
 
         // 设置响应头
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");

@@ -45,7 +45,8 @@ public class GetInvalid implements HttpHandler {
         mapInvalid.forEach((k,v)->{
             String[] Addrs=v.split("@");;//invalid addr+@+send addr;
             idpServer.getFgRecv().get(k).remove(Addrs[0]);
-        log.error(httpExchange.getLocalAddress()+"Invalid map Remove"+v+" user:"+k+" size "+idpServer.getFgRecv().get(k).size());
+            idpServer.getFExpRecv().get(k).remove(Addrs[0]);
+            log.error(httpExchange.getLocalAddress()+"Invalid map Remove"+v+" user:"+k+" size "+idpServer.getFgRecv().get(k).size());
         //received invalid for (user,addr),,if had a invalid,dont send Invalid
         if(!recvInvalid.containsKey(k)){recvInvalid.put(k,new ConcurrentSkipListSet<>());}
         recvInvalid.get(k).add(Addrs[1]);

@@ -83,6 +83,7 @@ public class VerifyGH implements HttpHandler {
             if(falseSet.contains(remoteAddr)){
                 falseSet.remove(remoteAddr);
                 idpServer.getFgRecv().get(userId).remove(remoteAddr);//remove invalid twice
+                idpServer.getFExpRecv().get(userId).remove(remoteAddr);
                 log.error(remoteAddr+"INVALID twice,"+httpExchange.getLocalAddress());
                 //Send Invalid addr
                 Thread InvBroad=new Thread(new InvalidServBroad(idpServer,userId,remoteAddr,recvInvalid));

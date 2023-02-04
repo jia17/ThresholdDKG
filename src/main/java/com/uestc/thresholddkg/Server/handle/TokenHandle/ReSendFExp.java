@@ -56,7 +56,7 @@ public class ReSendFExp implements HttpHandler {
         for(int i=0;i<FExp.length;i++){
             FExp[i]=g.modPow(F[i],p);
         }
-        var message= FunctionFExp.builder().fExp(DKG.bigInt2Str(FExp)).userId(userId).sendAddr(selfAddr).serverId(fIndex);
+        var message= FunctionFExp.builder().fExp(DKG.bigInt2Str(FExp)).userId(userId).sendAddr(selfAddr).serverId(fIndex).build();
         SendUri send = SendUri.builder().message(Convert2StrToken.Obj2json(message)).mapper("verifyFExp").IpAndPort(addr).build();
         send.SendMsg();
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");

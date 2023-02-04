@@ -49,7 +49,7 @@ public class PubKeyBroad implements Runnable{
         for (int i=0;i<ipPorts.length;i++) {
             var message= FunctionFExp.builder().fExp(DKG.bigInt2Str(FExp)).userId(userId).sendAddr(selfAddr).serverId(i+1).build();
             String s=ipPorts[i];
-            if ((s).equals(selfAddr)) {
+            if (("/"+s).equals(selfAddr)) {
               continue;
             }
             SendUri send = SendUri.builder().message(Convert2StrToken.Obj2json(message)).mapper("verifyFExp").IpAndPort(s).build();

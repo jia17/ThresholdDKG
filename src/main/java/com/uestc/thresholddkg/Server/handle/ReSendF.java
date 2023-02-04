@@ -52,12 +52,13 @@ public class ReSendF implements HttpHandler {
         for (int i=0;i<ipPorts.length;i++){
             if(addr.equals(ipPorts[i])){fIndex=i+1;break;}
         }
-        // if(selfAddr.equals("/127.0.0.10:9050")&&i==6)gVal[i]=gVal[i].add(BigInteger.ONE); cautious testServer Fail,broadFunc
+        BigInteger gVal=idpServer.getGValue().get(userId)[fIndex-1];
+        //if(selfAddr.equals("/127.0.0.10:9050")&&addr.equals("127.0.0.10:9070"))gVal=gVal.subtract(BigInteger.ONE);// cautious testServer Fail,broadFunc
         //if(addr.equals("127.0.0.10:9060"))idpServer.getGValue().get(userId)[fIndex-1]=idpServer.getGValue().get(userId)[fIndex-1].subtract(BigInteger.ONE);
         FunctionGHvals message=FunctionGHvals.builder().gMulsH(DKG.bigInt2Str(idpServer.getMulsGH().get(userId)))
                 .sendAddr(selfAddr).userId(userId).item(idpServer.item).build();
         message.setFi(idpServer.getFValue().get(userId)[fIndex-1].toString());
-        message.setGi(idpServer.getGValue().get(userId)[fIndex-1].toString());
+        message.setGi(gVal.toString());
         message.setServerId(fIndex);
         SendUri send = SendUri.builder().message(convert.Obj2json(message)).mapper("verifyGH").IpAndPort(addr).build();
         send.SendMsg();

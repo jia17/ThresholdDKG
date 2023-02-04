@@ -67,6 +67,7 @@ public class CollectCompl implements HttpHandler {
                         ConcurrentSkipListSet<String> recvInvU=recvInvalid.get(userId);//more than t,don't invalid;at least add addrComp for verify success
                         for (String ipp:IpPorts) {recvInvU.add("/"+ipp);}
                         idpServer.getFgRecv().get(userId).remove(addrComp);
+                        idpServer.getFExpRecv().get(userId).remove(addrComp);
                         log.warn(httpExchange.getLocalAddress().toString()+" INVALID More t compls to"+addrComp);
                     }
                 }

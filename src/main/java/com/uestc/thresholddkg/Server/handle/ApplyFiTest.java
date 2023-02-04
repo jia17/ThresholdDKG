@@ -42,7 +42,10 @@ public class ApplyFiTest implements HttpHandler {
         BigInteger secretI= Calculate.addsPow(idpServer.getFgRecv().get(userId),idpServer.getDkgParam().get(userId).getQ());
         BigInteger p=idpServer.getDkgParam().get(userId).getP();
         BigInteger[] pubKey=new BigInteger[]{BigInteger.ONE};
-        if(idpServer.getFExpRecv().containsKey(userId))idpServer.getFExpRecv().get(userId).forEach((k,v)->{pubKey[0]=pubKey[0].multiply(v).mod(p);});
+        if(idpServer.getFExpRecv().containsKey(userId)){
+            idpServer.getFExpRecv().get(userId).forEach((k,v)->{pubKey[0]=pubKey[0].multiply(v).mod(p);});
+            System.out.println("FExp len"+idpServer.getFgRecv().get(userId).size());
+        }
         String str=secretI.toString()+"@"+pubKey[0].toString();
         byte[] respContents = str.getBytes("UTF-8");
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");

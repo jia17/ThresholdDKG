@@ -79,6 +79,9 @@ public class StartDkgToken implements HttpHandler {
                 idpServer.getFgRecv().put(user,new HashMap<>());
                 idpServer.getFgRecvFalse().put(user,new HashSet<>());
                 idpServer.getFgRecvFTimes().put(user,new ConcurrentHashMap<>());
+                if(!idpServer.getFExpRecv().containsKey(user)){
+                    idpServer.getFExpRecv().put(user,new HashMap<>());
+                    idpServer.getFExpFalse().put(user,new HashSet<>());}
                 DKG.initMapTimes(idpServer.getFgRecvFTimes().get(user));
                 var convert=new Convert2Str();
                 for (String s : ipAndPort) {

@@ -53,8 +53,21 @@ public class StartDkgToken implements HttpHandler {
     public StartDkgToken(String addr,IdpServer idpServer){this.addr=addr;ipAndPort=IdpServer.addrS;this.idpServer=idpServer;}
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
-        String user="Bob"+ RandomGenerator.genarateRandom(BigInteger.valueOf(100000)).toString(),passwd="";
+        /*String user="Bob"+ RandomGenerator.genarateRandom(BigInteger.valueOf(100000)).toString(),passwd="";
         testString=user;
+        idpServer.getPubId().add(user);*/
+
+        var Sender=httpExchange.getRequestBody();
+        BufferedReader reader=new BufferedReader(new InputStreamReader(Sender));
+        String mess="";
+        String line;
+        while((line=reader.readLine())!=null){
+            mess+=line;
+        }
+        log.error("START DKG Token"+mess);
+        String[] IdPass=mess.split("\\|");
+        //*******cautious******prfs
+        String user=IdPass[0],passwd="";//IdPass[1];
         idpServer.getPubId().add(user);
 
         int serversNum=ipAndPort.length;
@@ -111,7 +124,7 @@ public class StartDkgToken implements HttpHandler {
          t.start();
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
         try {
-            var respContents= ( "Token"+Convert2Str.Obj2json(dkg_sysStr)).getBytes();
+            var respContents= (Convert2Str.Obj2json(dkg_sysStr)).getBytes();
             httpExchange.sendResponseHeaders(200, respContents.length);
             httpExchange.getResponseBody().write(respContents);
         } catch (IOException e) {

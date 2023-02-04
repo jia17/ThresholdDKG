@@ -2,6 +2,7 @@ package com.uestc.thresholddkg.Server.util;
 
 import com.sun.net.httpserver.HttpServer;
 import com.uestc.thresholddkg.Server.user.StartPRF;
+import com.uestc.thresholddkg.Server.user.startToken;
 import lombok.var;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.SHA3Digest;
@@ -151,6 +152,7 @@ public class TestDKG {
             throw new RuntimeException(e);
         }
         httpServer.createContext("/startPrfs",new StartPRF(httpServer));
+        httpServer.createContext("/startTokens",new startToken());
         httpServer.setExecutor(null);
         httpServer.start();
         return httpServer;

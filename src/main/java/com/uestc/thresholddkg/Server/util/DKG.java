@@ -55,7 +55,7 @@ public class DKG {
         return dKG_System;
     }
     public static DKG_System initDLog(){
-        int len=256;
+        int len=256;//512;//
         BigInteger p=null,q=null;
         do{
             q=Prime.generatePrime(len);

@@ -12,6 +12,18 @@ public class Convert2StrToken {
         JSONObject object=null;
         if(obj instanceof FunctionFExp) {
             object = JSONObject.fromObject((FunctionFExp) obj);
+        }else
+        if(obj instanceof TestUserMsg){
+            object = JSONObject.fromObject((TestUserMsg) obj);
+        }else
+        if(obj instanceof PubParamToken){
+                object = JSONObject.fromObject((PubParamToken) obj);
+        }else
+        if(obj instanceof UserMsg2Serv){
+            object = JSONObject.fromObject((UserMsg2Serv) obj);
+        }else
+        if(obj instanceof TokenSi){
+            object = JSONObject.fromObject((TokenSi) obj);
         }
         return object.toString();
     }
@@ -21,6 +33,18 @@ public class Convert2StrToken {
         JSONObject jsonobject = JSONObject.fromObject(str);
         if(t== FunctionFExp.class){
             return  JSONObject.toBean(jsonobject,FunctionFExp.class);
+        }else
+        if(t == TestUserMsg.class){
+            return   JSONObject.toBean(jsonobject,TestUserMsg.class);
+        }else
+        if(t == PubParamToken.class){
+            return   JSONObject.toBean(jsonobject,PubParamToken.class);
+        }else
+        if(t == UserMsg2Serv.class){
+            return   JSONObject.toBean(jsonobject,UserMsg2Serv.class);
+        }else
+        if(t == TokenSi.class){
+            return   JSONObject.toBean(jsonobject,TokenSi.class);
         }
         return  JSONObject.toBean(jsonobject,String.class);
     }

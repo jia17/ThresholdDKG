@@ -41,11 +41,12 @@ public class ApplyPubParam implements HttpHandler {
         }
         DKG_System dkg_system=idpServer.getDkgParam().get(userId);
         DKG_SysStr dkg_sysStr=new DKG_SysStr(dkg_system.getP().toString(),dkg_system.getQ().toString(),dkg_system.getG().toString(),dkg_system.getH().toString());
-        BigInteger p=idpServer.getDkgParam().get(userId).getP();
+        BigInteger p=dkg_system.getP();
         BigInteger[] pubKey=new BigInteger[]{BigInteger.ONE};
         if(idpServer.getFExpRecv().containsKey(userId)){
             idpServer.getFExpRecv().get(userId).forEach((k,v)->{pubKey[0]=pubKey[0].multiply(v).mod(p);});
         }
+        idpServer.getUserY().put(userId,pubKey[0].toString());
         PubParamToken pubParamToken=PubParamToken.builder().userId(userId).y(pubKey[0].toString()).dkg_sysStr(dkg_sysStr).build();
         String str= Convert2StrToken.Obj2json(pubParamToken);
         byte[] respContents = str.getBytes("UTF-8");

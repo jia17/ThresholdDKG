@@ -51,7 +51,7 @@ public class StartDKG implements HttpHandler {
     public StartDKG(String addr,IdpServer idpServer){this.addr=addr;ipAndPort=IdpServer.addrS;this.idpServer=idpServer;}
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
-        testString="tom"+RandomGenerator.genarateRandom(BigInteger.valueOf(100000)).toString();
+        //testString="tom"+RandomGenerator.genarateRandom(BigInteger.valueOf(100000)).toString();//***for test****//
         var Sender=httpExchange.getRequestBody();
         BufferedReader reader=new BufferedReader(new InputStreamReader(Sender));
         String mess="";
@@ -62,8 +62,8 @@ public class StartDKG implements HttpHandler {
         log.error("START DKG "+mess);
         String[] IdPass=mess.split("\\|");
         //*******cautious******prfs
-        //String user=IdPass[0],passwd="";//IdPass[1];
-        String user=testString,passwd="123456";//get from browser ,wait for update
+        String user=IdPass[0],passwd="";//IdPass[1];
+        //String user=testString,passwd="123456";//get from browser ,wait for update
         int serversNum=ipAndPort.length;
         ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
         DKG_System param0=new DKG_System();DKG_SysStr dkg_sysStr0=new DKG_SysStr();

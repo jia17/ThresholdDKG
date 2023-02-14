@@ -7,17 +7,13 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author zhangjia
- * @date 2023-02-04 16:43
+ * @date 2023-02-11 16:28
  */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
-public class UserMsg2Serv {
-    String userId;
-    String msg;
-    String msgHash;
-    Integer[] addrIndex;
-    private String PwdHash1;
-    DKG_SysStr dkg_sysStrP;
+public class TokenUser {
+    String user;
+    String sign;
+    String y;
 }

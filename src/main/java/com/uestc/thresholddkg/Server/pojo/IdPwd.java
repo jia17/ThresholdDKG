@@ -1,21 +1,18 @@
 package com.uestc.thresholddkg.Server.pojo;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
  * @author zhangjia
- * @date 2023-02-04 19:42
+ * @date 2023-02-11 22:32
  */
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
-public class TokenSi {
-    private String Wi;
-    private String Ui;
-    private String EncPwdHash1;
-    private String Cvery;
+public class IdPwd {
+    String id;
+    String passwd;
 }
+

@@ -9,7 +9,7 @@ import java.security.SecureRandom;
  * Generate prime
  */
 public class Prime {
-    static final int CERTAINNTY=100;
+    static final int CERTAINNTY=100;//20
     static final BigInteger two=BigInteger.valueOf(2);
 
     public static boolean isPrime(final BigInteger p){

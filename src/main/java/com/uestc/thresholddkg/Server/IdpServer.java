@@ -65,6 +65,10 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     private Set<String> pubId;
     private Map<String,Map<String,BigInteger>> fExpRecv;//g^ai
     private Map<String,Set<String>> fExpFalse;
+
+    private Map<String,String> userMsg;
+    private Map<String,String> userMsgHash;
+    private Map<String,String> userY;
     @PostConstruct
     public void getAddr(){
         addrS=configAddr;threshold=configThreshold;item=1;
@@ -108,6 +112,7 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.PrfHi=new HashMap<>();
         idpServers.PrfVerify=new HashMap<>();
         idpServers.pubId=new HashSet<>();
+        idpServers.userMsg=new HashMap<>();idpServers.userMsgHash=new HashMap<>();idpServers.userY=new HashMap<>();
         idpServers.fExpFalse=new HashMap<>();idpServers.fExpRecv=new HashMap<>();
         idpServers.server.createContext("/startDkg",new StartDKG(idpServers.server.getAddress().toString(),idpServers));
         idpServers.server.createContext("/initDkg",new InitDKG(idpServers.server.getAddress().toString(),idpServers));
@@ -128,6 +133,9 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.server.createContext("/invalidAddrFExp",new GetInvalidFExp(idpServers));
         idpServers.server.createContext("/getPubParam",new ApplyPubParam(idpServers));
         idpServers.server.createContext("/sendTokenI",new ApplyTokenI(idpServers));
+        idpServers.server.createContext("/verifyToken",new VerifyToken(idpServers));
+        idpServers.server.createContext("/getMsg",new getMsg(idpServers));
+        idpServers.server.createContext("/verifyTokenSub",new VerifyTokenSub(idpServers));
         ExecutorService executor = Executors.newFixedThreadPool(addrS.length - 1);
         idpServers.server.setExecutor(executor);
         idpServers.server.start();

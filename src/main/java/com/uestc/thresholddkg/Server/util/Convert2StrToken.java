@@ -24,6 +24,9 @@ public class Convert2StrToken {
         }else
         if(obj instanceof TokenSi){
             object = JSONObject.fromObject((TokenSi) obj);
+        }else
+        if(obj instanceof TokenUser){
+            object = JSONObject.fromObject((TokenUser) obj);
         }
         return object.toString();
     }
@@ -45,6 +48,9 @@ public class Convert2StrToken {
         }else
         if(t == TokenSi.class){
             return   JSONObject.toBean(jsonobject,TokenSi.class);
+        }else
+        if(t == TokenUser.class){
+            return   JSONObject.toBean(jsonobject,TokenUser.class);
         }
         return  JSONObject.toBean(jsonobject,String.class);
     }

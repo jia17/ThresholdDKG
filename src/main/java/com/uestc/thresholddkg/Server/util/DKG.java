@@ -3,20 +3,32 @@ package com.uestc.thresholddkg.Server.util;
 import com.uestc.thresholddkg.Server.Config.IpAndPort;
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
+import lombok.var;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.Blake2bDigest;
 import org.bouncycastle.crypto.digests.RIPEMD160Digest;
 import org.bouncycastle.crypto.digests.SHA3Digest;
 import org.bouncycastle.util.encoders.Hex;
 import org.springframework.stereotype.Component;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 import javax.annotation.PostConstruct;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
 import javax.imageio.IIOParam;
 import java.math.BigInteger;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
 
 import static com.uestc.thresholddkg.Server.util.TestDKG.getPedersen;
+import static java.lang.Thread.interrupted;
 
 /**
  * @author zhangjia
@@ -55,12 +67,16 @@ public class DKG {
         return dKG_System;
     }
     public static DKG_System initDLog(){
-        int len=256;//512;//
+        int len=512;//256;//         //cautious
         BigInteger p=null,q=null;
-        do{
-            q=Prime.generatePrime(len);
-            p=q.multiply(BigInteger.valueOf(8)).add(BigInteger.ONE);
-        }while (!Prime.isPrime(p));
+//        do{
+//            q=Prime.generatePrime(len);
+//            p=q.multiply(BigInteger.valueOf(8)).add(BigInteger.ONE);
+//        }while (!Prime.isPrime(p));
+        try {
+            q=generatePrimeParallel(len);
+        }catch (InterruptedException e){e.printStackTrace();}
+        p=q.multiply(BigInteger.valueOf(8)).add(BigInteger.ONE);
         BigInteger rnd=RandomGenerator.genaratePositiveRandom(p);
         BigInteger g=rnd.modPow(BigInteger.valueOf(8),p);
         BigInteger h=g.modPow(BigInteger.TEN,p);
@@ -90,6 +106,32 @@ public class DKG {
         dKG_System.setH(h);
         return dKG_System;
     }
+
+    public static final BigInteger generatePrimeParallel(int len) throws InterruptedException {
+        CountDownLatch latch=new CountDownLatch(1);
+        ConcurrentSkipListSet<BigInteger> skipListSet=new ConcurrentSkipListSet<>();
+        int num=10;//cautious too much threads
+        var service= Executors.newFixedThreadPool(num);
+        for(int i=0;i<num;i++){
+            service.submit(new Runnable() {
+                @Override
+                public void run() {
+                    BigInteger p=null,q=null;
+                    do{
+                        q=Prime.generatePrime(len);
+                        p=q.multiply(BigInteger.valueOf(8)).add(BigInteger.ONE);
+                    }while (!Prime.isPrime(p)&&!interrupted());
+                    skipListSet.add(q);latch.countDown();
+                }
+            });
+        }
+        latch.await();
+        for (var val:skipListSet) {
+            return val;
+        }
+        service.shutdownNow();
+        return null;
+    }
     public static BigInteger getSquare(BigInteger p){
         BigInteger res=null;
         do{
@@ -97,6 +139,43 @@ public class DKG {
         res=m.multiply(m).mod(p);}
         while (res.equals(BigInteger.ONE)||!p.gcd(res).equals(BigInteger.ONE));
         return res;
+    }
+    public static final String AESencrypt(String plainText,String secret) throws NoSuchAlgorithmException {
+        KeyGenerator keyGenerator= KeyGenerator.getInstance("AES");
+        SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
+        secureRandom.setSeed(secret.getBytes());
+        keyGenerator.init(secureRandom);
+        Key secretKey=keyGenerator.generateKey();
+        try {
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            byte[] p = plainText.getBytes("UTF-8");
+            byte[] result = cipher.doFinal(p);
+            BASE64Encoder encoder = new BASE64Encoder();
+            String encoded = encoder.encode(result);
+            return encoded;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static final String AESdecrypt(String cipherText,String secret) throws NoSuchAlgorithmException {
+        KeyGenerator keyGenerator= KeyGenerator.getInstance("AES");
+        SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
+        secureRandom.setSeed(secret.getBytes());
+        keyGenerator.init(secureRandom);
+        Key secretKey=keyGenerator.generateKey();
+        try {
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            BASE64Decoder decoder = new BASE64Decoder();
+            byte[] c = decoder.decodeBuffer(cipherText);
+            byte[] result = cipher.doFinal(c);
+            String plainText = new String(result, "UTF-8");
+            return plainText;
+        } catch (Exception e) {
+            System.out.println("error dec");
+            throw new RuntimeException(e);
+        }
     }
     public static byte[] HashSha3(String passwd){
         byte[] bytes = passwd.getBytes();

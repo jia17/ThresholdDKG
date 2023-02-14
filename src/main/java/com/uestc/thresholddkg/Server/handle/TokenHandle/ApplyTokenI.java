@@ -3,6 +3,9 @@ package com.uestc.thresholddkg.Server.handle.TokenHandle;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.uestc.thresholddkg.Server.IdpServer;
+import com.uestc.thresholddkg.Server.persist.ServPrfs;
+import com.uestc.thresholddkg.Server.persist.mapper.ServPrfsMapper;
+import com.uestc.thresholddkg.Server.persist.mapperWR.ServPrfsWR;
 import com.uestc.thresholddkg.Server.pojo.*;
 import com.uestc.thresholddkg.Server.util.Calculate;
 import com.uestc.thresholddkg.Server.util.Convert2StrToken;
@@ -15,6 +18,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author zhangjia
@@ -43,6 +47,8 @@ public class ApplyTokenI implements HttpHandler {
         }
         DKG_System dkg_system=idpServer.getDkgParam().get(userMsg.getUserId());
         int index=0;String userId=userMsg.getUserId();int threshold=IdpServer.threshold;
+        idpServer.getUserMsg().put(userId,userMsg.getMsg());
+        idpServer.getUserMsgHash().put(userId,userMsg.getMsgHash());
         for(;index<ipPorts.length;index++){
             if(idpServer.getServer().getAddress().toString().equals("/"+ipPorts[index])){index++;break;}
         }
@@ -69,7 +75,25 @@ public class ApplyTokenI implements HttpHandler {
 
         BigInteger Wi=dkg_system.getG().modPow(Vi,dkg_system.getP());
         BigInteger Ui=dkg_system.getG().modPow(secretI,dkg_system.getP());
-        TokenSi tokenSi=TokenSi.builder().Ui(Ui.toString()).Wi(Wi.toString()).build();
+        //conn database
+        ServPrfsMapper prfsMapper= ServPrfsWR.getMapper();
+        ServPrfs prfI=prfsMapper.selectByIdAndF(index,userId);
+        String EWi="";
+        try {
+             EWi=DKG.AESencrypt(Wi.toString(),prfI.getPrfi());
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println(index+"error AESEnc");
+            throw new RuntimeException(e);
+        }
+
+        DKG_SysStr dkg_sysStr=userMsg.getDkg_sysStrP();
+        DKG_System dkg_systemP=new DKG_System(new BigInteger(dkg_sysStr.getP()),new BigInteger(dkg_sysStr.getQ()),
+                new BigInteger(dkg_sysStr.getG()),new BigInteger(dkg_sysStr.getH()));
+        BigInteger Hash1Pwd=new BigInteger(userMsg.getPwdHash1());
+        String CVery=prfI.getVerify();
+        BigInteger secretIP=new BigInteger(prfI.getPriKeyi());
+        BigInteger EncHash1Pwd=Hash1Pwd.modPow(secretIP,dkg_systemP.getP());
+        TokenSi tokenSi=TokenSi.builder().Ui(Ui.toString()).Wi(EWi).EncPwdHash1(EncHash1Pwd.toString()).Cvery(CVery).build();
         String str= Convert2StrToken.Obj2json(tokenSi);
 
        /* BigInteger p= dkg_system.getP();

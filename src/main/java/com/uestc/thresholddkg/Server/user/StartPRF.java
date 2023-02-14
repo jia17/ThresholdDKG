@@ -1,5 +1,6 @@
 package com.uestc.thresholddkg.Server.user;
 
+import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
@@ -8,6 +9,7 @@ import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.communicate.SendUri;
 import com.uestc.thresholddkg.Server.pojo.DKG_SysStr;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
+import com.uestc.thresholddkg.Server.pojo.IdPwd;
 import com.uestc.thresholddkg.Server.user.PrfComm.Hash1BroadGet;
 import com.uestc.thresholddkg.Server.util.*;
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -34,14 +37,56 @@ public class StartPRF implements HttpHandler {
     private HttpServer userServer;
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
-        String ID="sunny";String Passwd="12345678";
-//        var Sender=httpExchange.getRequestBody();
-//        BufferedReader reader=new BufferedReader(new InputStreamReader(Sender));
-//        String userId="";
-//        String line;
-//        while((line=reader.readLine())!=null){
-//            userId+=line;
-//        }
+        var req=httpExchange.getRequestBody();
+        BufferedReader reader=new BufferedReader(new InputStreamReader(req));
+        String tline="";
+        String line;
+        String res="";
+        while((line=reader.readLine())!=null){
+            tline+=line;
+        }
+        if(!tline.equals("")) {
+            IdPwd stu = new Gson().fromJson(tline, IdPwd.class);
+//            String ID = "tom";
+//            String Passwd = "123456";
+            String ID=stu.getId(),Passwd=stu.getPasswd();
+            HashMap<String, String> paraMap = new HashMap<>();
+            var dkg_system = getPwdHash1(ID, Passwd, paraMap);
+            Thread thread0 = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    while (true) {
+                        FutureTask<Boolean> futureTask = new FutureTask<Boolean>(new Hash1BroadGet(ID, paraMap.get("pwdHash1"), dkg_system
+                                , Calculate.modInverse(new BigInteger(paraMap.get("randR")), dkg_system.getQ()), Passwd));
+                        Thread thread = new Thread(futureTask);
+                        thread.start();
+                        try {
+                            if (futureTask.get()) {
+                                break;
+                            } else {
+                                Thread.sleep(2000);
+                            }
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            });
+            thread0.start();
+        }
+        byte[] respContents = "sPrf".getBytes("UTF-8");
+        httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
+        httpExchange.getResponseHeaders().add("Access-Control-Allow-Origin","http://127.0.0.1:8083");
+        httpExchange.getResponseHeaders().add("Access-Control-Allow-Methods","*");
+        httpExchange.getResponseHeaders().add("Access-Control-Allow-Credentials","true");
+        httpExchange.getResponseHeaders().add("Content-Type", "application/json; charset=UTF-8");
+        httpExchange.getResponseHeaders().add("Access-Control-Allow-Headers","content-type");
+        httpExchange.sendResponseHeaders(200, respContents.length);
+        httpExchange.getResponseBody().write(respContents);
+        httpExchange.close();
+    }
+
+    public static DKG_System getPwdHash1(String ID,String Passwd,HashMap<String,String> paraMap){
         String[] ipPorts=IdpServer.addrS;
         SecureRandom random=new SecureRandom();
         int servI= random.nextInt(ipPorts.length);
@@ -68,26 +113,8 @@ public class StartPRF implements HttpHandler {
         System.out.println(pwdHash1.toString()+" Hash1len"+temps.length());
         BigInteger randR= RandomGenerator.genaratePositiveRandom(dkg_system.getQ());
         final BigInteger pwdHash11= pwdHash1.modPow(randR,p);
-        Thread thread0=new Thread(new Runnable(){
-            @Override
-            public void run() {
-                while(true){
-                FutureTask<Boolean> futureTask=new FutureTask<Boolean>(new Hash1BroadGet(ID,pwdHash11.toString(),dkg_system,Calculate.modInverse(randR,dkg_system.getQ()),Passwd));
-                Thread thread=new Thread(futureTask);
-                thread.start();
-                    try {
-                        if(futureTask.get()){break;}
-                        else{Thread.sleep(2000);}
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                }}
-        });thread0.start();
-        byte[] respContents = "sPrf".getBytes("UTF-8");
-        httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
-       // httpExchange.getResponseHeaders().add("Location","http://www.baidu.com");
-        httpExchange.sendResponseHeaders(200, respContents.length);
-        httpExchange.getResponseBody().write(respContents);
-        httpExchange.close();
+        paraMap.put("pwdHash1",pwdHash11.toString());
+        paraMap.put("randR",randR.toString());
+        return dkg_system;
     }
 }

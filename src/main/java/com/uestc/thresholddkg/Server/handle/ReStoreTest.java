@@ -36,6 +36,7 @@ import static java.util.Map.*;
  * @author zhangjia
  * @date 2023-01-03 13:25
  * test to restore Secret s
+ * before test run startPrfs or Tokens
  */
 @Setter
 @Slf4j
@@ -51,7 +52,7 @@ public class ReStoreTest implements HttpHandler {
     public void handle(HttpExchange httpExchange) throws IOException {
         log.warn(ipAndPort.toString());
         //var staD=new StartDKG("",idpServer);
-        var userId= StartDkgToken.testString;//StartDKG.testString;//="alice";
+        var userId= "sunny";//StartDKG.testString;//="alice";
         String[] ippStr=ipAndPort;
         int serversNum=ippStr.length;
         final ExecutorService executor = Executors.newFixedThreadPool(serversNum - 1);
@@ -82,7 +83,7 @@ public class ReStoreTest implements HttpHandler {
                 Map<String, BigInteger> map=new HashMap<>();
                 resMap.forEach((key, value) -> {
                 if(map.size()<(threshold-1))map.put(key,new BigInteger(value));});
-                executor.shutdown();
+                executor.shutdownNow();
 
                 map.put(AddrSelf,secretSelf);
                 Integer[] Index=new Integer[threshold];

@@ -111,7 +111,7 @@ public class DKG {
         CountDownLatch latch=new CountDownLatch(1);
         ConcurrentSkipListSet<BigInteger> skipListSet=new ConcurrentSkipListSet<>();
         int num=10;//cautious too much threads
-        var service= Executors.newFixedThreadPool(num);
+        var service= Executors.newCachedThreadPool();//fix ?
         for(int i=0;i<num;i++){
             service.submit(new Runnable() {
                 @Override
@@ -126,10 +126,10 @@ public class DKG {
             });
         }
         latch.await();
+        service.shutdownNow();
         for (var val:skipListSet) {
             return val;
         }
-        service.shutdownNow();
         return null;
     }
     public static BigInteger getSquare(BigInteger p){

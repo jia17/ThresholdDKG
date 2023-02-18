@@ -73,7 +73,7 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     public void getAddr(){
         addrS=configAddr;threshold=configThreshold;item=1;
     }
-    public static IdpServer getIdpServer(int serverId,String ip,int port){
+    public static IdpServer getIdpServer(int serverId,String ip,int port,ExecutorService executor){
         int serverNum=addrS.length;
 //        var meg=new TestConv(new BigInteger("1313"),new BigInteger("999999999"),new String[]{"cc","xxxx"},1,false);
 //        var convert=new test2();
@@ -136,7 +136,7 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.server.createContext("/verifyToken",new VerifyToken(idpServers));
         idpServers.server.createContext("/getMsg",new getMsg(idpServers));
         idpServers.server.createContext("/verifyTokenSub",new VerifyTokenSub(idpServers));
-        ExecutorService executor = Executors.newFixedThreadPool(addrS.length - 1);
+        //ExecutorService executor = Executors.newFixedThreadPool(addrS.length - 1);//cautious
         idpServers.server.setExecutor(executor);
         idpServers.server.start();
         System.out.println("startSe"+Integer.toString(serverId));

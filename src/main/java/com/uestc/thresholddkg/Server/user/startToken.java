@@ -72,7 +72,7 @@ public class startToken implements HttpHandler {
         int times=0;
         try {Thread.sleep(500);
         } catch (InterruptedException e) {throw new RuntimeException(e);}
-        while(times < 5){times++;
+        while(times < 7){times++;
              String[] sendAddrs=new String[IdpServer.threshold];
              boolean[] exists=new boolean[ipPorts.length];
              for(int i=0;i<sendAddrs.length;){
@@ -85,11 +85,11 @@ public class startToken implements HttpHandler {
              boolean success=getTokenS.call();
              if(success)break;
              else {
-                 try {Thread.sleep(900);
+                 try {Thread.sleep(900);//cautious
                  } catch (InterruptedException e) {throw new RuntimeException(e);}
              }
         }
-        if(times==5){res="404";}else{
+        if(times==7){res="404";}else{
             res=Convert2StrToken.Obj2json(userToken);
         }}
         var millisecond = new Date().getTime();

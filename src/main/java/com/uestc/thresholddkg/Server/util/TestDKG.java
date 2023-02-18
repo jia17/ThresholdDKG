@@ -147,7 +147,7 @@ public class TestDKG {
     public static HttpServer getUserServ(){
         HttpServer httpServer=null;
         try {
-            httpServer=HttpServer.create(new InetSocketAddress("127.0.0.1",8093),0);
+            httpServer=HttpServer.create(new InetSocketAddress("127.0.0.1",8095),0);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

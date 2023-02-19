@@ -69,6 +69,8 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     private Map<String,String> userMsg;
     private Map<String,String> userMsgHash;
     private Map<String,String> userY;
+
+    private ExecutorService service;
     @PostConstruct
     public void getAddr(){
         addrS=configAddr;threshold=configThreshold;item=1;
@@ -97,8 +99,13 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
             idpServers.server.setHttpsConfigurator(httpsConfigurator);
            } catch (Exception e) {
             e.printStackTrace();
-        }
-
+           }
+        idpServers.service= new ThreadPoolExecutor(
+                14, 20, 5,
+                TimeUnit.SECONDS,
+                new LinkedBlockingDeque<>(),
+                Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.AbortPolicy());
         idpServers.DkgParam=new HashMap<>();
         idpServers.fParam=new HashMap<>();
         idpServers.mulsGH=new HashMap<>();

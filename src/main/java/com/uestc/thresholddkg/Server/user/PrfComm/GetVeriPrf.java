@@ -10,6 +10,7 @@ import org.bouncycastle.util.encoders.Hex;
 
 import javax.persistence.Id;
 import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
@@ -22,9 +23,10 @@ public class GetVeriPrf implements Runnable{
     private String userId;
     private String hash1Pwd;
     private String Cveri;
+    private ExecutorService service1;
 
-    public GetVeriPrf(String Id,String pwd,String hash1,String Cveri){
-        userId=Id;this.pwd=pwd;hash1Pwd=hash1;ipPorts= IdpServer.addrS;this.Cveri=Cveri;
+    public GetVeriPrf(String Id,String pwd,String hash1,String Cveri,ExecutorService service1){
+        userId=Id;this.pwd=pwd;hash1Pwd=hash1;ipPorts= IdpServer.addrS;this.Cveri=Cveri;this.service1=service1;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class GetVeriPrf implements Runnable{
         var hash3=DKG.HashSha3(hash2);
         var prfVery= Hex.toHexString(Arrays.copyOfRange(hash3,0,hash3.length/2));
         var prfServ=Hex.toHexString(Arrays.copyOfRange(hash3,hash3.length/2,hash3.length));
-        var service= Executors.newFixedThreadPool(ipPorts.length);
+        var service= service1;//Executors.newFixedThreadPool(ipPorts.length);
         if(prfVery.equals(Cveri)){
             System.out.println(userId+" get true Prf "+prfServ);
         }else{
@@ -46,6 +48,6 @@ public class GetVeriPrf implements Runnable{
             var megPrf=new PrfValue(userId,hi,prfVery);
             //System.out.println(String.valueOf(i)+" hi "+hi);
         }
-        service.shutdown();
+        //service.shutdown();
     }
 }

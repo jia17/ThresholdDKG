@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.FutureTask;
 
 /**
@@ -35,6 +36,7 @@ import java.util.concurrent.FutureTask;
 @AllArgsConstructor
 public class StartPRF implements HttpHandler {
     private HttpServer userServer;
+    private ExecutorService service;
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
         var req=httpExchange.getRequestBody();
@@ -57,7 +59,7 @@ public class StartPRF implements HttpHandler {
                 public void run() {
                     while (true) {
                         FutureTask<Boolean> futureTask = new FutureTask<Boolean>(new Hash1BroadGet(ID, paraMap.get("pwdHash1"), dkg_system
-                                , Calculate.modInverse(new BigInteger(paraMap.get("randR")), dkg_system.getQ()), Passwd));
+                                , Calculate.modInverse(new BigInteger(paraMap.get("randR")), dkg_system.getQ()), Passwd,service));
                         Thread thread = new Thread(futureTask);
                         thread.start();
                         try {

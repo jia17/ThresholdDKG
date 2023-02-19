@@ -46,7 +46,7 @@ public class GenarateFuncBroad implements Runnable{
         idpServer.getFValue().put(userId,fVal);
         idpServer.getGValue().put(userId,gVal);
         idpServer.getMulsGH().put(userId,gMulH);
-        ExecutorService service= Executors.newFixedThreadPool(ipPorts.length-1);
+        ExecutorService service= idpServer.getService();//Executors.newFixedThreadPool(ipPorts.length-1);
         for (int i=0;i<ipPorts.length;i++) {
             FunctionGHvals message=FunctionGHvals.builder().gMulsH(DKG.bigInt2Str(gMulH)).sendAddr(selfAddr).userId(userId).item(idpServer.item).build();
             String s=ipPorts[i];
@@ -59,6 +59,6 @@ public class GenarateFuncBroad implements Runnable{
             //send.SendMsg();
             service.submit(send::SendMsg);
         }
-        service.shutdown();
+       //service.shutdown();
     }
 }

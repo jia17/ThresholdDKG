@@ -33,14 +33,15 @@ public class Hash1BroadGet implements Callable<Boolean>{
     private DKG_System dkg_system;
     private BigInteger randRInv;
     private String pwd;
-    public Hash1BroadGet(String id, String pwdHash1, DKG_System dkg_system,BigInteger _randRInv,String pwd){
-        Id=id;this.PwdHash1=pwdHash1;ipPorts= IdpServer.addrS;this.dkg_system=dkg_system;randRInv=_randRInv;this.pwd=pwd;
+    private ExecutorService service;
+    public Hash1BroadGet(String id, String pwdHash1, DKG_System dkg_system,BigInteger _randRInv,String pwd,ExecutorService service1){
+        Id=id;this.PwdHash1=pwdHash1;ipPorts= IdpServer.addrS;this.dkg_system=dkg_system;randRInv=_randRInv;this.pwd=pwd;service=service1;
     }
     @Override
     public Boolean call() {
         int serversNum = ipPorts.length;
         int threshold = (serversNum>>1)+1;
-        ExecutorService executor = Executors.newFixedThreadPool(serversNum);
+        ExecutorService executor = service;//Executors.newFixedThreadPool(serversNum);
         CountDownLatch latch=new CountDownLatch(threshold);
         ConcurrentHashMap<String,String> resMap=new ConcurrentHashMap<>();
         ConcurrentSkipListSet<String> verySet=new ConcurrentSkipListSet<>();
@@ -59,7 +60,7 @@ public class Hash1BroadGet implements Callable<Boolean>{
             if(failureCounter.get()<=maximumFailures){
                 Map<String, BigInteger> map=new HashMap<>();
                 resMap.forEach((key, value) -> {if(map.size()<(threshold))map.put(key,new BigInteger(value));});
-                executor.shutdown();
+                //executor.shutdown();
                 BigInteger q=dkg_system.getQ();
                 BigInteger p=dkg_system.getP();
                 Integer[] PwdIndex=new Integer[threshold];
@@ -83,20 +84,20 @@ public class Hash1BroadGet implements Callable<Boolean>{
                 }
                 PwdHashEncS=PwdHashEncS.modPow(randRInv,p);
                 if(verySet.size()==0){
-                Thread SendPrf=new Thread(new PrfBroad(Id,pwd,PwdHashEncS.toString()));
+                Thread SendPrf=new Thread(new PrfBroad(Id,pwd,PwdHashEncS.toString(),service));
                 SendPrf.start();}else{
-                Thread GetVery=new Thread(new GetVeriPrf(Id,pwd,PwdHashEncS.toString(),verySet.first()));
+                Thread GetVery=new Thread(new GetVeriPrf(Id,pwd,PwdHashEncS.toString(),verySet.first(),service));
                 GetVery.start();
                 }
                 log.error("PwdHash1ENC---"+PwdHashEncS);
                 return true;
             }else{
-                executor.shutdown();
+                //executor.shutdown();
                 log.warn("PRF_HASH1_FAILED_TOO_MUCH");
                 return false;
             }
         }catch (InterruptedException e){
-            executor.shutdown();
+            //executor.shutdown();
             throw new RuntimeException();
         }
         //executor.shutdown();

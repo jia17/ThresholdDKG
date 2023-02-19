@@ -28,7 +28,7 @@ public class InvalidFexpBroad implements Runnable{
     public void run() {
         String[] ipAndPort=IdpServer.addrS;
         int serversNum= ipAndPort.length;
-        ExecutorService service = Executors.newFixedThreadPool(serversNum - 1);
+        ExecutorService service =idpServer.getService();// Executors.newFixedThreadPool(serversNum - 1);
         CountDownLatch latch=new CountDownLatch(0);
         Map<String,String> map=new HashMap<>();
         ConcurrentHashMap<String,String> resMap=new ConcurrentHashMap<>();
@@ -53,6 +53,6 @@ public class InvalidFexpBroad implements Runnable{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        service.shutdown();
+        //service.shutdown();
     }
 }

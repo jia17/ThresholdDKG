@@ -31,7 +31,7 @@ public class RegetFGval implements Runnable{
         if(regetNum==0) {
             log.error(userId+"serv"+idpServer.getServer().getAddress().toString()+"NO ReSend");;return;
         }
-        ExecutorService service = Executors.newFixedThreadPool(regetNum);
+        ExecutorService service =idpServer.getService();// Executors.newFixedThreadPool(regetNum);
         CountDownLatch latch=new CountDownLatch(regetNum);
         ConcurrentHashMap<String,String> SendFalseMap=new ConcurrentHashMap<>();
         ReGetGF reGetGF=new ReGetGF(userId,idpServer.getServer().getAddress().toString());
@@ -53,6 +53,6 @@ public class RegetFGval implements Runnable{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        service.shutdown();
+        //service.shutdown();
     }
 }

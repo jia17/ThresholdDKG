@@ -41,6 +41,7 @@ public class GetTokenSi   {
     private String randR;
     private DKG_System dkg_systemP;
     private String passwd;
+    private ExecutorService service1;
      public Boolean call() throws NullPointerException {
         BigInteger randRInv=Calculate.modInverse(new BigInteger(randR),dkg_systemP.getQ());
         DKG_SysStr dkg_sysStrP=new DKG_SysStr(dkg_systemP.getP().toString(),dkg_systemP.getQ().toString()
@@ -56,7 +57,7 @@ public class GetTokenSi   {
             if(addrMap.containsKey(ipPorts[i])){AddrIndex[addrMap.get(ipPorts[i])]=i+1;}//cautious
         }
         userMsg2Serv.setAddrIndex(AddrIndex);
-        ExecutorService executor = Executors.newFixedThreadPool(ipPorts.length);
+        ExecutorService executor =service1;// Executors.newFixedThreadPool(ipPorts.length);
         CountDownLatch latch=new CountDownLatch(sendAddrs.length);
         ConcurrentHashMap<Integer,String> resMap=new ConcurrentHashMap<>();
         ConcurrentHashMap<String,String> lambdaMap=new ConcurrentHashMap<>();
@@ -82,7 +83,7 @@ public class GetTokenSi   {
         }
         try {
             latch.await();
-            executor.shutdown();
+            //executor.shutdown();
             Integer threshold=IdpServer.threshold;
             if(resMap.size()<threshold){log.error("ToKen size too less");return false;}
             BigInteger p=new BigInteger(pubParamToken.getDkg_sysStr().getP());
@@ -163,7 +164,7 @@ public class GetTokenSi   {
             tokenUser.setUser(user);tokenUser.setSign(W.toString());tokenUser.setY(y.toString());
             return true;
         }catch (InterruptedException e){
-            executor.shutdown();
+            //executor.shutdown();
             throw new RuntimeException();
         }
     }

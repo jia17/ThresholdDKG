@@ -30,7 +30,7 @@ public class SendDKGComplain implements Runnable{
 
     @Override
     public void run() {
-        ExecutorService service = Executors.newFixedThreadPool(ipPorts.length - 1);
+        ExecutorService service = idpServer.getService();//Executors.newFixedThreadPool(ipPorts.length - 1);
         CountDownLatch latch=new CountDownLatch(ipPorts.length-1);
         String selfAddr=idpServer.getServer().getAddress().toString();
         ConcurrentHashMap<String,String> SendFalseMap=new ConcurrentHashMap<>();
@@ -57,6 +57,6 @@ public class SendDKGComplain implements Runnable{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        service.shutdown();
+        //service.shutdown();
     }
 }

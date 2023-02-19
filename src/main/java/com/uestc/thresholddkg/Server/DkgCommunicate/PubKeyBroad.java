@@ -45,7 +45,7 @@ public class PubKeyBroad implements Runnable{
             FExp[i]=g.modPow(F[i],p);
         }
         idpServer.getFExpRecv().get(userId).put(selfAddr,FExp[0]);
-        ExecutorService service= Executors.newFixedThreadPool(ipPorts.length-1);
+        ExecutorService service=idpServer.getService();// Executors.newFixedThreadPool(ipPorts.length-1);
         for (int i=0;i<ipPorts.length;i++) {
             var message= FunctionFExp.builder().fExp(DKG.bigInt2Str(FExp)).userId(userId).sendAddr(selfAddr).serverId(i+1).build();
             String s=ipPorts[i];
@@ -55,6 +55,6 @@ public class PubKeyBroad implements Runnable{
             SendUri send = SendUri.builder().message(Convert2StrToken.Obj2json(message)).mapper("verifyFExp").IpAndPort(s).build();
             service.submit(send::SendMsg);
         }
-        service.shutdown();
+        //service.shutdown();
     }
 }

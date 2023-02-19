@@ -14,6 +14,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.codec.StringDecoder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -55,7 +56,7 @@ public class ReStoreTest implements HttpHandler {
         var userId= "sunny";//StartDKG.testString;//="alice";
         String[] ippStr=ipAndPort;
         int serversNum=ippStr.length;
-        final ExecutorService executor = Executors.newFixedThreadPool(serversNum - 1);
+        final ExecutorService executor =idpServer.getService();// Executors.newFixedThreadPool(serversNum - 1);
         final CountDownLatch    latch  = new CountDownLatch(serversNum>>1);//server self has a secretI
         final AtomicInteger failureCounter = new AtomicInteger(0);
         final int maximumFailures = serversNum-(serversNum>>1+1);
@@ -83,7 +84,7 @@ public class ReStoreTest implements HttpHandler {
                 Map<String, BigInteger> map=new HashMap<>();
                 resMap.forEach((key, value) -> {
                 if(map.size()<(threshold-1))map.put(key,new BigInteger(value));});
-                executor.shutdownNow();
+                //executor.shutdown();
 
                 map.put(AddrSelf,secretSelf);
                 Integer[] Index=new Integer[threshold];
@@ -121,7 +122,7 @@ public class ReStoreTest implements HttpHandler {
                 httpExchange.getResponseBody().write(respContents);
                 httpExchange.close();
             }else{
-                executor.shutdown();
+                //executor.shutdown();
                 throw new IOException();
             }
         }catch (InterruptedException e){

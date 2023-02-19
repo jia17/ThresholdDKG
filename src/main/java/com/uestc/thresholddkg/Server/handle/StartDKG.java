@@ -82,7 +82,7 @@ public class StartDKG implements HttpHandler {
         Thread t=new Thread(new Runnable() {
             @Override
             public void run() {
-                ExecutorService service = Executors.newFixedThreadPool(serversNum - 1);
+                ExecutorService service =idpServer.getService();// Executors.newFixedThreadPool(serversNum - 1);
                 CountDownLatch latch=new CountDownLatch(serversNum-1);
                 ConcurrentHashMap<String,String> resMap=new ConcurrentHashMap<>();
                 BigInteger[] secrets=new BigInteger[2];
@@ -119,7 +119,8 @@ public class StartDKG implements HttpHandler {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                service.shutdown(); }
+                //service.shutdown();
+            }
                 });
            ServPrfsMapper servPrfsMapper= ServPrfsWR.getMapper();
            QueryWrapper<ServPrfs> queryWrapper=new QueryWrapper<>();

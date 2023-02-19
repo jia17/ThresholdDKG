@@ -24,6 +24,7 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.FutureTask;
 
 /**
@@ -33,6 +34,7 @@ import java.util.concurrent.FutureTask;
 @Slf4j
 @AllArgsConstructor
 public class startToken implements HttpHandler {
+    private ExecutorService service;
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
@@ -81,7 +83,7 @@ public class startToken implements HttpHandler {
                  if(!exists[servi]){sendAddrs[i]=ipPorts[servi];i++;exists[servi]=true;}
              }
              var getTokenS=(new GetTokenSi(sendAddrs,userToken,user, UserMsg2Serv.builder().msg(msgBigIn.toString())
-                     .PwdHash1(paraMap.get("pwdHash1")).msgHash(msgHash.toString()).userId(user).build(),paraMap.get("randR"),dkg_systemT,Passwd));
+                     .PwdHash1(paraMap.get("pwdHash1")).msgHash(msgHash.toString()).userId(user).build(),paraMap.get("randR"),dkg_systemT,Passwd,service));
              boolean success=getTokenS.call();
              if(success)break;
              else {

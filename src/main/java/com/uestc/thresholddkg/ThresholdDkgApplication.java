@@ -10,31 +10,38 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.Resource;
 import java.security.KeyStore;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 @SpringBootApplication
 public class ThresholdDkgApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ThresholdDkgApplication.class, args);
-        CountDownLatch a=new CountDownLatch(2);a.countDown();a.countDown();
+        initSys();
+    }
+
+    static void initSys(){
         String[] serverAddr=IdpServer.addrS;
         String[] addrSplit=new String[2];
         String ip;Integer port;
         IdpServer[] idpServers=new IdpServer[serverAddr.length];
         int i=0;
-        ExecutorService service= Executors.newFixedThreadPool(20);
+        ExecutorService service= new ThreadPoolExecutor(//Executors.newFixedThreadPool(20);
+                                20, 30, 5,
+                                 TimeUnit.SECONDS,
+                                 new LinkedBlockingDeque<>(),
+                                 Executors.defaultThreadFactory(),
+                                 new ThreadPoolExecutor.AbortPolicy());
         for (String addr:serverAddr
-             ) {
-                addrSplit=addr.split(":");
-                ip=addrSplit[0];port=Integer.valueOf(addrSplit[1]);
-                idpServers[i]=IdpServer.getIdpServer(i+1,ip,port,service);
-                i++;
+        ) {
+            addrSplit=addr.split(":");
+            ip=addrSplit[0];port=Integer.valueOf(addrSplit[1]);
+            idpServers[i]=IdpServer.getIdpServer(i+1,ip,port,service);
+            i++;
         }
         var user=TestDKG.getUserServ();
         System.out.println("cc");
     }
+
 
 }

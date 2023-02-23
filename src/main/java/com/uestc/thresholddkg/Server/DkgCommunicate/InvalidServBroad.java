@@ -2,20 +2,11 @@ package com.uestc.thresholddkg.Server.DkgCommunicate;
 
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.communicate.BroadCastMsg;
-import com.uestc.thresholddkg.Server.pojo.DKG_SysStr;
-import com.uestc.thresholddkg.Server.pojo.DKG_System;
-import com.uestc.thresholddkg.Server.pojo.DkgSysMsg;
 import com.uestc.thresholddkg.Server.util.Convert2Str;
-import com.uestc.thresholddkg.Server.util.DKG;
-import com.uestc.thresholddkg.Server.util.DkgSystem2Obj;
-import com.uestc.thresholddkg.Server.util.RandomGenerator;
-import lombok.AllArgsConstructor;
 import lombok.var;
 import net.sf.json.JSONObject;
 
-import java.math.BigInteger;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.concurrent.*;
 

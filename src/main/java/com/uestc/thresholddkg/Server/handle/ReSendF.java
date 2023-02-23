@@ -8,19 +8,12 @@ import com.uestc.thresholddkg.Server.pojo.FunctionGHvals;
 import com.uestc.thresholddkg.Server.pojo.ReGetGF;
 import com.uestc.thresholddkg.Server.util.Convert2Str;
 import com.uestc.thresholddkg.Server.util.DKG;
-import com.uestc.thresholddkg.Server.util.FuncGH2Obj;
-import com.uestc.thresholddkg.Server.util.test2;
 import lombok.var;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
-import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.ConcurrentSkipListSet;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @author zhangjia

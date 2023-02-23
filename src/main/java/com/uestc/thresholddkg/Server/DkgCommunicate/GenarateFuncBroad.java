@@ -2,19 +2,13 @@ package com.uestc.thresholddkg.Server.DkgCommunicate;
 
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.communicate.SendUri;
-import com.uestc.thresholddkg.Server.pojo.DKG_System;
-import com.uestc.thresholddkg.Server.pojo.DkgSysMsg;
 import com.uestc.thresholddkg.Server.pojo.FunctionGHvals;
 import com.uestc.thresholddkg.Server.util.Convert2Str;
 import com.uestc.thresholddkg.Server.util.DKG;
-import com.uestc.thresholddkg.Server.util.FuncGH2Obj;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
 
 import java.math.BigInteger;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @author zhangjia

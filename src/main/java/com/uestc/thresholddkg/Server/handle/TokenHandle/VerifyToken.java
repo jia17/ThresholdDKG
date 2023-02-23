@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.uestc.thresholddkg.Server.IdpServer;
+import com.uestc.thresholddkg.Server.persist.ServPrfsPp;
+import com.uestc.thresholddkg.Server.persist.mapper.ServPrfsPPMapper;
+import com.uestc.thresholddkg.Server.persist.mapperWR.ServPrfsPpWR;
 import com.uestc.thresholddkg.Server.pojo.*;
 import com.uestc.thresholddkg.Server.util.Convert2StrToken;
 import com.uestc.thresholddkg.Server.util.DKG;
@@ -48,7 +51,10 @@ public class VerifyToken implements HttpHandler {
             TokenUser tokenUser=(TokenUser) Convert2StrToken.Json2obj(Sign, TokenUser.class);
             String user=tokenUser.getUser();
             BigInteger y=new BigInteger(tokenUser.getY());
-            DKG_System dkg_system=idpServer.getDkgParam().get(user);
+            ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
+            ServPrfsPp servPrfsPp=servPrfsPPMapper.selectById("userId");
+            DKG_System dkg_system=new DKG_System(new BigInteger(servPrfsPp.getP()),new BigInteger(servPrfsPp.getQ()),
+                    new BigInteger(servPrfsPp.getG()),new BigInteger(servPrfsPp.getH()));
             BigInteger Msg=new BigInteger(idpServer.getUserMsg().get(user));
             BigInteger MsgHash=new BigInteger(idpServer.getUserMsgHash().get(user));
             BigInteger p=dkg_system.getP();

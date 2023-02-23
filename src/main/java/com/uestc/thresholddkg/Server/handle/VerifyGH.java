@@ -8,7 +8,6 @@ import com.uestc.thresholddkg.Server.DkgCommunicate.RegetFGval;
 import com.uestc.thresholddkg.Server.DkgCommunicate.SendDKGComplain;
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
-import com.uestc.thresholddkg.Server.util.FuncGH2Obj;
 import com.uestc.thresholddkg.Server.pojo.FunctionGHvals;
 import com.uestc.thresholddkg.Server.util.*;
 import lombok.extern.slf4j.Slf4j;
@@ -47,8 +46,7 @@ public class VerifyGH implements HttpHandler {
             tline+=line;
         }
         //log.error(tline);
-        var convert=new Convert2Str();
-        FunctionGHvals ghVals=(FunctionGHvals) convert.Json2obj(tline, FunctionGHvals.class);
+        FunctionGHvals ghVals=(FunctionGHvals) Convert2Str.Json2obj(tline, FunctionGHvals.class);
         String userId=ghVals.getUserId();
         String remoteAddr=ghVals.getSendAddr();
         DKG_System dkgSys=idpServer.getDkgParam().get(userId);

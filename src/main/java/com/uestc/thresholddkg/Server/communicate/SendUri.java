@@ -38,7 +38,8 @@ public class SendUri {
             httpurlconnection.setDoOutput(true);
             httpurlconnection.setRequestMethod("POST");
             httpurlconnection.setConnectTimeout(30000);
-
+            httpurlconnection.setRequestProperty("Connection","Keep-Alive");
+            httpurlconnection.setRequestProperty("MaxConnections","7");
             httpurlconnection.setSSLSocketFactory(sslSocketFactory);
             httpurlconnection.setHostnameVerifier(new HostnameVerifier() {
                 @Override

@@ -3,7 +3,6 @@ package com.uestc.thresholddkg.Server.handle.TokenHandle;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.uestc.thresholddkg.Server.IdpServer;
-import com.uestc.thresholddkg.Server.user.PrfComm.Hash1BroadGet;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
@@ -12,6 +11,7 @@ import net.sf.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListSet;
 

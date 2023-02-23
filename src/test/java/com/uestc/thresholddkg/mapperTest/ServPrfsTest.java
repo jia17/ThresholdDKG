@@ -1,9 +1,12 @@
 package com.uestc.thresholddkg.mapperTest;
 
 import com.uestc.thresholddkg.Server.persist.ServPrfs;
+import com.uestc.thresholddkg.Server.persist.ServTokenKey;
 import com.uestc.thresholddkg.Server.persist.mapper.ServPrfsPPMapper;
+import com.uestc.thresholddkg.Server.persist.mapper.ServTokenKMapper;
 import com.uestc.thresholddkg.Server.persist.mapperWR.ServPrfsWR;
 import com.uestc.thresholddkg.Server.persist.mapper.ServPrfsMapper;
+import com.uestc.thresholddkg.Server.persist.mapperWR.ServTokenKWR;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import lombok.var;
 import org.junit.jupiter.api.Test;
@@ -34,5 +37,12 @@ public class ServPrfsTest {
     var param0=new DKG_System(new BigInteger(servPrfsPp.getP()),new BigInteger(servPrfsPp.getQ()),
                 new BigInteger(servPrfsPp.getG()),new BigInteger(servPrfsPp.getH()));
         System.out.println(param0);
+    }
+
+    @Test
+    void TokenMapperTest(){
+        ServTokenKMapper tokenKMapper= ServTokenKWR.getMapper();
+        tokenKMapper.insert(ServTokenKey.builder().servId(332).priKeyi("").pubKey("").build());
+        tokenKMapper.selectById(3);
     }
 }

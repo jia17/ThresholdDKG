@@ -6,8 +6,6 @@ import com.uestc.thresholddkg.Server.communicate.SendUri;
 import com.uestc.thresholddkg.Server.communicate.UserBroadGetTokeni;
 import com.uestc.thresholddkg.Server.communicate.UserBroadHash1;
 import com.uestc.thresholddkg.Server.pojo.*;
-import com.uestc.thresholddkg.Server.user.PrfComm.GetVeriPrf;
-import com.uestc.thresholddkg.Server.user.PrfComm.PrfBroad;
 import com.uestc.thresholddkg.Server.util.Calculate;
 import com.uestc.thresholddkg.Server.util.Convert2Str;
 import com.uestc.thresholddkg.Server.util.Convert2StrToken;
@@ -33,7 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @AllArgsConstructor
 @Slf4j
-public class GetTokenSi   {
+public class GetTokenSi{
     private String[] sendAddrs;
     private TokenUser tokenUser;
     private String user;

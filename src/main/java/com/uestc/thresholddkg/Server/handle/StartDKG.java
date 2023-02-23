@@ -63,85 +63,16 @@ public class StartDKG implements HttpHandler {
         String[] IdPass=mess.split("\\|");
         //*******cautious******prfs
         String user=IdPass[0],passwd="";//IdPass[1];
-        //String user=testString,passwd="123456";//get from browser ,wait for update
         int serversNum=ipAndPort.length;
         ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
         DKG_System param0=new DKG_System();DKG_SysStr dkg_sysStr0=new DKG_SysStr();
         ServPrfsPp servPrfsPp=servPrfsPPMapper.selectById(user);
         if(servPrfsPp==null){
-            param0= DKG.initDLog();//DKG.init();//DKG.initRSA();//
-            dkg_sysStr0=new DKG_SysStr(param0.getP().toString(),param0.getQ().toString(),param0.getG().toString(),param0.getH().toString());
-            servPrfsPPMapper.insert( ServPrfsPp.builder().userId(user).p(param0.getP().toString())
-                    .q(param0.getQ().toString()).g(param0.getG().toString()).h(param0.getH().toString()).build());
+            log.error("user don't register,without prfs_pp");
         }else{
-            param0=new DKG_System(new BigInteger(servPrfsPp.getP()),new BigInteger(servPrfsPp.getQ()),
-                    new BigInteger(servPrfsPp.getG()),new BigInteger(servPrfsPp.getH()));
             dkg_sysStr0=new DKG_SysStr(servPrfsPp.getP(),servPrfsPp.getQ(),servPrfsPp.getG(),servPrfsPp.getH());
         }
-        DKG_System param=param0;DKG_SysStr dkg_sysStr=dkg_sysStr0;
-        Thread t=new Thread(new Runnable() {
-            @Override
-            public void run() {
-                ExecutorService service =idpServer.getService();// Executors.newFixedThreadPool(serversNum - 1);
-                CountDownLatch latch=new CountDownLatch(serversNum-1);
-                ConcurrentHashMap<String,String> resMap=new ConcurrentHashMap<>();
-                BigInteger[] secrets=new BigInteger[2];
-                secrets[0]= RandomGenerator.genaratePositiveRandom(param.getP());
-                secrets[1]=RandomGenerator.genaratePositiveRandom(param.getP());
-                idpServer.getSecretAndT().put(user,secrets);
-                DkgSysMsg message=new DkgSysMsg(dkg_sysStr,user," ",idpServer.item);
-                idpServer.getDkgParam().put(user,param);
-                idpServer.getFlag().put(user,0);
-                idpServer.getFgRecv().put(user,new HashMap<>());
-                idpServer.getFgRecvFalse().put(user,new HashSet<>());
-                idpServer.getFgRecvFTimes().put(user,new ConcurrentHashMap<>());
-                DKG.initMapTimes(idpServer.getFgRecvFTimes().get(user));
-                var convert=new Convert2Str();
-                for (String s : ipAndPort) {
-                    //log.warn("send"+s);
-                    if (("/" + s).equals(addr)) continue;
-                    service.submit(
-                            BroadCastMsg.builder().latch(latch).message(convert.Obj2json(message)).mapper("initDkg").IpAndPort(s)
-                                    .failsMap(resMap).build()
-                    );
-                }
-                try {
-                    latch.await();
-                    if(!resMap.isEmpty()){
-                        resMap.forEach((key, value) ->service.submit(
-                                BroadCastMsg.builder().latch(latch).message(convert.Obj2json(message)).mapper("initDkg").IpAndPort(key)
-                                .failsMap(resMap).build()));
-                        Thread.sleep(500);
-                    }
-                    //broad cast
-                    Thread generateFG=new Thread(new GenarateFuncBroad(idpServer,user,ipAndPort,idpServer.getServer().getAddress().toString()));
-                    generateFG.start();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                //service.shutdown();
-            }
-                });
-           ServPrfsMapper servPrfsMapper= ServPrfsWR.getMapper();
-           QueryWrapper<ServPrfs> queryWrapper=new QueryWrapper<>();
-           queryWrapper.eq("servId",idpServer.getServerId()).eq("userId",user);
-           if(servPrfsPp==null) {
-               t.start();
-           }
-//        ExecutorService service= Executors.newFixedThreadPool(serversNum-1);
-//        CountDownLatch countDownLatch=new CountDownLatch(serversNum-1);
-//        DKG_System param= DKG.init();
-//        DkgSysMsg message=new DkgSysMsg(param,user,passwd,idpServer.item);
-//        idpServer.getDkgParam().put(user,param);
-//        for (String s : ipAndPort) {
-//            if (("/" + s).equals(addr)) continue;
-//            var convert=new DkgSystem2Obj();
-//            SendUri send = SendUri.builder().message(convert.Obj2json(param)).mapper("initDkg").IpAndPort(s).build();
-//            //send.SendMsg();
-//            service.submit(send::SendMsg);
-//        }
-//        service.shutdown();
-
+        DKG_SysStr dkg_sysStr=dkg_sysStr0;
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
         try {
             var respContents=  Convert2Str.Obj2json(dkg_sysStr).getBytes();

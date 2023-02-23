@@ -47,6 +47,8 @@ public class UserBroadGetTokeni implements Runnable{
             httpurlconnection.setRequestMethod("POST");
             httpurlconnection.setConnectTimeout(30000);
             httpurlconnection.setSSLSocketFactory(sslSocketFactory);
+            httpurlconnection.setRequestProperty("Connection","Keep-Alive");
+            httpurlconnection.setRequestProperty("MaxConnections","7");
             httpurlconnection.setHostnameVerifier(new HostnameVerifier() {
                 @Override
                 public boolean verify(String s, SSLSession sslSession) {

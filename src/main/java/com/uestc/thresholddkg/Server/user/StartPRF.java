@@ -7,15 +7,15 @@ import com.sun.net.httpserver.HttpServer;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.communicate.SendUri;
-import com.uestc.thresholddkg.Server.pojo.DKG_SysStr;
-import com.uestc.thresholddkg.Server.pojo.DKG_System;
-import com.uestc.thresholddkg.Server.pojo.IdPwd;
-import com.uestc.thresholddkg.Server.user.PrfComm.Hash1BroadGet;
+import com.uestc.thresholddkg.Server.pojo.*;
 import com.uestc.thresholddkg.Server.util.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
+import org.bouncycastle.util.encoders.Hex;
 
+import javax.persistence.Id;
+import javax.xml.ws.Service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -49,32 +49,9 @@ public class StartPRF implements HttpHandler {
         }
         if(!tline.equals("")) {
             IdPwd stu = new Gson().fromJson(tline, IdPwd.class);
-//            String ID = "tom";
-//            String Passwd = "123456";
             String ID=stu.getId(),Passwd=stu.getPasswd();
+            VSS_Pwd(ID,Passwd,service);
             HashMap<String, String> paraMap = new HashMap<>();
-            var dkg_system = getPwdHash1(ID, Passwd, paraMap);
-            Thread thread0 = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (true) {
-                        FutureTask<Boolean> futureTask = new FutureTask<Boolean>(new Hash1BroadGet(ID, paraMap.get("pwdHash1"), dkg_system
-                                , Calculate.modInverse(new BigInteger(paraMap.get("randR")), dkg_system.getQ()), Passwd,service));
-                        Thread thread = new Thread(futureTask);
-                        thread.start();
-                        try {
-                            if (futureTask.get()) {
-                                break;
-                            } else {
-                                Thread.sleep(2000);
-                            }
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }
-            });
-            thread0.start();
         }
         byte[] respContents = "sPrf".getBytes("UTF-8");
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
@@ -88,6 +65,55 @@ public class StartPRF implements HttpHandler {
         httpExchange.close();
     }
 
+    public static void VSS_Pwd(String ID,String passwd,ExecutorService service1){
+        var param=DKG.initDLog();
+        String[] ipPorts=IdpServer.addrS;
+        BigInteger[] secrets=new BigInteger[2];
+        secrets[0]=RandomGenerator.genaratePositiveRandom(param.getP());
+        secrets[1]=RandomGenerator.genaratePositiveRandom(param.getP());
+        BigInteger g=param.getG();
+        BigInteger h=param.getH();
+        BigInteger p=param.getP();
+        BigInteger q=param.getQ();
+        BigInteger[]F= DKG.generateFuncParam(secrets[0],p);
+        BigInteger[]G=DKG.generateFuncParam(secrets[1],p);
+        BigInteger[] fVal=DKG.FunctionValue(F,q);
+        BigInteger[] gVal=DKG.FunctionValue(G,q);
+        BigInteger[] gMulH=DKG.FunctionGH(g,h,F,G,p);
+        byte[] bytes= DKG.HashSha3(passwd);
+        var b1=new BigInteger(1, Arrays.copyOfRange(bytes,0,DKG.KeyLen/16));
+        var b2=new BigInteger(1,Arrays.copyOfRange(bytes,DKG.KeyLen/16,DKG.KeyLen/8));
+        var pwdHash1=(g.modPow(b1,p).multiply(h.modPow(b2,p))).mod(p);
+        String temps="";int hash1Len=(int)(DKG.KeyLen*0.30103);
+        if(pwdHash1.toString().length()<hash1Len){//154=512*0.302=*ln(2)/ln(10)
+            StringBuilder blank= new StringBuilder();
+            for(int i=hash1Len-pwdHash1.toString().length();i>0;i--)blank.append("0");
+            temps=blank.toString()+pwdHash1.toString();
+            pwdHash1=new BigInteger(temps);
+        }
+        BigInteger pwdHash1Pow=pwdHash1.modPow(secrets[0].mod(q),p);
+        var hash2= DKG.HashRipe160(passwd+pwdHash1Pow);
+        var hash3=DKG.HashSha3(hash2);
+        var prfVery= Hex.toHexString(Arrays.copyOfRange(hash3,0,hash3.length/2));
+        var prfServ=Hex.toHexString(Arrays.copyOfRange(hash3,hash3.length/2,hash3.length));
+        byte[] bytesI=new byte[16];
+        ExecutorService service=service1;
+        DKG_SysStr dkg_sysStr=new DKG_SysStr(param.getP().toString(),param.getQ().toString(),param.getG().toString(),param.getH().toString());
+        for(int i = 0; i<ipPorts.length; i++){
+            bytesI[0]= (byte) i;
+            var hi=DKG.HashBlake2bSalt(prfServ.getBytes(),bytesI);
+            var megPrf=new PrfValue(ID,hi,prfVery);
+            FunctionGHvals message=FunctionGHvals.builder()
+                    .gMulsH(DKG.bigInt2Str(gMulH))
+                    .sendAddr(Convert2Str.Obj2json(dkg_sysStr))//cautious
+                    .userId(Convert2Str.Obj2json(megPrf)).item(1).build();
+            String s=ipPorts[i];
+            message.setFi(fVal[i].toString());message.setGi(gVal[i].toString());message.setServerId(i+1);
+            SendUri send = SendUri.builder().message(Convert2Str.Obj2json(message)).mapper("verifyGetPrfI").IpAndPort(s).build();
+            service.submit(send::SendMsg);
+        }
+        //service.shutdown();
+    }
     public static DKG_System getPwdHash1(String ID,String Passwd,HashMap<String,String> paraMap){
         String[] ipPorts=IdpServer.addrS;
         SecureRandom random=new SecureRandom();

@@ -10,8 +10,10 @@ import com.uestc.thresholddkg.Server.persist.ServPrfs;
 import com.uestc.thresholddkg.Server.persist.ServPrfsPp;
 import com.uestc.thresholddkg.Server.persist.mapper.ServPrfsMapper;
 import com.uestc.thresholddkg.Server.persist.mapper.ServPrfsPPMapper;
+import com.uestc.thresholddkg.Server.persist.mapper.ServTokenKMapper;
 import com.uestc.thresholddkg.Server.persist.mapperWR.ServPrfsPpWR;
 import com.uestc.thresholddkg.Server.persist.mapperWR.ServPrfsWR;
+import com.uestc.thresholddkg.Server.persist.mapperWR.ServTokenKWR;
 import com.uestc.thresholddkg.Server.pojo.DKG_SysStr;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import com.uestc.thresholddkg.Server.pojo.DkgSysMsg;
@@ -64,6 +66,13 @@ public class StartDkgToken implements HttpHandler {
         while((line=reader.readLine())!=null){
             mess+=line;
         }
+        DKG_SysStr dkg_sysStr=null;
+        ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
+        ServPrfsPp servPrfsPp=servPrfsPPMapper.selectById("userId");//userId for System Token PP;cautious
+        if(servPrfsPp!=null){
+            dkg_sysStr=new DKG_SysStr(servPrfsPp.getP(),servPrfsPp.getQ(),
+                                      servPrfsPp.getG(),servPrfsPp.getH());
+        }else{
         log.error("START DKG Token"+mess);
         String[] IdPass=mess.split("\\|");
         //*******cautious******prfs
@@ -73,9 +82,12 @@ public class StartDkgToken implements HttpHandler {
         int serversNum=ipAndPort.length;
         DKG_System param0=new DKG_System();
         DKG_SysStr dkg_sysStr0=new DKG_SysStr();
-            param0= DKG.initDLog();//DKG.init();//DKG.initRSA();//
-            dkg_sysStr0=new DKG_SysStr(param0.getP().toString(),param0.getQ().toString(),param0.getG().toString(),param0.getH().toString());
-        DKG_System param=param0;DKG_SysStr dkg_sysStr=dkg_sysStr0;
+        param0= DKG.initDLog();//DKG.init();//DKG.initRSA();//
+        dkg_sysStr0=new DKG_SysStr(param0.getP().toString(),param0.getQ().toString(),param0.getG().toString(),param0.getH().toString());
+        //写入系统DKGSys
+        servPrfsPPMapper.insert(ServPrfsPp.builder().userId("userId").p(dkg_sysStr0.getP())
+                                          .q(dkg_sysStr0.getQ()).g(dkg_sysStr0.getG()).h(dkg_sysStr0.getH()).build());
+        DKG_System param=param0;DKG_SysStr dkg_sysStr1=dkg_sysStr0;dkg_sysStr=dkg_sysStr0;
         Thread t=new Thread(new Runnable() {
             @Override
             public void run() {
@@ -86,7 +98,7 @@ public class StartDkgToken implements HttpHandler {
                 secrets[0]= RandomGenerator.genaratePositiveRandom(param.getP());
                 secrets[1]=RandomGenerator.genaratePositiveRandom(param.getP());
                 idpServer.getSecretAndT().put(user,secrets);
-                DkgSysMsg message=new DkgSysMsg(dkg_sysStr,user,user,idpServer.item);//cautious user as "passwd"
+                DkgSysMsg message=new DkgSysMsg(dkg_sysStr1,user,user,idpServer.item);//cautious user as "passwd"
                 idpServer.getDkgParam().put(user,param);
                 idpServer.getFlag().put(user,0);
                 idpServer.getFgRecv().put(user,new HashMap<>());
@@ -122,7 +134,8 @@ public class StartDkgToken implements HttpHandler {
                 //service.shutdown();
                 }
         });
-         t.start();
+        t.start();
+        }
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
         try {
             var respContents= (Convert2Str.Obj2json(dkg_sysStr)).getBytes();

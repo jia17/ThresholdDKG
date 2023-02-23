@@ -2,9 +2,7 @@ package com.uestc.thresholddkg.Server.DkgCommunicate;
 
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.communicate.BroadCastMsg;
-import com.uestc.thresholddkg.Server.pojo.Complain;
 import com.uestc.thresholddkg.Server.pojo.ReGetGF;
-import com.uestc.thresholddkg.Server.util.Compl2Obj;
 import com.uestc.thresholddkg.Server.util.Convert2Str;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
@@ -12,7 +10,6 @@ import lombok.var;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @author zhangjia

@@ -7,7 +7,6 @@ import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import com.uestc.thresholddkg.Server.pojo.DkgSysMsg;
 import com.uestc.thresholddkg.Server.util.Convert2Str;
 import com.uestc.thresholddkg.Server.util.DKG;
-import com.uestc.thresholddkg.Server.util.DkgSystem2Obj;
 import com.uestc.thresholddkg.Server.DkgCommunicate.GenarateFuncBroad;
 import com.uestc.thresholddkg.Server.util.RandomGenerator;
 import lombok.extern.slf4j.Slf4j;

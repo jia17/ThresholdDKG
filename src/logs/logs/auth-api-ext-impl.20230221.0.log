@@ -1,0 +1,383 @@
+2023-02-21 12:57:16.185 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 12:57:53.031 [pool-10-thread-5] ERROR com.uestc.thresholddkg.Server.communicate.SendUri - SendUri RespCode error https://127.0.0.10:9050/verifyGetPrfI
+2023-02-21 12:57:53.031 [pool-10-thread-4] ERROR com.uestc.thresholddkg.Server.communicate.SendUri - SendUri RespCode error https://127.0.0.10:9040/verifyGetPrfI
+2023-02-21 12:57:53.031 [pool-10-thread-3] ERROR com.uestc.thresholddkg.Server.communicate.SendUri - SendUri RespCode error https://127.0.0.10:9030/verifyGetPrfI
+2023-02-21 12:57:53.031 [pool-10-thread-7] ERROR com.uestc.thresholddkg.Server.communicate.SendUri - SendUri RespCode error https://127.0.0.10:9070/verifyGetPrfI
+2023-02-21 12:57:53.031 [pool-10-thread-1] ERROR com.uestc.thresholddkg.Server.communicate.SendUri - SendUri RespCode error https://127.0.0.10:9010/verifyGetPrfI
+2023-02-21 12:57:53.031 [pool-10-thread-2] ERROR com.uestc.thresholddkg.Server.communicate.SendUri - SendUri RespCode error https://127.0.0.10:9020/verifyGetPrfI
+2023-02-21 12:57:53.031 [pool-10-thread-6] ERROR com.uestc.thresholddkg.Server.communicate.SendUri - SendUri RespCode error https://127.0.0.10:9060/verifyGetPrfI
+2023-02-21 12:58:44.683 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 13:22:49.687 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 13:23:44.076 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 13:23:44.127 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - This "servId" is the table primary key by @TableId annotation in Class: "com.uestc.thresholddkg.Server.persist.ServTokenKey",So @TableField annotation will not work!
+2023-02-21 13:24:21.201 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 13:25:12.588 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 13:26:05.195 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 15:45:40.015 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 15:45:53.880 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 15:46:43.302 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-02-21 15:46:43.304 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=102758849086978662720531447885557539030483705748977015793282346886012976017438173585421617451402199573212937674425694655326556026013223383701122278303346857, q=12844856135872332840066430985694692378810463218622126974160293360751622002179771698177702181425274946651617209303211831915819503251652922962640284787918357, g=2185640003254761595307184995271019136451302370071852525542551959329575180819525416836039113000706848450144558141676227926869512540235736123212805504188471, h=47683394304710728548571725683352484100567768271045674193624333889117927695101747789697493913691484312749844499929579236245232717596718044590288893093980319)
+2023-02-21 15:46:43.338 [pool-2-thread-6] ERROR c.u.t.Server.handle.TokenHandle.StartDkgToken - START DKG Tokenalice|Passwd
+2023-02-21 15:46:44.658 [pool-2-thread-7] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9010 get DKG_System(p=78293863647470509073388817912651235688771969135425175704793314283449654601986776826808219051109103442281203181171743060552953534508773781566495890858477513, q=9786732955933813634173602239081404461096496141928146963099164285431206825248347103351027381388637930285150397646467882569119191813596722695811986357309689, g=61100790797895230532282737830115600445938070554250125344804540886681713553017298771309720879668773431007505203655850284884361636334935416774313715754990248, h=66790148768753185749722891271145838679035775334093349727582227071986631527301100293902912572873431050303013248458681942607009865221199181119655250629426963)
+2023-02-21 15:46:44.661 [pool-2-thread-1] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9060 get DKG_System(p=78293863647470509073388817912651235688771969135425175704793314283449654601986776826808219051109103442281203181171743060552953534508773781566495890858477513, q=9786732955933813634173602239081404461096496141928146963099164285431206825248347103351027381388637930285150397646467882569119191813596722695811986357309689, g=61100790797895230532282737830115600445938070554250125344804540886681713553017298771309720879668773431007505203655850284884361636334935416774313715754990248, h=66790148768753185749722891271145838679035775334093349727582227071986631527301100293902912572873431050303013248458681942607009865221199181119655250629426963)
+2023-02-21 15:46:44.661 [pool-2-thread-2] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9050 get DKG_System(p=78293863647470509073388817912651235688771969135425175704793314283449654601986776826808219051109103442281203181171743060552953534508773781566495890858477513, q=9786732955933813634173602239081404461096496141928146963099164285431206825248347103351027381388637930285150397646467882569119191813596722695811986357309689, g=61100790797895230532282737830115600445938070554250125344804540886681713553017298771309720879668773431007505203655850284884361636334935416774313715754990248, h=66790148768753185749722891271145838679035775334093349727582227071986631527301100293902912572873431050303013248458681942607009865221199181119655250629426963)
+2023-02-21 15:46:44.662 [Thread-31] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9010start BroadDKG
+2023-02-21 15:46:44.663 [Thread-32] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9060start BroadDKG
+2023-02-21 15:46:44.663 [Thread-33] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9050start BroadDKG
+2023-02-21 15:46:44.686 [pool-2-thread-3] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9030 get DKG_System(p=78293863647470509073388817912651235688771969135425175704793314283449654601986776826808219051109103442281203181171743060552953534508773781566495890858477513, q=9786732955933813634173602239081404461096496141928146963099164285431206825248347103351027381388637930285150397646467882569119191813596722695811986357309689, g=61100790797895230532282737830115600445938070554250125344804540886681713553017298771309720879668773431007505203655850284884361636334935416774313715754990248, h=66790148768753185749722891271145838679035775334093349727582227071986631527301100293902912572873431050303013248458681942607009865221199181119655250629426963)
+2023-02-21 15:46:44.708 [pool-2-thread-10] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9020 get DKG_System(p=78293863647470509073388817912651235688771969135425175704793314283449654601986776826808219051109103442281203181171743060552953534508773781566495890858477513, q=9786732955933813634173602239081404461096496141928146963099164285431206825248347103351027381388637930285150397646467882569119191813596722695811986357309689, g=61100790797895230532282737830115600445938070554250125344804540886681713553017298771309720879668773431007505203655850284884361636334935416774313715754990248, h=66790148768753185749722891271145838679035775334093349727582227071986631527301100293902912572873431050303013248458681942607009865221199181119655250629426963)
+2023-02-21 15:46:44.713 [pool-2-thread-5] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9070 get DKG_System(p=78293863647470509073388817912651235688771969135425175704793314283449654601986776826808219051109103442281203181171743060552953534508773781566495890858477513, q=9786732955933813634173602239081404461096496141928146963099164285431206825248347103351027381388637930285150397646467882569119191813596722695811986357309689, g=61100790797895230532282737830115600445938070554250125344804540886681713553017298771309720879668773431007505203655850284884361636334935416774313715754990248, h=66790148768753185749722891271145838679035775334093349727582227071986631527301100293902912572873431050303013248458681942607009865221199181119655250629426963)
+2023-02-21 15:46:44.729 [Thread-34] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9030start BroadDKG
+2023-02-21 15:46:44.752 [Thread-36] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9070start BroadDKG
+2023-02-21 15:46:44.752 [Thread-37] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9040start BroadDKG
+2023-02-21 15:46:44.753 [Thread-35] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9020start BroadDKG
+2023-02-21 15:46:44.781 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9050
+2023-02-21 15:46:44.785 [pool-2-thread-12] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9050
+2023-02-21 15:46:44.789 [pool-2-thread-13] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9050
+2023-02-21 15:46:44.789 [pool-2-thread-9] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9060
+2023-02-21 15:46:44.836 [pool-2-thread-17] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9050
+2023-02-21 15:46:44.843 [pool-2-thread-15] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9030
+2023-02-21 15:46:44.850 [pool-2-thread-12] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9070
+2023-02-21 15:46:44.892 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9010
+2023-02-21 15:46:44.914 [pool-2-thread-14] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9010
+2023-02-21 15:46:44.915 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9050
+2023-02-21 15:46:44.917 [pool-2-thread-17] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9020
+2023-02-21 15:46:44.926 [pool-2-thread-20] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9030
+2023-02-21 15:46:44.927 [pool-2-thread-2] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9030
+2023-02-21 15:46:44.929 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9050
+2023-02-21 15:46:44.931 [pool-2-thread-12] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9070
+2023-02-21 15:46:44.932 [pool-2-thread-3] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9030
+2023-02-21 15:46:44.932 [pool-2-thread-5] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9040
+2023-02-21 15:46:44.935 [pool-2-thread-7] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9060
+2023-02-21 15:46:44.937 [pool-2-thread-19] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9060
+2023-02-21 15:46:44.942 [pool-2-thread-13] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9010
+2023-02-21 15:46:44.979 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9010
+2023-02-21 15:46:44.979 [pool-2-thread-20] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9060
+2023-02-21 15:46:44.984 [pool-2-thread-7] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9020
+2023-02-21 15:46:44.986 [pool-2-thread-1] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9030
+2023-02-21 15:46:44.986 [pool-2-thread-3] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9040
+2023-02-21 15:46:44.994 [pool-2-thread-12] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9010
+2023-02-21 15:46:44.994 [pool-2-thread-9] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9020
+2023-02-21 15:46:45.009 [pool-2-thread-13] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9020
+2023-02-21 15:46:45.020 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9020
+2023-02-21 15:46:45.025 [pool-2-thread-17] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9040
+2023-02-21 15:46:45.042 [pool-2-thread-20] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9040
+2023-02-21 15:46:45.042 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9040
+2023-02-21 15:46:45.047 [pool-2-thread-18] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9060
+2023-02-21 15:46:45.077 [pool-2-thread-5] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9070
+2023-02-21 15:46:45.084 [pool-2-thread-10] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9040
+2023-02-21 15:46:45.088 [pool-2-thread-6] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9060
+2023-02-21 15:46:45.094 [pool-2-thread-2] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9070
+2023-02-21 15:46:45.094 [pool-2-thread-14] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9010
+2023-02-21 15:46:45.100 [pool-2-thread-5] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9020QUALs7
+2023-02-21 15:46:45.100 [pool-2-thread-14] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9060QUALs7
+2023-02-21 15:46:45.103 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9070QUALs7
+2023-02-21 15:46:45.103 [pool-2-thread-20] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9030QUALs7
+2023-02-21 15:46:45.104 [Thread-41] ERROR c.u.thresholddkg.Server.DkgCommunicate.RegetFGval - aliceserv/127.0.0.10:9020NO ReSend
+2023-02-21 15:46:45.105 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9020
+2023-02-21 15:46:45.105 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9010QUALs7
+2023-02-21 15:46:45.106 [Thread-46] ERROR c.u.thresholddkg.Server.DkgCommunicate.RegetFGval - aliceserv/127.0.0.10:9070NO ReSend
+2023-02-21 15:46:45.107 [Thread-40] ERROR c.u.thresholddkg.Server.DkgCommunicate.RegetFGval - aliceserv/127.0.0.10:9060NO ReSend
+2023-02-21 15:46:45.107 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9030
+2023-02-21 15:46:45.107 [pool-2-thread-15] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9070
+2023-02-21 15:46:45.108 [pool-2-thread-15] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9050QUALs7
+2023-02-21 15:46:45.108 [Thread-39] ERROR c.u.t.Server.DkgCommunicate.SendDKGComplain - aliceserv/127.0.0.10:9060NO Compls
+2023-02-21 15:46:45.109 [pool-2-thread-19] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9070
+2023-02-21 15:46:45.109 [pool-2-thread-19] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9040QUALs7
+2023-02-21 15:46:45.112 [Thread-54] ERROR c.u.thresholddkg.Server.DkgCommunicate.RegetFGval - aliceserv/127.0.0.10:9050NO ReSend
+2023-02-21 15:46:45.112 [Thread-56] ERROR c.u.t.Server.DkgCommunicate.SendDKGComplain - aliceserv/127.0.0.10:9040NO Compls
+2023-02-21 15:46:45.112 [Thread-53] ERROR c.u.t.Server.DkgCommunicate.SendDKGComplain - aliceserv/127.0.0.10:9050NO Compls
+2023-02-21 15:46:45.114 [Thread-51] ERROR c.u.thresholddkg.Server.DkgCommunicate.RegetFGval - aliceserv/127.0.0.10:9010NO ReSend
+2023-02-21 15:46:45.116 [Thread-47] ERROR c.u.thresholddkg.Server.DkgCommunicate.RegetFGval - aliceserv/127.0.0.10:9030NO ReSend
+2023-02-21 15:46:45.116 [Thread-50] ERROR c.u.t.Server.DkgCommunicate.SendDKGComplain - aliceserv/127.0.0.10:9010NO Compls
+2023-02-21 15:46:45.119 [Thread-45] ERROR c.u.t.Server.DkgCommunicate.SendDKGComplain - aliceserv/127.0.0.10:9030NO Compls
+2023-02-21 15:46:45.125 [Thread-57] ERROR c.u.thresholddkg.Server.DkgCommunicate.RegetFGval - aliceserv/127.0.0.10:9040NO ReSend
+2023-02-21 15:46:45.137 [Thread-44] ERROR c.u.t.Server.DkgCommunicate.SendDKGComplain - aliceserv/127.0.0.10:9070NO Compls
+2023-02-21 15:46:45.137 [Thread-38] ERROR c.u.t.Server.DkgCommunicate.SendDKGComplain - aliceserv/127.0.0.10:9020NO Compls
+2023-02-21 15:46:45.226 [pool-2-thread-10] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9070
+2023-02-21 15:46:45.247 [pool-2-thread-3] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9040
+2023-02-21 15:46:45.251 [pool-2-thread-6] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9070
+2023-02-21 15:46:45.251 [pool-2-thread-5] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9030
+2023-02-21 15:46:45.259 [pool-2-thread-12] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9050
+2023-02-21 15:46:45.263 [pool-2-thread-4] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9010
+2023-02-21 15:46:45.288 [pool-2-thread-14] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9030
+2023-02-21 15:46:45.293 [pool-2-thread-13] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9070
+2023-02-21 15:46:45.295 [pool-2-thread-5] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9020
+2023-02-21 15:46:45.305 [pool-2-thread-11] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9030
+2023-02-21 15:46:45.306 [pool-2-thread-17] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9020
+2023-02-21 15:46:45.309 [pool-2-thread-4] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9070
+2023-02-21 15:46:45.313 [pool-2-thread-20] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9060
+2023-02-21 15:46:45.313 [pool-2-thread-15] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9060
+2023-02-21 15:46:45.329 [pool-2-thread-3] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9040
+2023-02-21 15:46:45.340 [pool-2-thread-6] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9010
+2023-02-21 15:46:45.355 [pool-2-thread-13] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9010
+2023-02-21 15:46:45.356 [pool-2-thread-12] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9030
+2023-02-21 15:46:45.356 [pool-2-thread-14] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9060
+2023-02-21 15:46:45.357 [pool-2-thread-11] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9040
+2023-02-21 15:46:45.365 [pool-2-thread-5] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9050
+2023-02-21 15:46:45.373 [pool-2-thread-17] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9010
+2023-02-21 15:46:45.374 [pool-2-thread-20] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9050
+2023-02-21 15:46:45.377 [pool-2-thread-16] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9050
+2023-02-21 15:46:45.392 [pool-2-thread-4] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9060
+2023-02-21 15:46:45.401 [pool-2-thread-10] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9070
+2023-02-21 15:46:45.413 [pool-2-thread-11] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9070
+2023-02-21 15:46:45.413 [pool-2-thread-5] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9030
+2023-02-21 15:46:45.414 [pool-2-thread-19] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9040
+2023-02-21 15:46:45.418 [pool-2-thread-15] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9060
+2023-02-21 15:46:45.419 [pool-2-thread-1] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9060
+2023-02-21 15:46:45.427 [pool-2-thread-14] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9020
+2023-02-21 15:46:45.440 [pool-2-thread-6] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9030
+2023-02-21 15:46:45.440 [pool-2-thread-12] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9010
+2023-02-21 15:46:45.447 [pool-2-thread-8] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9010
+2023-02-21 15:46:45.452 [pool-2-thread-18] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9050
+2023-02-21 15:46:45.459 [pool-2-thread-17] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9040QUAL PUBKey7
+2023-02-21 15:46:45.462 [pool-2-thread-6] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9010QUAL PUBKey7
+2023-02-21 15:46:45.462 [Thread-27] ERROR com.uestc.thresholddkg.Server.communicate.SendUri - SendUri RespCode error https://127.0.0.10:9050/getPubParam
+2023-02-21 15:46:45.463 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - DKG token false
+2023-02-21 15:46:45.464 [pool-2-thread-13] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9050
+2023-02-21 15:46:45.466 [pool-2-thread-9] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9020
+2023-02-21 15:46:45.467 [pool-2-thread-2] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9020
+2023-02-21 15:46:45.467 [pool-2-thread-7] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9020
+2023-02-21 15:46:45.469 [pool-2-thread-18] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9020QUAL PUBKey7
+2023-02-21 15:46:45.472 [pool-2-thread-20] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9040
+2023-02-21 15:46:45.472 [pool-2-thread-16] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9040
+2023-02-21 15:46:45.474 [pool-2-thread-2] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9060QUAL PUBKey7
+2023-02-21 15:46:45.476 [pool-2-thread-7] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9050QUAL PUBKey7
+2023-02-21 15:46:45.479 [pool-2-thread-20] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9030QUAL PUBKey7
+2023-02-21 15:46:45.481 [pool-2-thread-16] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9070QUAL PUBKey7
+2023-02-21 15:46:46.482 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-02-21 15:46:46.484 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-02-21 15:46:46.486 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-02-21 15:46:46.487 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-02-21 15:47:38.800 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 15:47:47.817 [pool-2-thread-1] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-02-21 15:47:48.106 [Thread-26] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=102758849086978662720531447885557539030483705748977015793282346886012976017438173585421617451402199573212937674425694655326556026013223383701122278303346857, q=12844856135872332840066430985694692378810463218622126974160293360751622002179771698177702181425274946651617209303211831915819503251652922962640284787918357, g=2185640003254761595307184995271019136451302370071852525542551959329575180819525416836039113000706848450144558141676227926869512540235736123212805504188471, h=47683394304710728548571725683352484100567768271045674193624333889117927695101747789697493913691484312749844499929579236245232717596718044590288893093980319)
+2023-02-21 15:47:48.864 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-02-21 15:47:48.865 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-02-21 15:47:48.867 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-02-21 15:47:48.868 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-02-21 15:48:32.588 [pool-2-thread-20] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG suu|Passwd
+2023-02-21 15:48:32.590 [Thread-26] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=103757257338681858601056337612520183762478802160298058212443447890273428889013417941830255662100829192527435335019895079805984897989879156242082962719668633, q=12969657167335232325132042201565022970309850270037257276555430986284178611126677242728781957762603649065929416877486884975748112248734894530260370339958579, g=23017241065699025038429974848020265500359666190670991949498346478399187456211958558008808944800261570229933527772584415932572702917957368859657626011054183, h=73240771386732763243035602299195957385982883098472518332160155920438381044237750333291512754954481425278888240754119741578775875521795256929295787997730685)
+2023-02-21 15:48:33.239 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-02-21 15:48:33.241 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-02-21 15:48:33.244 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-02-21 15:48:33.246 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-02-21 15:49:50.936 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-02-21 15:49:50.938 [Thread-26] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=102758849086978662720531447885557539030483705748977015793282346886012976017438173585421617451402199573212937674425694655326556026013223383701122278303346857, q=12844856135872332840066430985694692378810463218622126974160293360751622002179771698177702181425274946651617209303211831915819503251652922962640284787918357, g=2185640003254761595307184995271019136451302370071852525542551959329575180819525416836039113000706848450144558141676227926869512540235736123212805504188471, h=47683394304710728548571725683352484100567768271045674193624333889117927695101747789697493913691484312749844499929579236245232717596718044590288893093980319)
+2023-02-21 15:49:51.560 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-02-21 15:49:51.562 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-02-21 15:49:51.563 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-02-21 15:49:51.565 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-02-21 15:52:15.479 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 15:54:53.559 [pool-2-thread-2] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-02-21 15:54:53.562 [Thread-26] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-02-21 15:54:53.593 [pool-2-thread-1] ERROR c.u.t.Server.handle.TokenHandle.StartDkgToken - START DKG Tokenalice|Passwd
+2023-02-21 15:54:54.449 [pool-2-thread-7] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9020 get DKG_System(p=79272798507542773849486853468455331043546022747117438197646243661087395142752192877546233118522539405243012769083009262097341931812456014979481902097530009, q=9909099813442846731185856683556916380443252843389679774705780457635924392844024109693279139815317425655376596135376157762167741476557001872435237762191251, g=46132383770057162821693453174829978266332671944787214782776719204894524101810292253888182313826918742973996520898435699684649816156209461963317484156973036, h=73619391457400720507281002797741442890783732010645708393422008791271844702221159971861970337648132016779944397745150486909905116367262161222352477669286818)
+2023-02-21 15:54:54.450 [pool-2-thread-6] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9070 get DKG_System(p=79272798507542773849486853468455331043546022747117438197646243661087395142752192877546233118522539405243012769083009262097341931812456014979481902097530009, q=9909099813442846731185856683556916380443252843389679774705780457635924392844024109693279139815317425655376596135376157762167741476557001872435237762191251, g=46132383770057162821693453174829978266332671944787214782776719204894524101810292253888182313826918742973996520898435699684649816156209461963317484156973036, h=73619391457400720507281002797741442890783732010645708393422008791271844702221159971861970337648132016779944397745150486909905116367262161222352477669286818)
+2023-02-21 15:54:54.455 [pool-2-thread-5] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9010 get DKG_System(p=79272798507542773849486853468455331043546022747117438197646243661087395142752192877546233118522539405243012769083009262097341931812456014979481902097530009, q=9909099813442846731185856683556916380443252843389679774705780457635924392844024109693279139815317425655376596135376157762167741476557001872435237762191251, g=46132383770057162821693453174829978266332671944787214782776719204894524101810292253888182313826918742973996520898435699684649816156209461963317484156973036, h=73619391457400720507281002797741442890783732010645708393422008791271844702221159971861970337648132016779944397745150486909905116367262161222352477669286818)
+2023-02-21 15:54:54.458 [pool-2-thread-4] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9050 get DKG_System(p=79272798507542773849486853468455331043546022747117438197646243661087395142752192877546233118522539405243012769083009262097341931812456014979481902097530009, q=9909099813442846731185856683556916380443252843389679774705780457635924392844024109693279139815317425655376596135376157762167741476557001872435237762191251, g=46132383770057162821693453174829978266332671944787214782776719204894524101810292253888182313826918742973996520898435699684649816156209461963317484156973036, h=73619391457400720507281002797741442890783732010645708393422008791271844702221159971861970337648132016779944397745150486909905116367262161222352477669286818)
+2023-02-21 15:54:54.462 [Thread-31] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9020start BroadDKG
+2023-02-21 15:54:54.463 [Thread-32] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9070start BroadDKG
+2023-02-21 15:54:54.467 [pool-2-thread-8] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9060 get DKG_System(p=79272798507542773849486853468455331043546022747117438197646243661087395142752192877546233118522539405243012769083009262097341931812456014979481902097530009, q=9909099813442846731185856683556916380443252843389679774705780457635924392844024109693279139815317425655376596135376157762167741476557001872435237762191251, g=46132383770057162821693453174829978266332671944787214782776719204894524101810292253888182313826918742973996520898435699684649816156209461963317484156973036, h=73619391457400720507281002797741442890783732010645708393422008791271844702221159971861970337648132016779944397745150486909905116367262161222352477669286818)
+2023-02-21 15:54:54.468 [Thread-34] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9050start BroadDKG
+2023-02-21 15:54:54.469 [Thread-33] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9010start BroadDKG
+2023-02-21 15:54:54.483 [Thread-35] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9060start BroadDKG
+2023-02-21 15:54:54.491 [pool-2-thread-3] WARN  com.uestc.thresholddkg.Server.handle.InitDKG - /127.0.0.10:9030 get DKG_System(p=79272798507542773849486853468455331043546022747117438197646243661087395142752192877546233118522539405243012769083009262097341931812456014979481902097530009, q=9909099813442846731185856683556916380443252843389679774705780457635924392844024109693279139815317425655376596135376157762167741476557001872435237762191251, g=46132383770057162821693453174829978266332671944787214782776719204894524101810292253888182313826918742973996520898435699684649816156209461963317484156973036, h=73619391457400720507281002797741442890783732010645708393422008791271844702221159971861970337648132016779944397745150486909905116367262161222352477669286818)
+2023-02-21 15:54:54.494 [Thread-36] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9030start BroadDKG
+2023-02-21 15:54:54.497 [Thread-37] ERROR c.u.t.Server.DkgCommunicate.GenarateFuncBroad - /127.0.0.10:9040start BroadDKG
+2023-02-21 15:54:54.559 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify false /127.0.0.10:9050
+2023-02-21 15:54:54.563 [pool-2-thread-13] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9070
+2023-02-21 15:54:54.569 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9070
+2023-02-21 15:54:54.574 [pool-2-thread-17] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9020
+2023-02-21 15:54:54.585 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9070
+2023-02-21 15:54:54.587 [pool-2-thread-9] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9020
+2023-02-21 15:54:54.591 [pool-2-thread-20] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9020
+2023-02-21 15:54:54.599 [pool-2-thread-15] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9070
+2023-02-21 15:54:54.613 [pool-2-thread-13] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9010
+2023-02-21 15:54:54.616 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify false /127.0.0.10:9050
+2023-02-21 15:54:54.628 [pool-2-thread-17] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9060
+2023-02-21 15:54:54.629 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9060
+2023-02-21 15:54:54.634 [pool-2-thread-12] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9070
+2023-02-21 15:54:54.638 [pool-2-thread-14] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9010
+2023-02-21 15:54:54.647 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify false /127.0.0.10:9050
+2023-02-21 15:54:54.656 [pool-2-thread-6] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9020
+2023-02-21 15:54:54.659 [pool-2-thread-15] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify false /127.0.0.10:9050
+2023-02-21 15:54:54.661 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify false /127.0.0.10:9050
+2023-02-21 15:54:54.662 [pool-2-thread-5] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9010
+2023-02-21 15:54:54.662 [pool-2-thread-18] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9010
+2023-02-21 15:54:54.676 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9040
+2023-02-21 15:54:54.676 [pool-2-thread-12] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9040
+2023-02-21 15:54:54.708 [pool-2-thread-1] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9010
+2023-02-21 15:54:54.709 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9060
+2023-02-21 15:54:54.716 [pool-2-thread-3] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9020
+2023-02-21 15:54:54.725 [pool-2-thread-20] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9040
+2023-02-21 15:54:54.728 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9010
+2023-02-21 15:54:54.732 [pool-2-thread-7] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify false /127.0.0.10:9050
+2023-02-21 15:54:54.748 [pool-2-thread-19] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9020
+2023-02-21 15:54:54.757 [pool-2-thread-17] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9040
+2023-02-21 15:54:54.760 [pool-2-thread-10] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9060
+2023-02-21 15:54:54.761 [pool-2-thread-13] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9060
+2023-02-21 15:54:54.772 [pool-2-thread-9] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server5verify true /127.0.0.10:9030
+2023-02-21 15:54:54.790 [pool-2-thread-14] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9040
+2023-02-21 15:54:54.805 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9030
+2023-02-21 15:54:54.806 [pool-2-thread-2] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify true /127.0.0.10:9070
+2023-02-21 15:54:54.806 [pool-2-thread-6] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9040
+2023-02-21 15:54:54.815 [pool-2-thread-18] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify true /127.0.0.10:9030
+2023-02-21 15:54:54.818 [pool-2-thread-9] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9050QUALs7
+2023-02-21 15:54:54.819 [pool-2-thread-12] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify true /127.0.0.10:9060
+2023-02-21 15:54:54.822 [pool-2-thread-15] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify true /127.0.0.10:9030
+2023-02-21 15:54:54.831 [Thread-42] ERROR c.u.t.Server.DkgCommunicate.SendDKGComplain - aliceserv/127.0.0.10:9050NO Compls
+2023-02-21 15:54:54.834 [Thread-43] ERROR c.u.thresholddkg.Server.DkgCommunicate.RegetFGval - aliceserv/127.0.0.10:9050NO ReSend
+2023-02-21 15:54:54.840 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify true /127.0.0.10:9030
+2023-02-21 15:54:54.843 [pool-2-thread-5] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify true /127.0.0.10:9030
+2023-02-21 15:54:54.884 [pool-2-thread-11] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9070 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.888 [pool-2-thread-3] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9060 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.889 [pool-2-thread-8] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9030 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.898 [pool-2-thread-5] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9060 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.920 [pool-2-thread-6] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9020 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.924 [pool-2-thread-7] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9070 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.931 [pool-2-thread-8] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9030 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.933 [pool-2-thread-14] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9030 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.935 [pool-2-thread-12] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9070 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.935 [pool-2-thread-9] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9020 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.979 [pool-2-thread-1] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9040 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:54.980 [pool-2-thread-8] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9030 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.005 [pool-2-thread-9] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9030 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.005 [pool-2-thread-9] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9030 INVALID More t compls to/127.0.0.10:9050
+2023-02-21 15:54:55.022 [pool-2-thread-1] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9060 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.027 [pool-2-thread-11] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9040 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.028 [pool-2-thread-2] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9010 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.032 [pool-2-thread-13] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9010 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.037 [pool-2-thread-6] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9070 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.041 [pool-2-thread-19] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9050 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.063 [Thread-26] ERROR com.uestc.thresholddkg.Server.communicate.SendUri - SendUri RespCode error https://127.0.0.10:9070/getPubParam
+2023-02-21 15:54:55.064 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - DKG token false
+2023-02-21 15:54:55.065 [pool-2-thread-5] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9050 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.083 [pool-2-thread-7] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9020 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.111 [pool-2-thread-3] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9050 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.112 [pool-2-thread-16] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9050 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.187 [pool-2-thread-3] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9060 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.188 [pool-2-thread-15] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9010 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.191 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9050INVALID twice,/127.0.0.10:9060
+2023-02-21 15:54:55.192 [pool-2-thread-19] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9020 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.193 [pool-2-thread-6] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9010 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.193 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9060QUALf :6
+2023-02-21 15:54:55.193 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server6verify false /127.0.0.10:9050
+2023-02-21 15:54:55.238 [pool-2-thread-11] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9050 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.238 [pool-2-thread-11] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9050 INVALID More t compls to/127.0.0.10:9050
+2023-02-21 15:54:55.240 [pool-2-thread-6] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9060 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.240 [pool-2-thread-6] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9060 INVALID More t compls to/127.0.0.10:9050
+2023-02-21 15:54:55.240 [pool-2-thread-15] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9010 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.241 [pool-2-thread-15] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9010 INVALID More t compls to/127.0.0.10:9050
+2023-02-21 15:54:55.249 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9050INVALID twice,/127.0.0.10:9040
+2023-02-21 15:54:55.250 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9040QUALf :6
+2023-02-21 15:54:55.250 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server4verify false /127.0.0.10:9050
+2023-02-21 15:54:55.256 [pool-2-thread-20] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9040 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.284 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9050INVALID twice,/127.0.0.10:9030
+2023-02-21 15:54:55.284 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9030QUALf :6
+2023-02-21 15:54:55.285 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server3verify false /127.0.0.10:9050
+2023-02-21 15:54:55.290 [pool-2-thread-6] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9050INVALID twice,/127.0.0.10:9070
+2023-02-21 15:54:55.290 [pool-2-thread-6] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9070QUALf :6
+2023-02-21 15:54:55.290 [pool-2-thread-6] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server7verify false /127.0.0.10:9050
+2023-02-21 15:54:55.291 [pool-2-thread-8] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9040 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.294 [pool-2-thread-15] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9040 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.294 [pool-2-thread-15] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9040 INVALID More t compls to/127.0.0.10:9050
+2023-02-21 15:54:55.294 [pool-2-thread-1] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9050 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.294 [pool-2-thread-1] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9050 INVALID More t compls to/127.0.0.10:9050
+2023-02-21 15:54:55.300 [pool-2-thread-19] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9070 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.300 [pool-2-thread-19] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9070 INVALID More t compls to/127.0.0.10:9050
+2023-02-21 15:54:55.326 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9050INVALID twice,/127.0.0.10:9020
+2023-02-21 15:54:55.326 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9020QUALf :6
+2023-02-21 15:54:55.326 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server2verify false /127.0.0.10:9050
+2023-02-21 15:54:55.336 [pool-2-thread-11] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9040
+2023-02-21 15:54:55.338 [pool-2-thread-3] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9020 get complainalice/127.0.0.10:9050
+2023-02-21 15:54:55.338 [pool-2-thread-3] WARN  com.uestc.thresholddkg.Server.handle.CollectCompl - /127.0.0.10:9020 INVALID More t compls to/127.0.0.10:9050
+2023-02-21 15:54:55.344 [pool-2-thread-1] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9060
+2023-02-21 15:54:55.351 [pool-2-thread-20] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9060
+2023-02-21 15:54:55.370 [pool-2-thread-7] ERROR com.uestc.thresholddkg.Server.handle.GetInvalid - /127.0.0.10:9010Invalid map Remove/127.0.0.10:9050@/127.0.0.10:9040 user:alice size 6
+2023-02-21 15:54:55.416 [pool-2-thread-18] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9060
+2023-02-21 15:54:55.417 [pool-2-thread-17] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9040
+2023-02-21 15:54:55.417 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.GetInvalid - /127.0.0.10:9050Invalid map Remove/127.0.0.10:9050@/127.0.0.10:9040 user:alice size 6
+2023-02-21 15:54:55.426 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.GetInvalid - /127.0.0.10:9030Invalid map Remove/127.0.0.10:9050@/127.0.0.10:9040 user:alice size 6
+2023-02-21 15:54:55.427 [pool-2-thread-3] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9040
+2023-02-21 15:54:55.432 [pool-2-thread-19] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9060
+2023-02-21 15:54:55.446 [pool-2-thread-14] ERROR com.uestc.thresholddkg.Server.handle.GetInvalid - /127.0.0.10:9020Invalid map Remove/127.0.0.10:9050@/127.0.0.10:9040 user:alice size 6
+2023-02-21 15:54:55.451 [pool-2-thread-6] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9040
+2023-02-21 15:54:55.458 [pool-2-thread-11] ERROR com.uestc.thresholddkg.Server.handle.GetInvalid - /127.0.0.10:9070Invalid map Remove/127.0.0.10:9050@/127.0.0.10:9040 user:alice size 6
+2023-02-21 15:54:55.459 [pool-2-thread-18] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9040
+2023-02-21 15:54:55.529 [pool-2-thread-8] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9020
+2023-02-21 15:54:55.534 [pool-2-thread-1] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9040
+2023-02-21 15:54:55.542 [pool-2-thread-20] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9020
+2023-02-21 15:54:55.543 [pool-2-thread-3] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9020
+2023-02-21 15:54:55.572 [pool-2-thread-18] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9030
+2023-02-21 15:54:55.583 [pool-2-thread-8] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9020
+2023-02-21 15:54:55.585 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9050INVALID twice,/127.0.0.10:9010
+2023-02-21 15:54:55.586 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - /127.0.0.10:9010QUALf :6
+2023-02-21 15:54:55.586 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.VerifyGH - Server1verify false /127.0.0.10:9050
+2023-02-21 15:54:55.596 [pool-2-thread-17] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9030
+2023-02-21 15:54:55.597 [pool-2-thread-2] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9030
+2023-02-21 15:54:55.609 [pool-2-thread-11] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9030
+2023-02-21 15:54:55.616 [pool-2-thread-1] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9070
+2023-02-21 15:54:55.620 [pool-2-thread-18] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9070
+2023-02-21 15:54:55.622 [pool-2-thread-5] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9070
+2023-02-21 15:54:55.624 [pool-2-thread-19] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9070
+2023-02-21 15:54:55.632 [pool-2-thread-13] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9070
+2023-02-21 15:54:55.656 [pool-2-thread-9] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9020
+2023-02-21 15:54:55.657 [pool-2-thread-12] ERROR com.uestc.thresholddkg.Server.handle.GetInvalid - /127.0.0.10:9060Invalid map Remove/127.0.0.10:9050@/127.0.0.10:9040 user:alice size 6
+2023-02-21 15:54:55.660 [pool-2-thread-15] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9060
+2023-02-21 15:54:55.665 [pool-2-thread-6] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9030
+2023-02-21 15:54:55.666 [pool-2-thread-7] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9060
+2023-02-21 15:54:55.722 [pool-2-thread-17] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9030
+2023-02-21 15:54:55.740 [pool-2-thread-11] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9070
+2023-02-21 15:54:55.745 [pool-2-thread-4] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server1verify true FEXP/127.0.0.10:9020
+2023-02-21 15:54:55.761 [pool-2-thread-5] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server3verify true FEXP/127.0.0.10:9010
+2023-02-21 15:54:55.764 [pool-2-thread-4] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9010QUAL PUBKey6
+2023-02-21 15:54:55.764 [pool-2-thread-18] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server4verify true FEXP/127.0.0.10:9010
+2023-02-21 15:54:55.769 [pool-2-thread-5] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9030QUAL PUBKey6
+2023-02-21 15:54:55.774 [pool-2-thread-13] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server6verify true FEXP/127.0.0.10:9010
+2023-02-21 15:54:55.774 [pool-2-thread-19] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server7verify true FEXP/127.0.0.10:9010
+2023-02-21 15:54:55.776 [pool-2-thread-18] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9040QUAL PUBKey6
+2023-02-21 15:54:55.793 [pool-2-thread-13] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9060QUAL PUBKey6
+2023-02-21 15:54:55.796 [pool-2-thread-19] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9070QUAL PUBKey6
+2023-02-21 15:54:55.800 [pool-2-thread-16] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server2verify true FEXP/127.0.0.10:9010
+2023-02-21 15:54:55.804 [pool-2-thread-14] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - Server5verify true FEXP/127.0.0.10:9010
+2023-02-21 15:54:55.808 [pool-2-thread-16] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9020QUAL PUBKey6
+2023-02-21 15:54:55.814 [pool-2-thread-14] ERROR c.u.t.Server.handle.TokenHandle.VerifyFExp - /127.0.0.10:9050QUAL PUBKey6
+2023-02-21 15:54:56.093 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-02-21 15:54:56.095 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-02-21 15:54:56.097 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-02-21 15:54:56.099 [Thread-26] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-02-21 15:55:29.761 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 15:56:05.673 [pool-2-thread-1] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-02-21 15:56:05.966 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-02-21 15:56:06.711 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-02-21 15:56:06.713 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-02-21 15:56:06.714 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-02-21 15:56:06.716 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-02-21 16:00:42.366 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 16:00:57.057 [pool-2-thread-1] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-02-21 16:00:57.341 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-02-21 16:00:58.072 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-02-21 16:00:58.073 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-02-21 16:00:58.075 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-02-21 16:00:58.076 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-02-21 16:19:58.401 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 16:20:12.220 [pool-2-thread-1] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-02-21 16:20:12.500 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-02-21 16:20:13.236 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-02-21 16:20:13.237 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-02-21 16:20:13.239 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-02-21 16:20:13.240 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-02-21 16:20:41.972 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-02-21 16:20:41.974 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-02-21 16:20:42.617 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-02-21 16:20:42.618 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-02-21 16:20:42.620 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-02-21 16:20:42.621 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-02-21 16:22:23.663 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-02-21 16:23:08.253 [pool-2-thread-14] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG james|Passwd
+2023-02-21 16:23:08.256 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=84823333693049758983590587851620303707277234575827867448825500633268862800910149313183807176414247586322102624286214417836528315773943554112111204860080809, q=10602916711631219872948823481452537963409654321978483431103187579158607850113768664147975897051780948290262828035776802229566039471742944264013900607510101, g=52985596309005777360737614173978597264540066663745363333229923644183745705571223144537312093928220678279551307986816596866188179933305324285756593332113556, h=22007006223739775492468064043183449975288900692948825007702227510482711723541640303348084592620204468216863622683608688699440471889014760377977375385289238)
+2023-02-21 16:23:08.910 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-02-21 16:23:08.912 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-02-21 16:23:08.913 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-02-21 16:23:08.914 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True

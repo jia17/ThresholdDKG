@@ -1,5 +1,2 @@
-PRF and Signature
-startPrfs:
-    if(user) don't regist,then DKG start And write to DB;
-    else without DKG,read from DB to get Prf
-    第一个写入prf和获取prf时，需间隔一段时间，不然可能还未写入
+httpserver for Login
+threshold signature and prfs

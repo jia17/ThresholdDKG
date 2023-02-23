@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsServer;
 import com.uestc.thresholddkg.Server.DkgCommunicate.TokenComm.InvalidFexpBroad;
 import com.uestc.thresholddkg.Server.handle.*;
+import com.uestc.thresholddkg.Server.handle.PrfsHandle.verifyPrfI;
 import com.uestc.thresholddkg.Server.handle.TokenHandle.*;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import lombok.Getter;
@@ -77,13 +78,6 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     }
     public static IdpServer getIdpServer(int serverId,String ip,int port,ExecutorService executor){
         int serverNum=addrS.length;
-//        var meg=new TestConv(new BigInteger("1313"),new BigInteger("999999999"),new String[]{"cc","xxxx"},1,false);
-//        var convert=new test2();
-//        var ss=convert.Obj2json(meg);
-//        JSONObject jsonobject = JSONObject.fromObject(ss);
-//        var s2=  JSONObject.toBean(jsonobject,TestConv.class);
-//        TestConv res=(TestConv) convert.Json2obj(ss);
-//        System.out.println(res.getText()[0]);
         IdpServer idpServers=new IdpServer();
         idpServers.serverId=serverId;
         idpServers.server=null;
@@ -131,7 +125,6 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.server.createContext("/pushFval2",new ReSendF(idpServers));
         idpServers.server.createContext("/invalidAddr",new GetInvalid(idpServers,RecvdInvMap));
         idpServers.server.createContext("/applyTestRestore",new ApplyFiTest(idpServers));
-        idpServers.server.createContext("/PrfgetHash1",new EncHash1Pwd(idpServers));
         //idpServers.server.createContext("/startPrf",new StartPRF(idpServers));
         idpServers.server.createContext("/getPrfs",new GetPrfs(idpServers));
         idpServers.server.createContext("/startDkgT",new StartDkgToken(idpServers.server.getAddress().toString(),idpServers));
@@ -143,6 +136,7 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.server.createContext("/verifyToken",new VerifyToken(idpServers));
         idpServers.server.createContext("/getMsg",new getMsg(idpServers));
         idpServers.server.createContext("/verifyTokenSub",new VerifyTokenSub(idpServers));
+        idpServers.server.createContext("/verifyGetPrfI",new verifyPrfI(idpServers));
         //ExecutorService executor = Executors.newFixedThreadPool(addrS.length - 1);//cautious
         idpServers.server.setExecutor(executor);
         idpServers.server.start();
@@ -160,20 +154,6 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
            if(server!=null){server.stop(2);
            log.warn("webSocketSinglePool destroyed."+Integer.toString(serverId));}
        }catch (Exception e){e.printStackTrace();}
-//        ExecutorService executor = Executors.newFixedThreadPool(9);
-//        CountDownLatch latch=new CountDownLatch(9);
-//        for (int i = 0; i < 9; i++) {
-//            int finalI = i;
-//            Runnable worker = new Runnable(){
-//                @Override
-//                public void run(){
-//                    servers[finalI].stop(2);latch.countDown();
-//                }
-//            };
-//            executor.execute(worker);
-//        }
-//        latch.await();
-//        executor.shutdown();
     }
 
 }

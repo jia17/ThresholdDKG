@@ -3,7 +3,6 @@ package com.uestc.thresholddkg.Server.handle;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.uestc.thresholddkg.Server.IdpServer;
-import com.uestc.thresholddkg.Server.util.test2;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
 
@@ -11,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -40,7 +38,7 @@ public class TestHandle implements HttpHandler {
         }
         //System.out.println(addr+"get"+tline);
         log.error(httpExchange.getRemoteAddress().toString()+"get"+tline);
-        var convert=new test2();
+        //var convert=new test2();
         //test Json2obj
         /*TestConv res=(TestConv) convert.Json2obj(tline);
         System.out.println(res.getText()[0]);*/

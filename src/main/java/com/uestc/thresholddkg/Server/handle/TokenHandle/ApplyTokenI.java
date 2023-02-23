@@ -4,8 +4,14 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.persist.ServPrfs;
+import com.uestc.thresholddkg.Server.persist.ServPrfsPp;
+import com.uestc.thresholddkg.Server.persist.ServTokenKey;
 import com.uestc.thresholddkg.Server.persist.mapper.ServPrfsMapper;
+import com.uestc.thresholddkg.Server.persist.mapper.ServPrfsPPMapper;
+import com.uestc.thresholddkg.Server.persist.mapper.ServTokenKMapper;
+import com.uestc.thresholddkg.Server.persist.mapperWR.ServPrfsPpWR;
 import com.uestc.thresholddkg.Server.persist.mapperWR.ServPrfsWR;
+import com.uestc.thresholddkg.Server.persist.mapperWR.ServTokenKWR;
 import com.uestc.thresholddkg.Server.pojo.*;
 import com.uestc.thresholddkg.Server.util.Calculate;
 import com.uestc.thresholddkg.Server.util.Convert2StrToken;
@@ -38,21 +44,26 @@ public class ApplyTokenI implements HttpHandler {
             tline+=line;
         }
         UserMsg2Serv userMsg=(UserMsg2Serv)Convert2StrToken.Json2obj(tline, UserMsg2Serv.class);
-        if((!idpServer.getFlag().containsKey(userMsg.getUserId())||idpServer.getFlag().get(userMsg.getUserId())!=4)) {
+        ServTokenKMapper tokenKMapper= ServTokenKWR.getMapper();
+        ServTokenKey tokenKey=tokenKMapper.selectById(idpServer.getServerId());
+        if(tokenKey==null) {
             byte[] respContents = "str".getBytes("UTF-8");
             httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
             httpExchange.sendResponseHeaders(500, respContents.length);
             httpExchange.getResponseBody().write(respContents);
             httpExchange.close();return;
         }
-        DKG_System dkg_system=idpServer.getDkgParam().get(userMsg.getUserId());
+        ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
+        ServPrfsPp servPrfsPp=servPrfsPPMapper.selectById("userId");
+        DKG_System dkg_system=new DKG_System(new BigInteger(servPrfsPp.getP()),new BigInteger(servPrfsPp.getQ()),
+                                             new BigInteger(servPrfsPp.getG()),new BigInteger(servPrfsPp.getH()));
         int index=0;String userId=userMsg.getUserId();int threshold=IdpServer.threshold;
         idpServer.getUserMsg().put(userId,userMsg.getMsg());
         idpServer.getUserMsgHash().put(userId,userMsg.getMsgHash());
         for(;index<ipPorts.length;index++){
             if(idpServer.getServer().getAddress().toString().equals("/"+ipPorts[index])){index++;break;}
         }
-        BigInteger secretI= Calculate.addsPow(idpServer.getFgRecv().get(userId),idpServer.getDkgParam().get(userId).getQ());
+        BigInteger secretI=new BigInteger(tokenKey.getPriKeyi());
         BigInteger q=dkg_system.getQ();
         Integer listMuls=1;Integer[] addrIndex= userMsg.getAddrIndex();
         for (Integer val : userMsg.getAddrIndex()) { listMuls*=val;  }
@@ -95,15 +106,6 @@ public class ApplyTokenI implements HttpHandler {
         BigInteger EncHash1Pwd=Hash1Pwd.modPow(secretIP,dkg_systemP.getP());
         TokenSi tokenSi=TokenSi.builder().Ui(Ui.toString()).Wi(EWi).EncPwdHash1(EncHash1Pwd.toString()).Cvery(CVery).build();
         String str= Convert2StrToken.Obj2json(tokenSi);
-
-       /* BigInteger p= dkg_system.getP();
-        BigInteger gm=dkg_system.getG().modPow(msgBnt,dkg_system.getP());
-        BigInteger uW=Ui.modPow(Hi,p)
-                .multiply(Wi.modPow(BigInteger.valueOf(2),p)).mod(p);
-        if(!gm.equals(uW)){
-            System.out.println(index+"SELF FALSE tokenI");
-        }else{
-            System.out.println(index+"SELF TRUE tokenI"+tokenSi.getUi()+"\n"+tokenSi.getWi()+"\n"+Hi.toString());}*/
 
         byte[] respContents = str.getBytes("UTF-8");
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");

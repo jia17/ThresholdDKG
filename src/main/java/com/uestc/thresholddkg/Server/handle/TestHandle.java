@@ -36,8 +36,9 @@ public class TestHandle implements HttpHandler {
         while((line=reader.readLine())!=null){
             tline+=line;
         }
+        idpServer.getServer().stop(1000);
+        log.error("shutDown"+idpServer.getServerId());
         //System.out.println(addr+"get"+tline);
-        log.error(httpExchange.getRemoteAddress().toString()+"get"+tline);
         //var convert=new test2();
         //test Json2obj
         /*TestConv res=(TestConv) convert.Json2obj(tline);

@@ -61,9 +61,9 @@ public class GetTokenSi{
         ConcurrentHashMap<String,String> lambdaMap=new ConcurrentHashMap<>();
         ConcurrentSkipListSet<String> verySet=new ConcurrentSkipListSet<>();
         SecureRandom random=new SecureRandom();
-        int servI= random.nextInt(ipPorts.length);
+        int servI= random.nextInt(sendAddrs.length);
         SendUri send = SendUri.builder().message(userMsg2Serv.getUserId()).mapper("getPubParam")
-                .IpAndPort(ipPorts[servI])
+                .IpAndPort(sendAddrs[servI])
                 .build();
         String PubPara=send.SendMsg();
         if(PubPara.equals("")){log.error("DKG token false");return false;}

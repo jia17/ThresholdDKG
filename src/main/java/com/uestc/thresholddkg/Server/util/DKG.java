@@ -1,8 +1,13 @@
 package com.uestc.thresholddkg.Server.util;
 
+import com.sun.net.httpserver.HttpServer;
 import com.uestc.thresholddkg.Server.Config.IpAndPort;
 import com.uestc.thresholddkg.Server.IdpServer;
+import com.uestc.thresholddkg.Server.handle.TokenHandle.LoginOut;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
+import com.uestc.thresholddkg.Server.user.StartPRF;
+import com.uestc.thresholddkg.Server.user.logOutU;
+import com.uestc.thresholddkg.Server.user.startToken;
 import lombok.var;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.Blake2bDigest;
@@ -17,15 +22,15 @@ import javax.annotation.PostConstruct;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.imageio.IIOParam;
+import java.io.IOException;
 import java.math.BigInteger;
+import java.net.InetSocketAddress;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentSkipListSet;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 import static com.uestc.thresholddkg.Server.util.TestDKG.getPedersen;
 import static java.lang.Thread.interrupted;
@@ -105,6 +110,26 @@ public class DKG {
         dKG_System.setG(g);
         dKG_System.setH(h);
         return dKG_System;
+    }
+    public static HttpServer getUserServ(){
+        HttpServer httpServer=null;
+        var service= new ThreadPoolExecutor(
+                14, 20, 5,
+                TimeUnit.SECONDS,
+                new LinkedBlockingDeque<>(),
+                Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.AbortPolicy());
+        try {
+            httpServer=HttpServer.create(new InetSocketAddress("127.0.0.1",8095),0);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        httpServer.createContext("/startPrfs",new StartPRF(httpServer,service));
+        httpServer.createContext("/startTokens",new startToken(service));
+        httpServer.createContext("/logoutU",new logOutU(service));
+        httpServer.setExecutor(null);
+        httpServer.start();
+        return httpServer;
     }
 
     public static final BigInteger generatePrimeParallel(int len) throws InterruptedException {

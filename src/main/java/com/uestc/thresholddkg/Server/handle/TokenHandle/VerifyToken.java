@@ -39,7 +39,7 @@ public class VerifyToken implements HttpHandler {
         BufferedReader reader=new BufferedReader(new InputStreamReader(Sender));
         String mess="";
         String line;
-        String res="false";
+        String res=Convert2StrToken.Obj2json(new TokenUser("","","false"));
         while((line=reader.readLine())!=null){
             mess+=line;
         }
@@ -50,25 +50,28 @@ public class VerifyToken implements HttpHandler {
             System.out.println("Sign"+Sign);
             TokenUser tokenUser=(TokenUser) Convert2StrToken.Json2obj(Sign, TokenUser.class);
             String user=tokenUser.getUser();
-            BigInteger y=new BigInteger(tokenUser.getY());
-            ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
-            ServPrfsPp servPrfsPp=servPrfsPPMapper.selectById("userId");
-            DKG_System dkg_system=new DKG_System(new BigInteger(servPrfsPp.getP()),new BigInteger(servPrfsPp.getQ()),
-                    new BigInteger(servPrfsPp.getG()),new BigInteger(servPrfsPp.getH()));
-            BigInteger Msg=new BigInteger(idpServer.getUserMsg().get(user));
-            BigInteger MsgHash=new BigInteger(idpServer.getUserMsgHash().get(user));
-            BigInteger p=dkg_system.getP();
-            BigInteger q=dkg_system.getQ();
-            BigInteger YW=y.modPow(MsgHash,p);
-            YW=YW.multiply(new BigInteger(tokenUser.getSign()).modPow(BigInteger.valueOf(2),p)).mod(p);
-            BigInteger msg=Msg.mod(q);
-            BigInteger GkM=dkg_system.getG().modPow(msg.multiply(BigInteger.valueOf(IdpServer.threshold)).mod(p),p);
-            if(GkM.equals(YW)){
-                //return subToken for App
-                var tokenSub= TestUserMsg.builder().userId(user).pwd(RandomGenerator.genarateRandom(512).toString()).build();
-                var resStr= DKG.AESencrypt(Convert2StrToken.Obj2json(tokenSub),MsgHash.toString());
-                var token=new TokenUser(user,resStr,"");
-                res=Convert2StrToken.Obj2json(token);}
+            if(idpServer.getUserMsg().get(user)!=null){
+                  BigInteger y=new BigInteger(tokenUser.getY());
+                  ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
+                  ServPrfsPp servPrfsPp=servPrfsPPMapper.selectById("userId");
+                  DKG_System dkg_system=new DKG_System(new BigInteger(servPrfsPp.getP()),new BigInteger(servPrfsPp.getQ()),
+                          new BigInteger(servPrfsPp.getG()),new BigInteger(servPrfsPp.getH()));
+                  BigInteger Msg=new BigInteger(idpServer.getUserMsg().get(user));
+                  BigInteger MsgHash=new BigInteger(idpServer.getUserMsgHash().get(user));
+                  BigInteger p=dkg_system.getP();
+                  BigInteger q=dkg_system.getQ();
+                  BigInteger YW=y.modPow(MsgHash,p);
+                  YW=YW.multiply(new BigInteger(tokenUser.getSign()).modPow(BigInteger.valueOf(2),p)).mod(p);
+                  BigInteger msg=Msg.mod(q);
+                  BigInteger GkM=dkg_system.getG().modPow(msg.multiply(BigInteger.valueOf(IdpServer.threshold)).mod(p),p);
+                  if(GkM.equals(YW)){
+                      //return subToken for App
+                      var tokenSub= TestUserMsg.builder().userId(user).pwd(RandomGenerator.genarateRandom(512).toString()).build();
+                      var resStr= DKG.AESencrypt(Convert2StrToken.Obj2json(tokenSub),MsgHash.toString());
+                      var token=new TokenUser(user,resStr,"");
+                      res=Convert2StrToken.Obj2json(token);
+                  }
+            }
         }
         byte[] respContents = res.getBytes("UTF-8");
         httpExchange.getResponseHeaders().add("Access-Control-Allow-Origin","http://127.0.0.1:8083");

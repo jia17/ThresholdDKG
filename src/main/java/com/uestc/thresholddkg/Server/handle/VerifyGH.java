@@ -96,7 +96,7 @@ public class VerifyGH implements HttpHandler {
                 falseSet.add(remoteAddr);
                 //recv a complaint about (user,remoteAddr)
                 int times=idpServer.getFgRecvFTimes().get(userId).get(remoteAddr)-1;
-                idpServer.getFgRecvFTimes().get(userId).put(userId,times);
+                idpServer.getFgRecvFTimes().get(userId).put(remoteAddr,times);//2.26 cautious
                 if((falseSet.size()+idpServer.getFgRecv().get(userId).size())== ipPorts.length){
                     idpServer.getFlag().put(userId,1);
                     //broadcast complain

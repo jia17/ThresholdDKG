@@ -11,13 +11,13 @@ public class Convert2StrToken {
     public static String Obj2json(Object obj) {
         JSONObject object=null;
         if(obj instanceof FunctionFExp) {
-            object = JSONObject.fromObject((FunctionFExp) obj);
+            object = JSONObject.fromObject(obj);
         }else
         if(obj instanceof TestUserMsg){
-            object = JSONObject.fromObject((TestUserMsg) obj);
+            object = JSONObject.fromObject(obj);
         }else
         if(obj instanceof PubParamToken){
-                object = JSONObject.fromObject((PubParamToken) obj);
+                object = JSONObject.fromObject(obj);
         }else
         if(obj instanceof UserMsg2Serv){
             object = JSONObject.fromObject((UserMsg2Serv) obj);

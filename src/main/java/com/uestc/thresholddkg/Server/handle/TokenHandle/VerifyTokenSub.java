@@ -35,7 +35,7 @@ public class VerifyTokenSub implements HttpHandler {
         BufferedReader reader=new BufferedReader(new InputStreamReader(Sender));
         String mess="";
         String line;
-        String res="false";
+        String res=Convert2StrToken.Obj2json(new TokenUser("","","false"));
         while((line=reader.readLine())!=null){
             mess+=line;
         }
@@ -47,13 +47,14 @@ public class VerifyTokenSub implements HttpHandler {
             System.out.println("tokenSub"+Sign);
              tokenUser=(TokenUser) Convert2StrToken.Json2obj(Sign, TokenUser.class);
             String user=tokenUser.getUser();
+            String resStr=Convert2StrToken.Obj2json(new TokenUser("","","false"));
+            if(idpServer.getUserMsgHash().get(user)!=null){
             BigInteger MsgHash=new BigInteger(idpServer.getUserMsgHash().get(user));
-            String resStr= "false";
             try {
                 resStr = DKG.AESdecrypt(tokenUser.getSign(),MsgHash.toString());
             } catch (NoSuchAlgorithmException e) {
                 throw new RuntimeException(e);
-            }
+            }}
             res=resStr;
         }
         byte[] respContents = res.getBytes("UTF-8");

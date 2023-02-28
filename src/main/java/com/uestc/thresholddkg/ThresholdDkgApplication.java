@@ -2,6 +2,7 @@ package com.uestc.thresholddkg;
 
 import com.uestc.thresholddkg.Server.Config.IpAndPort;
 import com.uestc.thresholddkg.Server.IdpServer;
+import com.uestc.thresholddkg.Server.util.DKG;
 import com.uestc.thresholddkg.Server.util.TestDKG;
 import lombok.var;
 import org.springframework.boot.SpringApplication;
@@ -39,7 +40,7 @@ public class ThresholdDkgApplication {
             idpServers[i]=IdpServer.getIdpServer(i+1,ip,port,service);
             i++;
         }
-        var user=TestDKG.getUserServ();
+        var user= DKG.getUserServ();
         System.out.println("cc");
     }
 

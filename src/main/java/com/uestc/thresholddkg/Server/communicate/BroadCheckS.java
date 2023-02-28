@@ -2,7 +2,7 @@ package com.uestc.thresholddkg.Server.communicate;
 
 import com.uestc.thresholddkg.Server.Config.MyX509TrustManger;
 import lombok.Builder;
-import lombok.extern.slf4j.Slf4j;
+import lombok.Data;
 
 import javax.net.ssl.*;
 import java.io.BufferedReader;
@@ -12,22 +12,22 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author zhangjia
- * @date 2023-01-03 13:56
+ * @date 2023-02-27 10:24
  */
 @Builder
-@Slf4j
-public class BoradTest implements Runnable{
+@Data
+public class BroadCheckS implements Runnable{
     private String IpAndPort;
     private String message;
     private String mapper;
 
-    private ConcurrentHashMap<String,String> resmap;
-    private ConcurrentHashMap<String,String> resPubMap;
+    private ConcurrentMap<String,String> resmap;
     private AtomicInteger failCount;
     private Integer maxFail;
     private CountDownLatch latch;
@@ -62,7 +62,7 @@ public class BoradTest implements Runnable{
             writer.close();
             int responseCode = httpurlconnection.getResponseCode();
             //表示请求成功
-            if(responseCode==HttpURLConnection.HTTP_OK){
+            if(responseCode== HttpURLConnection.HTTP_OK){
                 //log.warn("send:"+http);
                 InputStream urlstream=httpurlconnection.getInputStream();
                 BufferedReader reader=new BufferedReader(new InputStreamReader(urlstream));
@@ -71,12 +71,12 @@ public class BoradTest implements Runnable{
                     tline+=line;
                 }
                 //success
+                resmap.put(IpAndPort," ");//127.0.0:2222
                 latch.countDown();
-                String[] PriPub=tline.split("@");
-                resmap.put(IpAndPort,PriPub[0]);
-                resPubMap.put(IpAndPort,PriPub[1]);
                 success=true; }
         }catch (Exception e){
+            //fail too much
+            final int fail=failCount.incrementAndGet();
             latch.countDown();
             e.printStackTrace();
         }

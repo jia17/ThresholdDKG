@@ -114,12 +114,11 @@ public class StartPRF implements HttpHandler {
         }
         //service.shutdown();
     }
-    public static DKG_System getPwdHash1(String ID,String Passwd,HashMap<String,String> paraMap){
-        String[] ipPorts=IdpServer.addrS;
+    public static DKG_System getPwdHash1(String ID,String Passwd,HashMap<String,String> paraMap,String[] isExist){
         SecureRandom random=new SecureRandom();
-        int servI= random.nextInt(ipPorts.length);
+        int servI= random.nextInt(isExist.length);
         SendUri send = SendUri.builder().message(ID+"|"+"Passwd").mapper("startDkg")//ID can't have "|"
-                .IpAndPort(ipPorts[servI])
+                .IpAndPort(isExist[servI])
                 .build();
         String dkg_Sys=send.SendMsg();
         DKG_SysStr dkg_sysStr=(DKG_SysStr) Convert2Str.Json2obj(dkg_Sys, DKG_SysStr.class);

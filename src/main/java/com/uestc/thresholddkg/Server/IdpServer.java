@@ -40,6 +40,7 @@ import java.util.concurrent.*;
 public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     public static String[] addrS;
     public static Integer threshold;
+    public static ConcurrentMap<String,Integer> addr2Index;
     @Value("#{'${idpservers.ipandport.ServersIp}'.split(' ')}")
     public String[] configAddr;
     @Value("#{'${idpservers.threshold}'}")
@@ -75,6 +76,8 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     @PostConstruct
     public void getAddr(){
         addrS=configAddr;threshold=configThreshold;item=1;
+        addr2Index=new ConcurrentHashMap<>();
+        for(int i=0;i<configAddr.length;i++){addr2Index.put(configAddr[i],i+1);}
     }
     public static IdpServer getIdpServer(int serverId,String ip,int port,ExecutorService executor){
         int serverNum=addrS.length;
@@ -137,6 +140,12 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.server.createContext("/getMsg",new getMsg(idpServers));
         idpServers.server.createContext("/verifyTokenSub",new VerifyTokenSub(idpServers));
         idpServers.server.createContext("/verifyGetPrfI",new verifyPrfI(idpServers));
+        idpServers.server.createContext("/isExist",new IsExists(ip+":"+port));
+        idpServers.server.createContext("/logout",new LoginOut(idpServers));
+        idpServers.server.createContext("/showprf",new TestPrfsShow());
+        idpServers.server.createContext("/TestPrfsApply",new TestPrfsApply(idpServers));
+        idpServers.server.createContext("/showtoken",new TestTokenShow(idpServers));
+        idpServers.server.createContext("/TestTokenApply",new TestTokenApply(idpServers));
         //ExecutorService executor = Executors.newFixedThreadPool(addrS.length - 1);//cautious
         idpServers.server.setExecutor(executor);
         idpServers.server.start();

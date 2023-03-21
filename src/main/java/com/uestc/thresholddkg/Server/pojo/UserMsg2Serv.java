@@ -20,4 +20,5 @@ public class UserMsg2Serv {
     Integer[] addrIndex;
     private String PwdHash1;
     DKG_SysStr dkg_sysStrP;
+    String msgTime;
 }

@@ -210,6 +210,14 @@ public class DKG {
         digest.doFinal(rsData, 0);
         return rsData;
     }
+    public static byte[] HashSha256(String passwd){
+        byte[] bytes = passwd.getBytes();
+        Digest digest = new SHA3Digest(256);
+        digest.update(bytes, 0, bytes.length);
+        byte[] rsData = new byte[digest.getDigestSize()];
+        digest.doFinal(rsData, 0);
+        return rsData;
+    }
     public static String HashRipe160(String str){
         byte[] Bytes= str.getBytes();
         Digest digest=new RIPEMD160Digest();

@@ -41,6 +41,7 @@ public class LoginOut implements HttpHandler {
         //logout?user=nii
         idpServer.getUserMsgHash().remove(user);
         idpServer.getUserMsg().remove(user);
+        idpServer.getMsgTime().remove(user);
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
         httpExchange.sendResponseHeaders(200, respContents.length);
         httpExchange.getResponseBody().write(respContents);

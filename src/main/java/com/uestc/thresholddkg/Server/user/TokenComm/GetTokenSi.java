@@ -12,6 +12,7 @@ import com.uestc.thresholddkg.Server.util.Convert2StrToken;
 import com.uestc.thresholddkg.Server.util.DKG;
 import javafx.beans.binding.BooleanBinding;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
 import net.sf.json.JSONObject;
@@ -31,6 +32,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @AllArgsConstructor
 @Slf4j
+@Getter
 public class GetTokenSi{
     private String[] sendAddrs;
     private TokenUser tokenUser;
@@ -40,6 +42,8 @@ public class GetTokenSi{
     private DKG_System dkg_systemP;
     private String passwd;
     private ExecutorService service1;
+    private static String hashTokenKey="123456";
+    public static String getHashTokenKey(){return hashTokenKey;}
      public Boolean call() throws NullPointerException {
         BigInteger randRInv=Calculate.modInverse(new BigInteger(randR),dkg_systemP.getQ());
         DKG_SysStr dkg_sysStrP=new DKG_SysStr(dkg_systemP.getP().toString(),dkg_systemP.getQ().toString()
@@ -160,6 +164,9 @@ public class GetTokenSi{
                 System.out.println("FFFFFFFFFFFFFFFFFFFFFFFFFFFFF YW");return false;
             }else{ System.out.println("tttttttttttttt");}//Token Success!
             tokenUser.setUser(user);tokenUser.setSign(W.toString());tokenUser.setY(y.toString());
+            StringBuilder sb=new StringBuilder("");
+            sb.append(tokenUser.getUser()).append(tokenUser.getSign()).append(tokenUser.getY());
+            tokenUser.setHash(sb.toString(),hashTokenKey);
             return true;
         }catch (InterruptedException e){
             //executor.shutdown();

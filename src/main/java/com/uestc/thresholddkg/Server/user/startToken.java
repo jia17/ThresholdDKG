@@ -59,11 +59,11 @@ public class startToken implements HttpHandler {
             } catch (InterruptedException e) {throw new RuntimeException(e);}
             isExist=getExistServ(service);times++;
             log.error("isExist "+isExist.length);
-        }while(isExist.length<IdpServer.threshold&&times<5);
+        }while(isExist.length<IdpServer.threshold&&times<7);
         SecureRandom random=new SecureRandom();
         int servI= random.nextInt(isExist.length);
         var dkg_systemT=StartPRF.getPwdHash1(user,Passwd,paraMap,isExist);
-        var msg= TestUserMsg.builder().userId(user).pwd(RandomGenerator.genarateRandom(1024).toString()).man(false).num(333).email("12148688688@qq,com").build();
+        var msg= TestUserMsg.builder().userId(user).pwd(RandomGenerator.genarateRandom(1024).toString()+":"+new Date().getTime()).man(false).num(333).email("12148688688@qq,com").build();
         var msgStr= Convert2StrToken.Obj2json(msg);
         var bytes=msgStr.getBytes();
         String[] ipPorts= IdpServer.addrS;
@@ -88,7 +88,7 @@ public class startToken implements HttpHandler {
                  if(!exists[servi]){sendAddrs[i]=isExist[servi];i++;exists[servi]=true;}
              }
              var getTokenS=(new GetTokenSi(sendAddrs,userToken,user, UserMsg2Serv.builder().msg(msgBigIn.toString())
-                     .PwdHash1(paraMap.get("pwdHash1")).msgHash(msgHash.toString()).userId(user).build(),paraMap.get("randR"),dkg_systemT,Passwd,service));
+                     .PwdHash1(paraMap.get("pwdHash1")).msgTime(String.valueOf(new Date().getTime())).msgHash(msgHash.toString()).userId(user).build(),paraMap.get("randR"),dkg_systemT,Passwd,service));
              boolean success=getTokenS.call();
              if(success)break;
              else {
@@ -99,9 +99,9 @@ public class startToken implements HttpHandler {
         if(times==7){res="404";}else{
             res=Convert2StrToken.Obj2json(userToken);
         }}
-        var millisecond = new Date().getTime();
-        var expiresTime = new Date(millisecond + 600 * 1000-8*1000*3600);
+        var expiresTime = new Date(System.currentTimeMillis() + 600 * 1000-8*1000*3600);
         byte[] respContents = res.getBytes("UTF-8");
+        System.out.println(res);
         httpExchange.getResponseHeaders().add("Access-Control-Allow-Origin","http://127.0.0.1:8083");
         httpExchange.getResponseHeaders().add("Access-Control-Allow-Methods","*");
         httpExchange.getResponseHeaders().add("Access-Control-Allow-Credentials","true");

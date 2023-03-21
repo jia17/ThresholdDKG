@@ -12,6 +12,7 @@ import com.uestc.thresholddkg.Server.util.Convert2StrToken;
 import com.uestc.thresholddkg.Server.util.DKG;
 import com.uestc.thresholddkg.Server.util.RandomGenerator;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
@@ -22,6 +23,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhangjia
@@ -71,7 +76,20 @@ public class VerifyToken implements HttpHandler {
                       var token=new TokenUser(user,resStr,"");
                       res=Convert2StrToken.Obj2json(token);
                   }
+                  long timeT=Long.parseLong(idpServer.getMsgTime().get(user));
+                  long timeNow=new Date().getTime();
+                  if(timeNow-timeT>1000*600){
+                      res=Convert2StrToken.Obj2json(new TokenUser("","","false"));
+                      log.error("Time out,may replay attack");//cautious
+                  }
+                  StringBuilder sb=new StringBuilder("");
+                  sb.append(tokenUser.getUser()).append(tokenUser.getSign()).append(tokenUser.getY());
+                  if(!tokenUser.verifyHash(sb.toString())){
+                      res=Convert2StrToken.Obj2json(new TokenUser("","","false"));
+                      log.error("Token Hash is wrong");
+                  }else System.out.println("tokenHash true");
             }
+
         }
         byte[] respContents = res.getBytes("UTF-8");
         httpExchange.getResponseHeaders().add("Access-Control-Allow-Origin","http://127.0.0.1:8083");
@@ -83,4 +101,5 @@ public class VerifyToken implements HttpHandler {
         httpExchange.getResponseBody().write(respContents);
         httpExchange.close();
     }
+
 }

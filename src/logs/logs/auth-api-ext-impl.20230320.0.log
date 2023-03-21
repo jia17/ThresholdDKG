@@ -1,0 +1,1394 @@
+2023-03-20 16:44:58.222 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 16:46:23.907 [Thread-31] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 16:46:23.939 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:46:25.140 [pool-2-thread-8] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3933)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3869)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:864)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1707)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1217)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2189)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2220)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2015)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:768)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:385)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:323)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy72.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy55.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:89)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at com.sun.proxy.$Proxy58.selectById(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy59.selectById(Unknown Source)
+	at com.uestc.thresholddkg.Server.handle.StartDKG.handle(StartDKG.java:69)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:83)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:82)
+	at sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:675)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:645)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2023-03-20 16:46:25.174 [pool-2-thread-9] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:46:26.181 [pool-2-thread-9] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3933)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3869)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:864)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1707)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1217)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2189)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2220)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2015)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:768)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:385)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:323)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy72.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy55.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:89)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at com.sun.proxy.$Proxy58.selectById(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy59.selectById(Unknown Source)
+	at com.uestc.thresholddkg.Server.handle.StartDKG.handle(StartDKG.java:69)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:83)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:82)
+	at sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:675)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:645)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2023-03-20 16:46:26.182 [Thread-31] ERROR com.uestc.thresholddkg.Server.communicate.SendUri -  Connect to FAILhttps://127.0.0.10:9040/startDkg
+2023-03-20 16:46:35.814 [Thread-31] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 16:46:35.840 [pool-2-thread-3] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:46:36.843 [pool-2-thread-3] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3933)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3869)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:864)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1707)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1217)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2189)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2220)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2015)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:768)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:385)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:323)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy72.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy55.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:89)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at com.sun.proxy.$Proxy58.selectById(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy59.selectById(Unknown Source)
+	at com.uestc.thresholddkg.Server.handle.StartDKG.handle(StartDKG.java:69)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:83)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:82)
+	at sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:675)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:645)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2023-03-20 16:46:36.874 [pool-2-thread-1] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:46:37.895 [pool-2-thread-1] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3933)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3869)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:864)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1707)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1217)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2189)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2220)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2015)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:768)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:385)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:323)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy72.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy55.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:89)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at com.sun.proxy.$Proxy58.selectById(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy59.selectById(Unknown Source)
+	at com.uestc.thresholddkg.Server.handle.StartDKG.handle(StartDKG.java:69)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:83)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:82)
+	at sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:675)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:645)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2023-03-20 16:46:37.896 [Thread-31] ERROR com.uestc.thresholddkg.Server.communicate.SendUri -  Connect to FAILhttps://127.0.0.10:9030/startDkg
+2023-03-20 16:47:03.180 [Thread-31] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 16:47:03.207 [pool-2-thread-17] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:47:04.224 [pool-2-thread-17] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3933)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3869)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:864)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1707)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1217)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2189)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2220)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2015)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:768)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:385)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:323)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy72.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy55.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:89)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at com.sun.proxy.$Proxy58.selectById(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy59.selectById(Unknown Source)
+	at com.uestc.thresholddkg.Server.handle.StartDKG.handle(StartDKG.java:69)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:83)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:82)
+	at sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:675)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:645)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2023-03-20 16:47:04.248 [pool-2-thread-18] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:47:05.255 [pool-2-thread-18] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3933)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3869)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:864)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1707)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1217)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2189)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2220)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2015)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:768)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:385)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:323)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy72.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy55.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:89)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at com.sun.proxy.$Proxy58.selectById(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy59.selectById(Unknown Source)
+	at com.uestc.thresholddkg.Server.handle.StartDKG.handle(StartDKG.java:69)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:83)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:82)
+	at sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:675)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:645)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2023-03-20 16:47:05.256 [Thread-31] ERROR com.uestc.thresholddkg.Server.communicate.SendUri -  Connect to FAILhttps://127.0.0.10:9050/startDkg
+2023-03-20 16:47:42.181 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 16:47:45.422 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 16:47:45.461 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:47:46.701 [pool-2-thread-8] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:878)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:874)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1770)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1217)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2189)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2220)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2015)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:768)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:385)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:323)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy72.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy55.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:89)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at com.sun.proxy.$Proxy58.selectById(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy59.selectById(Unknown Source)
+	at com.uestc.thresholddkg.Server.handle.StartDKG.handle(StartDKG.java:69)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:83)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:82)
+	at sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:675)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:645)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:130)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1768)
+	... 70 common frames omitted
+2023-03-20 16:47:46.737 [pool-2-thread-9] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:47:47.743 [pool-2-thread-9] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:878)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:874)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1770)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1217)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2189)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2220)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2015)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:768)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:385)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:323)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy72.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy55.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:89)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at com.sun.proxy.$Proxy58.selectById(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy59.selectById(Unknown Source)
+	at com.uestc.thresholddkg.Server.handle.StartDKG.handle(StartDKG.java:69)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:83)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:82)
+	at sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:675)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:79)
+	at sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:645)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:130)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1768)
+	... 70 common frames omitted
+2023-03-20 16:47:47.745 [Thread-27] ERROR com.uestc.thresholddkg.Server.communicate.SendUri -  Connect to FAILhttps://127.0.0.10:9020/startDkg
+2023-03-20 16:49:15.185 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 16:49:24.419 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 16:49:24.448 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:49:24.836 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 16:49:25.184 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 16:49:25.186 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 16:49:25.188 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 16:49:25.190 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 16:50:07.528 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 16:50:07.564 [pool-2-thread-19] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:50:07.567 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 16:50:07.759 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 16:50:07.761 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 16:50:07.763 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 16:50:07.766 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 16:50:08.406 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 16:50:08.453 [pool-2-thread-18] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 16:50:08.455 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 16:50:08.633 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 16:50:08.635 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 16:50:08.636 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 16:50:08.638 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 16:58:34.626 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 16:58:34.662 [pool-2-thread-3] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG null|Passwd
+2023-03-20 16:58:34.664 [pool-2-thread-3] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - user don't register,without prfs_pp
+2023-03-20 17:00:05.669 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:00:13.281 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:00:13.326 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:00:13.744 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:00:14.050 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 17:00:14.052 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 17:00:14.054 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:00:14.056 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 17:02:10.570 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:02:15.037 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:02:15.068 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:02:15.421 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:02:15.705 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 17:02:15.708 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 17:02:15.710 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 17:02:15.712 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:02:47.738 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:02:51.232 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:02:51.265 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:02:51.590 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:02:51.861 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 17:02:51.864 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 17:02:51.866 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:02:51.869 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 17:03:41.451 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:03:45.102 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:03:45.135 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:03:45.442 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:03:45.897 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 17:03:45.900 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 17:03:45.903 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 17:03:45.905 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:04:07.283 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:04:10.940 [Thread-29] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:04:10.976 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:04:11.366 [Thread-29] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:04:11.670 [Thread-29] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 17:04:11.674 [Thread-29] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 17:04:11.677 [Thread-29] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:04:11.680 [Thread-29] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 17:05:01.824 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:05:06.872 [Thread-29] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:05:06.912 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:05:07.426 [Thread-29] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:05:07.898 [Thread-29] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 17:05:07.901 [Thread-29] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 17:05:07.903 [Thread-29] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:05:07.905 [Thread-29] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 17:07:06.426 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:07:09.530 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:07:09.567 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:07:09.942 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:07:10.219 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 17:07:10.221 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 17:07:10.223 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 17:07:10.225 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 17:38:59.893 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:39:04.896 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:39:04.931 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:39:05.061 [restartedMain] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springApplicationAdminRegistrar' defined in class path resource [org/springframework/boot/autoconfigure/admin/SpringApplicationAdminJmxAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+2023-03-20 17:39:05.122 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springApplicationAdminRegistrar' defined in class path resource [org/springframework/boot/autoconfigure/admin/SpringApplicationAdminJmxAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+	at org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar.afterPropertiesSet(SpringApplicationAdminMXBeanRegistrar.java:129)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 20 common frames omitted
+2023-03-20 17:40:06.106 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:40:11.051 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:40:13.978 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - 'FileNamePattern' option has the same value "src/logs/logs/auth-api-ext-impl.%d{yyyyMMdd}.%i.log.gz" as that given for appender [fileAppender] defined earlier.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - Collisions detected with FileAppender/RollingAppender instances defined earlier. Aborting.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - For more information, please visit http://logback.qos.ch/codes.html#earlier_fa_collision
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:344)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - 'FileNamePattern' option has the same value "src/logs/logs/auth-api-ext-impl.%d{yyyyMMdd}.%i.log.gz" as that given for appender [fileAppender] defined earlier.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - Collisions detected with FileAppender/RollingAppender instances defined earlier. Aborting.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - For more information, please visit http://logback.qos.ch/codes.html#earlier_fa_collision
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:179)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reinitialize(LogbackLoggingSystem.java:232)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:73)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 23 common frames omitted
+2023-03-20 17:40:14.550 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:40:25.701 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:40:28.957 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:40:29.011 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:40:29.395 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:40:29.664 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 17:40:29.665 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 17:40:29.667 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 17:40:29.669 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:44:00.623 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:44:03.695 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:44:03.739 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:44:04.198 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:44:04.500 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 17:44:04.502 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 17:44:04.505 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 17:44:04.508 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 17:46:28.209 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:46:31.286 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:46:31.334 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:46:31.956 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:46:32.285 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 17:46:32.288 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 17:46:32.291 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:46:32.294 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 17:46:41.254 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:48:55.896 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:48:58.982 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:48:59.012 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:48:59.391 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:48:59.703 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 17:48:59.705 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 17:48:59.707 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:48:59.709 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 17:49:09.383 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:49:09.416 [pool-2-thread-6] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:49:09.419 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:49:09.628 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 17:49:09.631 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 17:49:09.633 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 17:49:09.635 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 17:50:17.790 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 17:50:20.616 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:50:20.654 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:50:21.063 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:50:21.355 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 17:50:21.356 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 17:50:21.358 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 17:50:21.359 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:51:11.542 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:51:11.572 [pool-2-thread-2] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:51:11.574 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:51:11.737 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 17:51:11.738 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 17:51:11.740 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:51:11.741 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 17:55:42.219 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 17:55:42.246 [pool-2-thread-12] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 17:55:42.248 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 17:55:42.373 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 17:55:42.374 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 17:55:42.375 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 17:55:42.377 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 17:56:02.920 [pool-2-thread-2] ERROR c.u.t.Server.handle.TokenHandle.VerifyToken - Token Hash is wrong
+2023-03-20 18:13:47.528 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 18:13:54.666 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 18:13:54.694 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 18:13:54.984 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 18:13:55.386 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 18:13:55.388 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 18:13:55.390 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 18:13:55.392 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 18:14:27.846 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 18:14:32.732 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 18:14:32.761 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 18:14:33.097 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 18:14:33.332 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 18:14:33.333 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 18:14:33.335 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 18:14:33.336 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 18:15:57.144 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 18:15:57.169 [pool-2-thread-1] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 18:15:57.171 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 18:15:57.299 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 18:15:57.301 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 18:15:57.302 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 18:15:57.303 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 18:17:26.036 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 18:17:26.062 [pool-2-thread-18] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 18:17:26.064 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 18:17:26.197 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 18:17:26.199 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 18:17:26.200 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 18:17:26.201 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 18:22:40.900 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 18:22:40.924 [pool-2-thread-7] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 18:22:40.926 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 18:22:41.054 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 18:22:41.055 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 18:22:41.056 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 18:22:41.058 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 18:23:37.916 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 18:23:37.943 [pool-2-thread-14] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 18:23:37.945 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 18:23:38.076 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 18:23:38.077 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 18:23:38.078 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 18:23:38.080 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 18:29:07.459 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 18:29:10.320 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - 'FileNamePattern' option has the same value "src/logs/logs/auth-api-ext-impl.%d{yyyyMMdd}.%i.log.gz" as that given for appender [fileAppender] defined earlier.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - Collisions detected with FileAppender/RollingAppender instances defined earlier. Aborting.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - For more information, please visit http://logback.qos.ch/codes.html#earlier_fa_collision
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:344)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - 'FileNamePattern' option has the same value "src/logs/logs/auth-api-ext-impl.%d{yyyyMMdd}.%i.log.gz" as that given for appender [fileAppender] defined earlier.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - Collisions detected with FileAppender/RollingAppender instances defined earlier. Aborting.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - For more information, please visit http://logback.qos.ch/codes.html#earlier_fa_collision
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:179)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reinitialize(LogbackLoggingSystem.java:232)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:73)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 23 common frames omitted
+2023-03-20 18:29:10.589 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 20:31:30.531 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 20:31:33.937 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.uestc.thresholddkg]' package. Please check your configuration.
+2023-03-20 20:31:42.229 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - 'FileNamePattern' option has the same value "src/logs/logs/auth-api-ext-impl.%d{yyyyMMdd}.%i.log.gz" as that given for appender [fileAppender] defined earlier.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - Collisions detected with FileAppender/RollingAppender instances defined earlier. Aborting.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - For more information, please visit http://logback.qos.ch/codes.html#earlier_fa_collision
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:344)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - 'FileNamePattern' option has the same value "src/logs/logs/auth-api-ext-impl.%d{yyyyMMdd}.%i.log.gz" as that given for appender [fileAppender] defined earlier.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - Collisions detected with FileAppender/RollingAppender instances defined earlier. Aborting.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - For more information, please visit http://logback.qos.ch/codes.html#earlier_fa_collision
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:179)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reinitialize(LogbackLoggingSystem.java:232)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:73)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 23 common frames omitted
+2023-03-20 20:31:42.894 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 20:31:45.610 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 20:31:45.642 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 20:31:45.698 [pool-2-thread-9] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 20:31:45.699 [Thread-28] ERROR com.uestc.thresholddkg.Server.communicate.SendUri -  Connect to FAILhttps://127.0.0.10:9030/startDkg
+2023-03-20 20:32:16.496 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 20:32:16.528 [pool-2-thread-6] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 20:32:16.556 [pool-2-thread-1] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 20:32:16.557 [Thread-28] ERROR com.uestc.thresholddkg.Server.communicate.SendUri -  Connect to FAILhttps://127.0.0.10:9050/startDkg
+2023-03-20 20:33:32.639 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 20:33:32.663 [pool-2-thread-19] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 20:33:32.689 [pool-2-thread-20] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 20:33:32.690 [Thread-28] ERROR com.uestc.thresholddkg.Server.communicate.SendUri -  Connect to FAILhttps://127.0.0.10:9060/startDkg
+2023-03-20 20:35:46.758 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 20:35:49.652 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 20:35:49.682 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 20:35:49.986 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 20:35:50.247 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 20:35:50.249 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 20:35:50.250 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 20:35:50.252 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 20:37:30.162 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 20:38:53.595 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 20:39:07.352 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 20:39:07.378 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 20:39:07.657 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 20:39:07.904 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 20:39:07.906 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 20:39:07.908 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 20:39:07.910 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 20:40:19.603 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 20:52:13.194 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 20:53:50.056 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 20:53:50.084 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 20:53:50.343 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 20:53:50.578 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 20:53:50.580 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 20:53:50.581 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 20:53:50.582 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 20:57:32.709 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 20:57:32.739 [pool-2-thread-4] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 20:57:32.742 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 20:57:32.894 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 20:57:32.896 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 20:57:32.897 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 20:57:32.900 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 21:00:10.190 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:00:11.952 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - 'FileNamePattern' option has the same value "src/logs/logs/auth-api-ext-impl.%d{yyyyMMdd}.%i.log.gz" as that given for appender [fileAppender] defined earlier.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - Collisions detected with FileAppender/RollingAppender instances defined earlier. Aborting.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - For more information, please visit http://logback.qos.ch/codes.html#earlier_fa_collision
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:344)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - 'FileNamePattern' option has the same value "src/logs/logs/auth-api-ext-impl.%d{yyyyMMdd}.%i.log.gz" as that given for appender [fileAppender] defined earlier.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - Collisions detected with FileAppender/RollingAppender instances defined earlier. Aborting.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - For more information, please visit http://logback.qos.ch/codes.html#earlier_fa_collision
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:179)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reinitialize(LogbackLoggingSystem.java:232)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:73)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 23 common frames omitted
+2023-03-20 21:00:12.253 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:00:26.928 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:00:26.987 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:00:27.184 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationNotAllowedException: Error creating bean with name 'conditionEvaluationDeltaLoggingListener': Singleton bean creation not allowed while singletons of this factory are in destruction (Do not request a bean from a BeanFactory in a destroy method implementation!)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:220)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213)
+	at org.springframework.context.event.AbstractApplicationEventMulticaster.retrieveApplicationListeners(AbstractApplicationEventMulticaster.java:264)
+	at org.springframework.context.event.AbstractApplicationEventMulticaster.getApplicationListeners(AbstractApplicationEventMulticaster.java:221)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
+	at org.springframework.boot.context.event.EventPublishingRunListener.ready(EventPublishingRunListener.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$ready$6(SpringApplicationRunListeners.java:82)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.ready(SpringApplicationRunListeners.java:82)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:323)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+2023-03-20 21:00:27.184 [restartedMain] WARN  org.springframework.boot.SpringApplication - Unable to close ApplicationContext
+java.lang.IllegalStateException: org.springframework.context.annotation.AnnotationConfigApplicationContext@3f6d1e4f has been closed already
+	at org.springframework.context.support.AbstractApplicationContext.assertBeanFactoryActive(AbstractApplicationContext.java:1138)
+	at org.springframework.context.support.AbstractApplicationContext.getBeansOfType(AbstractApplicationContext.java:1299)
+	at org.springframework.boot.SpringApplication.getExitCodeFromMappedException(SpringApplication.java:867)
+	at org.springframework.boot.SpringApplication.getExitCodeFromException(SpringApplication.java:855)
+	at org.springframework.boot.SpringApplication.handleExitCode(SpringApplication.java:842)
+	at org.springframework.boot.SpringApplication.handleRunFailure(SpringApplication.java:782)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+2023-03-20 21:00:27.619 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:00:27.676 [restartedMain] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springApplicationAdminRegistrar' defined in class path resource [org/springframework/boot/autoconfigure/admin/SpringApplicationAdminJmxAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+2023-03-20 21:00:27.686 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springApplicationAdminRegistrar' defined in class path resource [org/springframework/boot/autoconfigure/admin/SpringApplicationAdminJmxAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+	at org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar.afterPropertiesSet(SpringApplicationAdminMXBeanRegistrar.java:129)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 20 common frames omitted
+2023-03-20 21:00:29.131 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:00:29.190 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:00:29.804 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:00:29.808 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:00:29.841 [restartedMain] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springApplicationAdminRegistrar' defined in class path resource [org/springframework/boot/autoconfigure/admin/SpringApplicationAdminJmxAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+2023-03-20 21:00:29.847 [restartedMain] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springApplicationAdminRegistrar' defined in class path resource [org/springframework/boot/autoconfigure/admin/SpringApplicationAdminJmxAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+2023-03-20 21:00:29.849 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springApplicationAdminRegistrar' defined in class path resource [org/springframework/boot/autoconfigure/admin/SpringApplicationAdminJmxAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+	at org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar.afterPropertiesSet(SpringApplicationAdminMXBeanRegistrar.java:129)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 20 common frames omitted
+2023-03-20 21:00:29.854 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springApplicationAdminRegistrar' defined in class path resource [org/springframework/boot/autoconfigure/admin/SpringApplicationAdminJmxAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.management.InstanceAlreadyExistsException: org.springframework.boot:type=Admin,name=SpringApplication
+	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+	at org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar.afterPropertiesSet(SpringApplicationAdminMXBeanRegistrar.java:129)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 20 common frames omitted
+2023-03-20 21:00:35.612 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:01:54.628 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:01:54.658 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:01:54.906 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 21:01:55.134 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 21:01:55.136 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 21:01:55.138 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 21:01:55.139 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 21:03:35.372 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:03:35.399 [pool-2-thread-10] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:03:35.401 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 21:03:35.543 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 21:03:35.545 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 21:03:35.547 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 21:03:35.549 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 21:04:14.014 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:06:40.108 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:25:03.222 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:25:35.303 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:25:35.330 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:25:35.636 [Thread-28] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 21:25:35.892 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 21:25:35.894 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 21:25:35.895 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 21:25:35.897 [Thread-28] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 21:38:12.459 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:38:25.985 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:38:26.012 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:38:26.328 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 21:38:26.564 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 21:38:26.565 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 21:38:26.567 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 21:38:26.568 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 21:40:18.460 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:40:35.998 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:40:36.026 [pool-2-thread-5] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:40:36.306 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 21:40:36.521 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 21:40:36.523 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 21:40:36.524 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 21:40:36.525 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 21:41:26.679 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:41:28.490 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - 'FileNamePattern' option has the same value "src/logs/logs/auth-api-ext-impl.%d{yyyyMMdd}.%i.log.gz" as that given for appender [fileAppender] defined earlier.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - Collisions detected with FileAppender/RollingAppender instances defined earlier. Aborting.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - For more information, please visit http://logback.qos.ch/codes.html#earlier_fa_collision
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:344)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - 'FileNamePattern' option has the same value "src/logs/logs/auth-api-ext-impl.%d{yyyyMMdd}.%i.log.gz" as that given for appender [fileAppender] defined earlier.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - Collisions detected with FileAppender/RollingAppender instances defined earlier. Aborting.
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[fileAppender] - For more information, please visit http://logback.qos.ch/codes.html#earlier_fa_collision
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:179)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reinitialize(LogbackLoggingSystem.java:232)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:73)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 23 common frames omitted
+2023-03-20 21:41:28.814 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:43:39.690 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:43:39.713 [pool-2-thread-19] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:43:39.742 [pool-2-thread-1] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:43:39.743 [Thread-27] ERROR com.uestc.thresholddkg.Server.communicate.SendUri -  Connect to FAILhttps://127.0.0.10:9060/startDkg
+2023-03-20 21:44:09.177 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:44:09.210 [pool-2-thread-17] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:44:09.237 [pool-2-thread-10] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:44:09.238 [Thread-27] ERROR com.uestc.thresholddkg.Server.communicate.SendUri -  Connect to FAILhttps://127.0.0.10:9040/startDkg
+2023-03-20 21:45:58.196 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-20 21:46:01.424 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:46:01.454 [pool-2-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:46:01.740 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 21:46:01.977 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 21:46:01.979 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 21:46:01.980 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 21:46:01.982 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 21:46:51.991 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:46:52.016 [pool-2-thread-18] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG sum|Passwd
+2023-03-20 21:46:52.020 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=85367914519382965419427913769072691548265533674739929616623634851227945233215544682106367556573180353706383261276260328605776970002767299939241645901574873, q=10670989314922870677428489221134086443533191709342491202077954356403493154151943085263295944571647544213297907659532541075722121250345912492405205737696859, g=64198418231205232210012272019002670893756085299859737198886433257366709220684398118722485852994318184123075030482666506971495055856980331473322711616218841, h=72157913596650195440087809416481537627287744464347104051428638794235655273629939089832818016570167301901718766903223678727271196442072788043992475431485318)
+2023-03-20 21:46:52.157 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 21:46:52.158 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 21:46:52.159 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 21:46:52.161 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 21:47:20.641 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:47:20.669 [pool-2-thread-16] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG sum|Passwd
+2023-03-20 21:47:20.671 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=85367914519382965419427913769072691548265533674739929616623634851227945233215544682106367556573180353706383261276260328605776970002767299939241645901574873, q=10670989314922870677428489221134086443533191709342491202077954356403493154151943085263295944571647544213297907659532541075722121250345912492405205737696859, g=64198418231205232210012272019002670893756085299859737198886433257366709220684398118722485852994318184123075030482666506971495055856980331473322711616218841, h=72157913596650195440087809416481537627287744464347104051428638794235655273629939089832818016570167301901718766903223678727271196442072788043992475431485318)
+2023-03-20 21:47:20.809 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-20 21:47:20.810 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 21:47:20.811 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-20 21:47:20.813 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-20 21:48:06.828 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-20 21:48:06.854 [pool-2-thread-19] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-20 21:48:06.856 [Thread-27] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-20 21:48:06.985 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-20 21:48:06.986 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-20 21:48:06.988 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-20 21:48:06.989 [Thread-27] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-03-20 21:49:17.499 [pool-2-thread-20] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd

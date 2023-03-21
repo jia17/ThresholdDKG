@@ -60,6 +60,7 @@ public class ApplyTokenI implements HttpHandler {
         int index=0;String userId=userMsg.getUserId();int threshold=IdpServer.threshold;
         idpServer.getUserMsg().put(userId,userMsg.getMsg());
         idpServer.getUserMsgHash().put(userId,userMsg.getMsgHash());
+        idpServer.getMsgTime().put(userMsg.getUserId(),userMsg.getMsgTime());
         for(;index<ipPorts.length;index++){
             if(idpServer.getServer().getAddress().toString().equals("/"+ipPorts[index])){index++;break;}
         }

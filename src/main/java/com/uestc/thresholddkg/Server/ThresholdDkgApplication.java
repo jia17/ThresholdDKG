@@ -1,16 +1,19 @@
-package com.uestc.thresholddkg;
+package com.uestc.thresholddkg.Server;
 
-import com.uestc.thresholddkg.Server.Config.IpAndPort;
-import com.uestc.thresholddkg.Server.IdpServer;
+import com.uestc.thresholddkg.Server.Config.RedisConfig;
+import com.uestc.thresholddkg.Server.pojo.IdPwd;
 import com.uestc.thresholddkg.Server.util.DKG;
-import com.uestc.thresholddkg.Server.util.TestDKG;
+import com.uestc.thresholddkg.Server.util.testt;
 import lombok.var;
+import org.redisson.api.RReadWriteLock;
+import org.redisson.api.RedissonClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.redis.core.RedisTemplate;
 
 
-import javax.annotation.Resource;
-import java.security.KeyStore;
+import java.util.Date;
 import java.util.concurrent.*;
 
 @SpringBootApplication
@@ -21,7 +24,7 @@ public class ThresholdDkgApplication {
         initSys();
     }
 
-    static void initSys(){
+    static void initSys()  {
         String[] serverAddr=IdpServer.addrS;
         String[] addrSplit=new String[2];
         String ip;Integer port;
@@ -42,7 +45,10 @@ public class ThresholdDkgApplication {
         }
         var user= DKG.getUserServ();
         System.out.println("cc");
+        /*try {
+            new testt().test();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }*/
     }
-
-
 }

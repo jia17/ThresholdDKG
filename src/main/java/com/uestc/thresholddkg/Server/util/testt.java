@@ -2,6 +2,7 @@ package com.uestc.thresholddkg.Server.util;
 
 import com.uestc.thresholddkg.Server.Config.RedisConfig;
 import com.uestc.thresholddkg.Server.pojo.IdPwd;
+import com.uestc.thresholddkg.Server.pojo.userMsgRedis;
 import lombok.NoArgsConstructor;
 import lombok.var;
 import org.redisson.api.RReadWriteLock;
@@ -59,5 +60,12 @@ public class testt {
         var t2=(IdPwd) redisTemplate.opsForValue().get("334");
         String a=(String) redisTemplate.opsForValue().get("ss");
         System.out.println();
+    }
+
+    public void test2() {
+        getRedis.writeUserMsg("qwer",new userMsgRedis("sss","sss","cc"));
+        System.out.println(getRedis.readUserMsg("qwer").getMsgTime());
+       // getRedis.removeMsg("qwer");
+       // System.out.println(getRedis.readUserMsg("qwer"));
     }
 }

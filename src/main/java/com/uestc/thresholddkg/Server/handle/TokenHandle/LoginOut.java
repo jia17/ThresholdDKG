@@ -9,6 +9,7 @@ import com.uestc.thresholddkg.Server.pojo.DkgSysMsg;
 import com.uestc.thresholddkg.Server.util.Convert2Str;
 import com.uestc.thresholddkg.Server.util.DKG;
 import com.uestc.thresholddkg.Server.util.RandomGenerator;
+import com.uestc.thresholddkg.Server.util.getRedis;
 import lombok.AllArgsConstructor;
 import lombok.var;
 
@@ -39,9 +40,10 @@ public class LoginOut implements HttpHandler {
         }
         byte[] respContents = "logout".getBytes("UTF-8");
         //logout?user=nii
-        idpServer.getUserMsgHash().remove(user);
+        /*idpServer.getUserMsgHash().remove(user);
         idpServer.getUserMsg().remove(user);
-        idpServer.getMsgTime().remove(user);
+        idpServer.getMsgTime().remove(user);*/
+        getRedis.removeMsg(user);
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
         httpExchange.sendResponseHeaders(200, respContents.length);
         httpExchange.getResponseBody().write(respContents);

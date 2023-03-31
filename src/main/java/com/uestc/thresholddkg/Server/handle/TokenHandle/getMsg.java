@@ -32,9 +32,9 @@ public class getMsg implements HttpHandler {
             msg+=line;
         }
         var userMsg=(UserMsg2Serv) Convert2StrToken.Json2obj(msg, UserMsg2Serv.class);
-        idpServer.getUserMsg().put(userMsg.getUserId(),userMsg.getMsg());
+       /* idpServer.getUserMsg().put(userMsg.getUserId(),userMsg.getMsg());
         idpServer.getUserMsgHash().put(userMsg.getUserId(), userMsg.getMsgHash());
-        idpServer.getMsgTime().put(userMsg.getUserId(),userMsg.getMsgTime());
+        idpServer.getMsgTime().put(userMsg.getUserId(),userMsg.getMsgTime());*/
         byte[] respContents = "str".getBytes("UTF-8");
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
         httpExchange.sendResponseHeaders(200, respContents.length);

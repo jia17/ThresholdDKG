@@ -217,3 +217,71 @@ java.io.IOException: 远程主机强迫关闭了一个现有的连接。
 2023-03-21 12:32:53.704 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
 2023-03-21 12:45:31.347 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
 2023-03-21 12:45:39.994 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-21 13:51:15.592 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-21 13:51:48.851 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-21 13:51:48.895 [restartedMain] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'getRedis': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.uestc.thresholddkg.Server.util.getRedis] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1f734c9a]
+2023-03-21 13:51:48.927 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'getRedis': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.uestc.thresholddkg.Server.util.getRedis] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1f734c9a]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:289)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1302)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.uestc.thresholddkg.Server.ThresholdDkgApplication.main(ThresholdDkgApplication.java:23)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.uestc.thresholddkg.Server.util.getRedis] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1f734c9a]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485)
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:321)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:267)
+	... 22 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/uestc/thresholddkg/Server/pojo/userMsgRedis
+	at java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701)
+	at java.lang.Class.getDeclaredMethods(Class.java:1975)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:467)
+	... 24 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.uestc.thresholddkg.Server.pojo.userMsgRedis
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:348)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:145)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 28 common frames omitted
+2023-03-21 13:51:51.279 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-21 13:52:07.340 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-21 13:52:31.014 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-21 13:53:23.339 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-21 13:57:56.713 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-21 13:59:35.955 [Thread-31] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-21 13:59:35.983 [pool-3-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-21 13:59:36.221 [Thread-31] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=66199289754939591851578211701545191052009484534319182770068606899046962899742487905538988270584961160049262463760685303258190381949937191905145807448404009, q=8274911219367448981447276462693148881501185566789897846258575862380870362467810988192373533823120145006157807970085662907273797743742148988143225931050501, g=23060614636471750874939553315984575340721865013647250101412278235763847329571398665378075931577071143609114355914677801832381423194973787130812419786397319, h=41328090118956125713218546879397376053466903456466927993542125701069053588847826605719957542824683071449418914050136751647600741694410799084175120022798761)
+2023-03-21 13:59:36.692 [Thread-31] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-03-21 13:59:36.693 [Thread-31] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-21 13:59:36.694 [Thread-31] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-21 13:59:36.696 [Thread-31] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-21 14:00:24.875 [Thread-31] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-21 14:00:24.900 [pool-3-thread-12] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG jjj|Passwd
+2023-03-21 14:00:24.902 [Thread-31] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=82723253321394560399061889806879177435076929028805719703236099468990600459987611792639819655313635332916067715882043346495812516334784749210804635776930809, q=10340406665174320049882736225859897179384616128600714962904512433623825057498451474079977456914204416614508464485255418311976564541848093651350579472116351, g=32934431066405073744329318133593145387664427927278398107791870253466126640103825775901824961212241504499284546634402888781214665117622267812121457936685166, h=20930174096906126285723132491599304935953822423897938130205265158074038401898272931399320603629697304204904983350307891137312105443391028633006422315456246)
+2023-03-21 14:00:25.037 [Thread-31] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-21 14:00:25.038 [Thread-31] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 4 verify tokeni True
+2023-03-21 14:00:25.040 [Thread-31] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-03-21 14:00:25.041 [Thread-31] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True

@@ -37,14 +37,8 @@ public class logOutU implements HttpHandler {
         if(user!=""){
         user=user.split(":")[1];
         user=user.substring(1,user.length()-2);
-        String[] ipPorts = IdpServer.addrS;
-        Integer serversNum = ipPorts.length;
-        CountDownLatch latch = new CountDownLatch(ipPorts.length);
         System.out.println("logOut "+user);
-        ConcurrentHashMap<String,String> failMap=new ConcurrentHashMap<>();
-        for (String s:ipPorts) {
-            service.submit(BroadCastMsg.builder().failsMap(failMap).mapper("logout").message(user).latch(latch).IpAndPort(s).build());
-        }
+        SendLogout(user,service);
         }
         byte[] respContents="logOutU".getBytes("UTF-8");;
         httpExchange.getResponseHeaders().add("Access-Control-Allow-Origin",httpExchange.getRequestHeaders().getFirst("Origin"));
@@ -55,5 +49,15 @@ public class logOutU implements HttpHandler {
         httpExchange.sendResponseHeaders(200, respContents.length);
         httpExchange.getResponseBody().write(respContents);
         httpExchange.close();
+    }
+
+    public static void SendLogout(String user,ExecutorService service){
+        String[] ipPorts = IdpServer.addrS;
+        Integer serversNum = ipPorts.length;
+        CountDownLatch latch = new CountDownLatch(ipPorts.length);
+        ConcurrentHashMap<String,String> failMap=new ConcurrentHashMap<>();
+        for (String s:ipPorts) {
+            service.submit(BroadCastMsg.builder().failsMap(failMap).mapper("logout").message(user).latch(latch).IpAndPort(s).build());
+        }
     }
 }

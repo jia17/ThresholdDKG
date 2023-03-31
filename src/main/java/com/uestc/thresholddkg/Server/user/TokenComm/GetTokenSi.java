@@ -77,11 +77,11 @@ public class GetTokenSi{
             executor.submit(
                     UserBroadGetTokeni.builder().latch(latch).message(Convert2StrToken.Obj2json(userMsg2Serv)).mapper("sendTokenI").IpAndPort(ipPorts[i])
                             .resMap(resMap).index(AddrIndex[addrMap.get(ipPorts[i])]).lambdaMap(lambdaMap).build()
-            );}else{
+            );}/*else{
                 executor.submit(
                         BroadCastMsg.builder().latch(new CountDownLatch(3)).message(Convert2StrToken.Obj2json(userMsg2Serv)).mapper("getMsg").IpAndPort(ipPorts[i])
                                 .failsMap(new ConcurrentHashMap<>()).build());
-            }
+            }*/
         }
         try {
             latch.await();

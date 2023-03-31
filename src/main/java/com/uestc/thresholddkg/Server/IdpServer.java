@@ -68,10 +68,7 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
     private Map<String,Map<String,BigInteger>> fExpRecv;//g^ai
     private Map<String,Set<String>> fExpFalse;
 
-    private Map<String,String> userMsg;
-    private Map<String,String> userMsgHash;
     private Map<String,String> userY;
-    private Map<String,String> msgTime;
 
     private ExecutorService service;
     @PostConstruct
@@ -116,9 +113,7 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
         idpServers.fgRecvFTimes=new HashMap<>();
         idpServers.PrfHi=new HashMap<>();
         idpServers.PrfVerify=new HashMap<>();
-        idpServers.pubId=new HashSet<>();
-        idpServers.msgTime=new HashMap<>();
-        idpServers.userMsg=new HashMap<>();idpServers.userMsgHash=new HashMap<>();idpServers.userY=new HashMap<>();
+        idpServers.pubId=new HashSet<>();idpServers.userY=new HashMap<>();
         idpServers.fExpFalse=new HashMap<>();idpServers.fExpRecv=new HashMap<>();
         idpServers.server.createContext("/startDkg",new StartDKG(idpServers.server.getAddress().toString(),idpServers));
         idpServers.server.createContext("/initDkg",new InitDKG(idpServers.server.getAddress().toString(),idpServers));

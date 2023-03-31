@@ -61,17 +61,20 @@ public class verifyPrfI implements HttpHandler {
             ServPrfsMapper servPrfsMapper= ServPrfsWR.getMapper();
             QueryWrapper<ServPrfs> queryWrapper=new QueryWrapper<>();
             queryWrapper.eq("servId",idpServer.getServerId()).eq("userId",userId);
-            if(servPrfsMapper.selectOne(queryWrapper)==null) {
+            if(ghVals.getChangePwd()||servPrfsMapper.selectOne(queryWrapper)==null) {
+                servPrfsMapper.delete(queryWrapper);
                 BigInteger secretI = new BigInteger(ghVals.getFi());
                 servPrfsMapper.insert(ServPrfs.builder().servId(idpServer.getServerId())
                         .userId(userId).priKeyi(secretI.toString()).prfi(prfValue.getPrfI()).verify(prfValue.getCveri()).build());
             }
             ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
+            synchronized (this){
             ServPrfsPp servPrfsPp=servPrfsPPMapper.selectById(userId);
-            if(servPrfsPp==null){
+            if(ghVals.getChangePwd()||servPrfsPp==null){
+                servPrfsPPMapper.deleteById(userId);
                 servPrfsPPMapper.insert( ServPrfsPp.builder().userId(userId).p(dkg_sysStr.getP())
                         .q(dkg_sysStr.getQ()).g(dkg_sysStr.getG()).h(dkg_sysStr.getH()).build());
-            }
+            }}
         }else{
             log.error("Verify PrfI error "+idpServer.getServerId());
         }

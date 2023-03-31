@@ -23,4 +23,5 @@ public class FunctionGHvals {
     private String userId;
     private Integer serverId;//[1-n]
     private Integer item;
+    private Boolean changePwd;
 }

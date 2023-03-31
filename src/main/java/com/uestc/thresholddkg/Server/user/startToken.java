@@ -44,16 +44,35 @@ public class startToken implements HttpHandler {
         while((line=reader.readLine())!=null){
             tline+=line;
         }
+        log.error("startTokens"+tline);
         if(!tline.equals("")){
         IdPwd stu = new Gson().fromJson(tline, IdPwd.class);
+        res=getToken(stu,service);
+        }
+        var expiresTime = new Date(System.currentTimeMillis() + 600 * 1000-8*1000*3600);
+        byte[] respContents = res.getBytes("UTF-8");
+        System.out.println(res);
+        httpExchange.getResponseHeaders().add("Access-Control-Allow-Origin","http://127.0.0.1:8083");
+        httpExchange.getResponseHeaders().add("Access-Control-Allow-Methods","*");
+        httpExchange.getResponseHeaders().add("Access-Control-Allow-Credentials","true");
+        httpExchange.getResponseHeaders().add("Content-Type", "application/json; charset=UTF-8");
+        httpExchange.getResponseHeaders().add("Access-Control-Allow-Headers","content-type");
+        httpExchange.getResponseHeaders().add("Set-Cookie","TokenS="+res+";expires="+expiresTime);
+        httpExchange.sendResponseHeaders(200, respContents.length);
+        httpExchange.getResponseBody().write(respContents);
+        httpExchange.close();
+    }
+
+    public static String getToken(IdPwd stu,ExecutorService service){
         String user=stu.getId(),Passwd=stu.getPasswd();
         //String user="sunny",Passwd="12345678";
         var userToken=new TokenUser();
         HashMap<String,String> paraMap=new HashMap<>();
         //check exists
         String[] isExist;
+        String res=Convert2StrToken.Obj2json(new TokenUser());
         int times=0;
-            do{
+        do{
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {throw new RuntimeException(e);}
@@ -80,39 +99,29 @@ public class startToken implements HttpHandler {
         var b2=new BigInteger(1,Arrays.copyOfRange(bytes,bytes.length/2,bytes.length));
         var msgHash=(dkg_system.getG().modPow(b1,p).multiply(dkg_system.getH().modPow(b2,p))).mod(p);
         while(times < 7){times++;
-             String[] sendAddrs=new String[IdpServer.threshold];
-             boolean[] exists=new boolean[isExist.length];
-             for(int i=0;i<sendAddrs.length;){
-                 SecureRandom random1=new SecureRandom();
-                 int servi= random1.nextInt(isExist.length);
-                 if(!exists[servi]){sendAddrs[i]=isExist[servi];i++;exists[servi]=true;}
-             }
-             var getTokenS=(new GetTokenSi(sendAddrs,userToken,user, UserMsg2Serv.builder().msg(msgBigIn.toString())
-                     .PwdHash1(paraMap.get("pwdHash1")).msgTime(String.valueOf(new Date().getTime())).msgHash(msgHash.toString()).userId(user).build(),paraMap.get("randR"),dkg_systemT,Passwd,service));
-             boolean success=getTokenS.call();
-             if(success)break;
-             else {
-                 try {Thread.sleep(900);//cautious
-                 } catch (InterruptedException e) {throw new RuntimeException(e);}
-             }
+            String[] sendAddrs=new String[IdpServer.threshold];
+            boolean[] exists=new boolean[isExist.length];
+            for(int i=0;i<sendAddrs.length;){
+                SecureRandom random1=new SecureRandom();
+                int servi= random1.nextInt(isExist.length);
+                if(!exists[servi]){sendAddrs[i]=isExist[servi];i++;exists[servi]=true;}
+            }
+            var getTokenS=(new GetTokenSi(sendAddrs,userToken,user, UserMsg2Serv.builder().msg(msgBigIn.toString())
+                    .PwdHash1(paraMap.get("pwdHash1")).msgTime(String.valueOf(new Date().getTime())).msgHash(msgHash.toString()).userId(user).build(),paraMap.get("randR"),dkg_systemT,Passwd,service));
+            try {
+                boolean success=getTokenS.call();
+                if(success)break;
+                else {
+                    try {Thread.sleep(900);//cautious
+                    } catch (InterruptedException e) {throw new RuntimeException(e);}
+                }
+            }catch (RuntimeException e){times=7;}
         }
-        if(times==7){res="404";}else{
+        if(times==7){res=Convert2StrToken.Obj2json(new TokenUser());}else{
             res=Convert2StrToken.Obj2json(userToken);
-        }}
-        var expiresTime = new Date(System.currentTimeMillis() + 600 * 1000-8*1000*3600);
-        byte[] respContents = res.getBytes("UTF-8");
-        System.out.println(res);
-        httpExchange.getResponseHeaders().add("Access-Control-Allow-Origin","http://127.0.0.1:8083");
-        httpExchange.getResponseHeaders().add("Access-Control-Allow-Methods","*");
-        httpExchange.getResponseHeaders().add("Access-Control-Allow-Credentials","true");
-        httpExchange.getResponseHeaders().add("Content-Type", "application/json; charset=UTF-8");
-        httpExchange.getResponseHeaders().add("Access-Control-Allow-Headers","content-type");
-        httpExchange.getResponseHeaders().add("Set-Cookie","TokenS="+res+";expires="+expiresTime);
-        httpExchange.sendResponseHeaders(200, respContents.length);
-        httpExchange.getResponseBody().write(respContents);
-        httpExchange.close();
+        }
+        return res;
     }
-
     public  static String[] getExistServ( ExecutorService service){
         String[] ipPorts = IdpServer.addrS;
         Integer serversNum = ipPorts.length;

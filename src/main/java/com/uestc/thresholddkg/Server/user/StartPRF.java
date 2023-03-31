@@ -50,7 +50,7 @@ public class StartPRF implements HttpHandler {
         if(!tline.equals("")) {
             IdPwd stu = new Gson().fromJson(tline, IdPwd.class);
             String ID=stu.getId(),Passwd=stu.getPasswd();
-            VSS_Pwd(ID,Passwd,service);
+            VSS_Pwd(ID,Passwd,false,service);
             HashMap<String, String> paraMap = new HashMap<>();
         }
         byte[] respContents = "sPrf".getBytes("UTF-8");
@@ -65,7 +65,7 @@ public class StartPRF implements HttpHandler {
         httpExchange.close();
     }
 
-    public static void VSS_Pwd(String ID,String passwd,ExecutorService service1){
+    public static void VSS_Pwd(String ID,String passwd,boolean isChange,ExecutorService service1){
         var param=DKG.initDLog();
         String[] ipPorts=IdpServer.addrS;
         BigInteger[] secrets=new BigInteger[2];
@@ -107,6 +107,7 @@ public class StartPRF implements HttpHandler {
                     .gMulsH(DKG.bigInt2Str(gMulH))
                     .sendAddr(Convert2Str.Obj2json(dkg_sysStr))//cautious
                     .userId(Convert2Str.Obj2json(megPrf)).item(1).build();
+            if(isChange)message.setChangePwd(true);
             String s=ipPorts[i];
             message.setFi(fVal[i].toString());message.setGi(gVal[i].toString());message.setServerId(i+1);
             SendUri send = SendUri.builder().message(Convert2Str.Obj2json(message)).mapper("verifyGetPrfI").IpAndPort(s).build();

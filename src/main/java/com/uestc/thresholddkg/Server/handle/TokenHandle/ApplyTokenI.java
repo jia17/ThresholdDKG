@@ -16,6 +16,7 @@ import com.uestc.thresholddkg.Server.pojo.*;
 import com.uestc.thresholddkg.Server.util.Calculate;
 import com.uestc.thresholddkg.Server.util.Convert2StrToken;
 import com.uestc.thresholddkg.Server.util.DKG;
+import com.uestc.thresholddkg.Server.util.getRedis;
 import lombok.AllArgsConstructor;
 import lombok.var;
 
@@ -58,9 +59,11 @@ public class ApplyTokenI implements HttpHandler {
         DKG_System dkg_system=new DKG_System(new BigInteger(servPrfsPp.getP()),new BigInteger(servPrfsPp.getQ()),
                                              new BigInteger(servPrfsPp.getG()),new BigInteger(servPrfsPp.getH()));
         int index=0;String userId=userMsg.getUserId();int threshold=IdpServer.threshold;
-        idpServer.getUserMsg().put(userId,userMsg.getMsg());
+        userMsgRedis userMsgRedis=new userMsgRedis(userMsg.getMsg(),userMsg.getMsgHash(),userMsg.getMsgTime());
+        getRedis.writeUserMsg(userId,userMsgRedis);
+       /* idpServer.getUserMsg().put(userId,userMsg.getMsg());
         idpServer.getUserMsgHash().put(userId,userMsg.getMsgHash());
-        idpServer.getMsgTime().put(userMsg.getUserId(),userMsg.getMsgTime());
+        idpServer.getMsgTime().put(userMsg.getUserId(),userMsg.getMsgTime());*/
         for(;index<ipPorts.length;index++){
             if(idpServer.getServer().getAddress().toString().equals("/"+ipPorts[index])){index++;break;}
         }

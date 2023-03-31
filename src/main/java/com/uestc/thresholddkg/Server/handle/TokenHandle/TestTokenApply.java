@@ -61,8 +61,8 @@ public class TestTokenApply implements HttpHandler {
         DKG_System dkg_system=new DKG_System(new BigInteger(servPrfsPp.getP()),new BigInteger(servPrfsPp.getQ()),
                 new BigInteger(servPrfsPp.getG()),new BigInteger(servPrfsPp.getH()));
         int index=0;String userId=userMsg.getUserId();int threshold=IdpServer.threshold;
-        idpServer.getUserMsg().put(userId,userMsg.getMsg());
-        idpServer.getUserMsgHash().put(userId,userMsg.getMsgHash());
+        /*idpServer.getUserMsg().put(userId,userMsg.getMsg());
+        idpServer.getUserMsgHash().put(userId,userMsg.getMsgHash());*/
         for(;index<ipPorts.length;index++){
             if(idpServer.getServer().getAddress().toString().equals("/"+ipPorts[index])){index++;break;}
         }

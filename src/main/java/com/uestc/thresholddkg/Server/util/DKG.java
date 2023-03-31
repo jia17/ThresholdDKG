@@ -6,6 +6,7 @@ import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.handle.TokenHandle.LoginOut;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import com.uestc.thresholddkg.Server.user.StartPRF;
+import com.uestc.thresholddkg.Server.user.changePwd;
 import com.uestc.thresholddkg.Server.user.logOutU;
 import com.uestc.thresholddkg.Server.user.startToken;
 import lombok.var;
@@ -127,6 +128,7 @@ public class DKG {
         httpServer.createContext("/startPrfs",new StartPRF(httpServer,service));
         httpServer.createContext("/startTokens",new startToken(service));
         httpServer.createContext("/logoutU",new logOutU(service));
+        httpServer.createContext("/changePwd",new changePwd(service));
         httpServer.setExecutor(null);
         httpServer.start();
         return httpServer;

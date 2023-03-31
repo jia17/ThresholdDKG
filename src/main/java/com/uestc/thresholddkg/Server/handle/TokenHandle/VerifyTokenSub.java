@@ -6,9 +6,11 @@ import com.uestc.thresholddkg.Server.IdpServer;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import com.uestc.thresholddkg.Server.pojo.TestUserMsg;
 import com.uestc.thresholddkg.Server.pojo.TokenUser;
+import com.uestc.thresholddkg.Server.pojo.userMsgRedis;
 import com.uestc.thresholddkg.Server.util.Convert2StrToken;
 import com.uestc.thresholddkg.Server.util.DKG;
 import com.uestc.thresholddkg.Server.util.RandomGenerator;
+import com.uestc.thresholddkg.Server.util.getRedis;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.var;
@@ -48,8 +50,9 @@ public class VerifyTokenSub implements HttpHandler {
              tokenUser=(TokenUser) Convert2StrToken.Json2obj(Sign, TokenUser.class);
             String user=tokenUser.getUser();
             String resStr=Convert2StrToken.Obj2json(new TokenUser("","","false"));
-            if(idpServer.getUserMsgHash().get(user)!=null){
-            BigInteger MsgHash=new BigInteger(idpServer.getUserMsgHash().get(user));
+            userMsgRedis userMsgRedis= getRedis.readUserMsg(user);
+            if(userMsgRedis!=null){
+            BigInteger MsgHash=new BigInteger(userMsgRedis.getMsgHash());
             try {
                 resStr = DKG.AESdecrypt(tokenUser.getSign(),MsgHash.toString());
             } catch (NoSuchAlgorithmException e) {

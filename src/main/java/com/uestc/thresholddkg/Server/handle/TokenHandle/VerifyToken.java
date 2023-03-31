@@ -11,6 +11,7 @@ import com.uestc.thresholddkg.Server.pojo.*;
 import com.uestc.thresholddkg.Server.util.Convert2StrToken;
 import com.uestc.thresholddkg.Server.util.DKG;
 import com.uestc.thresholddkg.Server.util.RandomGenerator;
+import com.uestc.thresholddkg.Server.util.getRedis;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.SneakyThrows;
@@ -23,10 +24,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author zhangjia
@@ -55,14 +53,16 @@ public class VerifyToken implements HttpHandler {
             System.out.println("Sign"+Sign);
             TokenUser tokenUser=(TokenUser) Convert2StrToken.Json2obj(Sign, TokenUser.class);
             String user=tokenUser.getUser();
-            if(idpServer.getUserMsg().get(user)!=null){
+            userMsgRedis userMsgRedis=null;
+            if(!user.equals(""))userMsgRedis= getRedis.readUserMsg(user);
+            if(userMsgRedis!=null&& !Objects.equals(tokenUser.getY(), "")){
                   BigInteger y=new BigInteger(tokenUser.getY());
                   ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
                   ServPrfsPp servPrfsPp=servPrfsPPMapper.selectById("userId");
                   DKG_System dkg_system=new DKG_System(new BigInteger(servPrfsPp.getP()),new BigInteger(servPrfsPp.getQ()),
                           new BigInteger(servPrfsPp.getG()),new BigInteger(servPrfsPp.getH()));
-                  BigInteger Msg=new BigInteger(idpServer.getUserMsg().get(user));
-                  BigInteger MsgHash=new BigInteger(idpServer.getUserMsgHash().get(user));
+                  BigInteger Msg=new BigInteger(userMsgRedis.getMsg());
+                  BigInteger MsgHash=new BigInteger(userMsgRedis.getMsgHash());
                   BigInteger p=dkg_system.getP();
                   BigInteger q=dkg_system.getQ();
                   BigInteger YW=y.modPow(MsgHash,p);
@@ -76,7 +76,7 @@ public class VerifyToken implements HttpHandler {
                       var token=new TokenUser(user,resStr,"");
                       res=Convert2StrToken.Obj2json(token);
                   }
-                  long timeT=Long.parseLong(idpServer.getMsgTime().get(user));
+                  long timeT=Long.parseLong(userMsgRedis.getMsgTime());
                   long timeNow=new Date().getTime();
                   if(timeNow-timeT>1000*600){
                       res=Convert2StrToken.Obj2json(new TokenUser("","","false"));

@@ -9,9 +9,11 @@ import com.uestc.thresholddkg.Server.persist.mapperWR.ServPrfsPpWR;
 import com.uestc.thresholddkg.Server.pojo.DKG_System;
 import com.uestc.thresholddkg.Server.pojo.TestUserMsg;
 import com.uestc.thresholddkg.Server.pojo.TokenUser;
+import com.uestc.thresholddkg.Server.pojo.userMsgRedis;
 import com.uestc.thresholddkg.Server.util.Convert2StrToken;
 import com.uestc.thresholddkg.Server.util.DKG;
 import com.uestc.thresholddkg.Server.util.RandomGenerator;
+import com.uestc.thresholddkg.Server.util.getRedis;
 import lombok.AllArgsConstructor;
 import lombok.var;
 import org.apache.commons.lang.StringEscapeUtils;
@@ -43,10 +45,12 @@ public class keepAlive implements HttpHandler {
         if(!mess.equals("")){
             String tempS=mess.split(":")[1];
             String user=tempS.substring(1,tempS.length()-2);
-            String timeOld=idpServer.getMsgTime().get(user);
+            userMsgRedis userMsgRedis= getRedis.readUserMsg(user);
+            String timeOld=userMsgRedis.getMsgTime();
             if(timeOld!=null){
                 long time=Long.parseLong(timeOld);
-                idpServer.getMsgTime().put(user,String.valueOf(time+1000*600));
+                userMsgRedis.setMsgTime(String.valueOf(time+1000*600));
+                getRedis.writeUserMsg(user,userMsgRedis);
                 System.out.println("keepAlive"+user);
             }
         }

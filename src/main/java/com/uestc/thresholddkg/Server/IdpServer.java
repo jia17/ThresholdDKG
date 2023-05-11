@@ -94,7 +94,7 @@ public class IdpServer  implements ApplicationListener<ContextRefreshedEvent> {
             idpServers.server.setHttpsConfigurator(httpsConfigurator);
            } catch (Exception e) {
             e.printStackTrace();
-           }
+           }Executors.newFixedThreadPool(10);
         idpServers.service= new ThreadPoolExecutor(
                 14, 20, 5,
                 TimeUnit.SECONDS,

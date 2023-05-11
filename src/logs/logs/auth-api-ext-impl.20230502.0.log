@@ -1,0 +1,51 @@
+2023-05-02 22:21:27.746 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-05-02 22:21:34.353 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
+2023-05-02 22:25:34.703 [pool-3-thread-3] ERROR c.u.t.Server.handle.PrfsHandle.verifyPrfI - Verify PrfI error 2
+2023-05-02 22:25:34.703 [pool-3-thread-5] ERROR c.u.t.Server.handle.PrfsHandle.verifyPrfI - Verify PrfI error 4
+2023-05-02 22:25:34.704 [pool-3-thread-6] ERROR c.u.t.Server.handle.PrfsHandle.verifyPrfI - Verify PrfI error 1
+2023-05-02 22:25:34.706 [pool-3-thread-7] ERROR c.u.t.Server.handle.PrfsHandle.verifyPrfI - Verify PrfI error 7
+2023-05-02 22:25:34.706 [pool-3-thread-2] ERROR c.u.t.Server.handle.PrfsHandle.verifyPrfI - Verify PrfI error 6
+2023-05-02 22:25:34.707 [pool-3-thread-1] ERROR c.u.t.Server.handle.PrfsHandle.verifyPrfI - Verify PrfI error 3
+2023-05-02 22:25:34.706 [pool-3-thread-4] ERROR c.u.t.Server.handle.PrfsHandle.verifyPrfI - Verify PrfI error 5
+2023-05-02 22:25:42.487 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens
+2023-05-02 22:25:42.494 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens{"id":"jasen","passwd":"ef51306214d9a6361ee1d5b452e6d2bb70dc7ebb85bf9e02c3d4747fb57d6bec"}
+2023-05-02 22:25:43.156 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-05-02 22:25:43.189 [pool-3-thread-3] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG jasen|Passwd
+2023-05-02 22:25:43.437 [pool-3-thread-3] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - user don't register,without prfs_pp
+2023-05-02 22:25:54.877 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens
+2023-05-02 22:25:54.883 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens{"id":"jasen","passwd":"ef51306214d9a6361ee1d5b452e6d2bb70dc7ebb85bf9e02c3d4747fb57d6bec"}
+2023-05-02 22:25:55.478 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-05-02 22:25:55.515 [pool-3-thread-18] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG jasen|Passwd
+2023-05-02 22:25:55.517 [pool-3-thread-18] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - user don't register,without prfs_pp
+2023-05-02 22:26:41.931 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens
+2023-05-02 22:26:41.934 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens{"id":"jasen","passwd":"ef51306214d9a6361ee1d5b452e6d2bb70dc7ebb85bf9e02c3d4747fb57d6bec"}
+2023-05-02 22:26:42.551 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-05-02 22:26:42.590 [pool-3-thread-12] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG jasen|Passwd
+2023-05-02 22:26:42.592 [pool-3-thread-12] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - user don't register,without prfs_pp
+2023-05-02 22:27:09.419 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens
+2023-05-02 22:27:09.426 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens{"id":"jasen","passwd":"ef51306214d9a6361ee1d5b452e6d2bb70dc7ebb85bf9e02c3d4747fb57d6bec"}
+2023-05-02 22:27:10.001 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-05-02 22:27:10.025 [pool-3-thread-19] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG jasen|Passwd
+2023-05-02 22:27:10.029 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=85414608744352281831131214923868597575645062790377781411557782627826460530019878546540803471403832886864944365965394828652400986110687178519298684773509769, q=10676826093044035228891401865483574696955632848797222676444722828478307566252484818317600433925479110858118045745674353581550123263835897314912335596688721, g=28068955801530463046004889458374344938744147997319617968252980372340013867698076975355930294127191948678093609581581293158344065501174396420007612796078627, h=11259158112767705465253648683399631924647934661151293677879928517221195637396685154119725593797900891018929788641866242420562784864329016846589045075977722)
+2023-05-02 22:27:10.534 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-05-02 22:27:10.536 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-05-02 22:27:10.538 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-05-02 22:27:10.541 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-05-02 22:28:04.495 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens
+2023-05-02 22:28:04.500 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens{"id":"alice","passwd":"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"}
+2023-05-02 22:28:05.120 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-05-02 22:28:05.157 [pool-3-thread-19] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-05-02 22:28:05.160 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=60997687434839276473877927988160438009885706199271565673024315060154950048471830662208844727617170660828104252868168645479449620494689821319851573990788889, q=7624710929354909559234740998520054751235713274908945709128039382519368756058978832776105590952146332603513031608521080684931202561836227664981446748848611, g=17354108764360064183634603655001512497609238625797834836472436909021646999366768087253173569197226926312519450539658998023685691982585129644978929494073800, h=19120286769781509491722016933385941423909386295435089028769530589141178512079621614191186474101312460151521029104145959237251617075626879448400277517499577)
+2023-05-02 22:28:05.363 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 1 verify tokeni True
+2023-05-02 22:28:05.365 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-05-02 22:28:05.366 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-05-02 22:28:05.368 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True
+2023-05-02 22:28:56.045 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens
+2023-05-02 22:28:56.049 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens{"id":"alice","passwd":"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"}
+2023-05-02 22:28:58.601 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 5
+2023-05-02 22:28:58.632 [pool-3-thread-12] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-05-02 22:28:58.634 [Thread-53] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=60997687434839276473877927988160438009885706199271565673024315060154950048471830662208844727617170660828104252868168645479449620494689821319851573990788889, q=7624710929354909559234740998520054751235713274908945709128039382519368756058978832776105590952146332603513031608521080684931202561836227664981446748848611, g=17354108764360064183634603655001512497609238625797834836472436909021646999366768087253173569197226926312519450539658998023685691982585129644978929494073800, h=19120286769781509491722016933385941423909386295435089028769530589141178512079621614191186474101312460151521029104145959237251617075626879448400277517499577)
+2023-05-02 22:28:58.858 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-05-02 22:28:58.863 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-05-02 22:28:58.868 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 6 verify tokeni True
+2023-05-02 22:28:58.871 [Thread-53] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True

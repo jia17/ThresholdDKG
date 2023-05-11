@@ -60,6 +60,7 @@ public class VerifyTokenSub implements HttpHandler {
             }}
             res=resStr;
         }
+        System.out.println(res);
         byte[] respContents = res.getBytes("UTF-8");
         httpExchange.getResponseHeaders().add("Access-Control-Allow-Origin",httpExchange.getRequestHeaders().getFirst("Origin"));
         httpExchange.getResponseHeaders().add("Access-Control-Allow-Methods","*");

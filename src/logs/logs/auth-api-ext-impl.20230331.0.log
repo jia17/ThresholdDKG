@@ -1,0 +1,11 @@
+2023-03-31 23:14:19.710 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.uestc.thresholddkg.Server.persist.ServPrfs".
+2023-03-31 23:14:22.349 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
+2023-03-31 23:14:25.047 [Thread-37] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens
+2023-03-31 23:14:25.054 [Thread-37] ERROR com.uestc.thresholddkg.Server.user.startToken - startTokens{"id":"alice","passwd":"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"}
+2023-03-31 23:14:25.965 [Thread-37] ERROR com.uestc.thresholddkg.Server.user.startToken - isExist 7
+2023-03-31 23:14:26.008 [pool-3-thread-8] ERROR com.uestc.thresholddkg.Server.handle.StartDKG - START DKG alice|Passwd
+2023-03-31 23:14:26.315 [Thread-37] ERROR com.uestc.thresholddkg.Server.user.StartPRF - Uesr get PRF DKG_System(p=85732352587751219609543558871346845538700479078701470330926720415349500982736406853430679148006639023426048579765246590389526089119872772963352499629079577, q=10716544073468902451192944858918355692337559884837683791365840051918687622842050856678834893500829877928256072470655823798690761139984096620419062453634947, g=80790695965161766546570880588697025171149823256176126072306354107678212588810320687644599964593801228740099019390763924568908989636344501897729303771694216, h=17515680804976312375311361362372840094482814533855716054623682207708816825864179442427450009478399258498725253413214149371199502767609680056861571214643156)
+2023-03-31 23:14:26.965 [Thread-37] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 2 verify tokeni True
+2023-03-31 23:14:26.967 [Thread-37] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 3 verify tokeni True
+2023-03-31 23:14:26.968 [Thread-37] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 5 verify tokeni True
+2023-03-31 23:14:26.970 [Thread-37] ERROR c.u.thresholddkg.Server.user.TokenComm.GetTokenSi - 7 verify tokeni True

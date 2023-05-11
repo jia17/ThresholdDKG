@@ -39,7 +39,7 @@ public class verifyPrfI implements HttpHandler {
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
-        byte[] respContents = "VerifyPrfsSuccess".getBytes("UTF-8");
+        byte[] respContents = "success".getBytes("UTF-8");
         var Sender=httpExchange.getRequestBody();
         BufferedReader reader=new BufferedReader(new InputStreamReader(Sender));
         String tline="";
@@ -66,6 +66,8 @@ public class verifyPrfI implements HttpHandler {
                 BigInteger secretI = new BigInteger(ghVals.getFi());
                 servPrfsMapper.insert(ServPrfs.builder().servId(idpServer.getServerId())
                         .userId(userId).priKeyi(secretI.toString()).prfi(prfValue.getPrfI()).verify(prfValue.getCveri()).build());
+            }else{
+                respContents = "false".getBytes("UTF-8");
             }
             ServPrfsPPMapper servPrfsPPMapper= ServPrfsPpWR.getMapper();
             synchronized (this){

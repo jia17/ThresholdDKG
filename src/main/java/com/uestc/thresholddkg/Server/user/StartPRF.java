@@ -21,12 +21,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.FutureTask;
+import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * @author zhangjia
@@ -43,17 +39,17 @@ public class StartPRF implements HttpHandler {
         BufferedReader reader=new BufferedReader(new InputStreamReader(req));
         String tline="";
         String line;
-        String res="";
+        String res="success";
         while((line=reader.readLine())!=null){
             tline+=line;
         }
         if(!tline.equals("")) {
             IdPwd stu = new Gson().fromJson(tline, IdPwd.class);
             String ID=stu.getId(),Passwd=stu.getPasswd();
-            VSS_Pwd(ID,Passwd,false,service);
+            res=VSS_Pwd(ID,Passwd,false,service);
             HashMap<String, String> paraMap = new HashMap<>();
         }
-        byte[] respContents = "sPrf".getBytes("UTF-8");
+        byte[] respContents = res.getBytes("UTF-8");
         httpExchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
         httpExchange.getResponseHeaders().add("Access-Control-Allow-Origin","http://127.0.0.1:8083");
         httpExchange.getResponseHeaders().add("Access-Control-Allow-Methods","*");
@@ -65,7 +61,7 @@ public class StartPRF implements HttpHandler {
         httpExchange.close();
     }
 
-    public static void VSS_Pwd(String ID,String passwd,boolean isChange,ExecutorService service1){
+    public static String VSS_Pwd(String ID,String passwd,boolean isChange,ExecutorService service1){
         var param=DKG.initDLog();
         String[] ipPorts=IdpServer.addrS;
         BigInteger[] secrets=new BigInteger[2];
@@ -98,7 +94,10 @@ public class StartPRF implements HttpHandler {
         var prfServ=Hex.toHexString(Arrays.copyOfRange(hash3,hash3.length/2,hash3.length));
         byte[] bytesI=new byte[16];
         ExecutorService service=service1;
+        CompletionService<String> completionService = new ExecutorCompletionService<>(service);
+        List<Future<String>> futures = new ArrayList<>();
         DKG_SysStr dkg_sysStr=new DKG_SysStr(param.getP().toString(),param.getQ().toString(),param.getG().toString(),param.getH().toString());
+        String successReg="success";
         for(int i = 0; i<ipPorts.length; i++){
             bytesI[0]= (byte) i;
             var hi=DKG.HashBlake2bSalt(prfServ.getBytes(),bytesI);
@@ -111,8 +110,16 @@ public class StartPRF implements HttpHandler {
             String s=ipPorts[i];
             message.setFi(fVal[i].toString());message.setGi(gVal[i].toString());message.setServerId(i+1);
             SendUri send = SendUri.builder().message(Convert2Str.Obj2json(message)).mapper("verifyGetPrfI").IpAndPort(s).build();
-            service.submit(send::SendMsg);
+            futures.add(completionService.submit(send::SendMsg));
+            //service.submit(send::SendMsg);
         }
+        try {
+             successReg = completionService.take().get();
+            // 处理最早完成的任务结果
+        } catch (InterruptedException | ExecutionException e) {
+             e.printStackTrace();
+        }
+        return successReg;
         //service.shutdown();
     }
     public static DKG_System getPwdHash1(String ID,String Passwd,HashMap<String,String> paraMap,String[] isExist){
